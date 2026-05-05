@@ -1,259 +1,355 @@
 import { Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import CTASection from '@/components/sections/CTASection';
-import { services, bundles, type ServiceItem } from '@/data/services';
-import { Check, Star } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/hooks/useScrollAnimation';
+import { useLanguage } from '@/contexts/LanguageContext';
 
+/* ─── SVG Icon Components ─── */
+const WrenchIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+  </svg>
+);
 
-interface ServiceStat {
-  value: string;
-  label: string;
+const MonitorIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+  </svg>
+);
+
+const ShareIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+  </svg>
+);
+
+const ChartIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 20V10M12 20V4M6 20v-6"/>
+  </svg>
+);
+
+const TargetIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+  </svg>
+);
+
+const MailIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/>
+  </svg>
+);
+
+const LayersIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+  </svg>
+);
+
+const CpuIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3h-8l-2 4h12l-2-4z"/><path d="M12 11v4M10 13h4"/>
+  </svg>
+);
+
+const GlobeIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+  </svg>
+);
+
+const CartIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+  </svg>
+);
+
+const BoltIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+  </svg>
+);
+
+const PhoneIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>
+  </svg>
+);
+
+const ArrowIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 stroke-current fill-none stroke-[2.5]" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </svg>
+);
+
+/* ─── Service Card Interface ─── */
+interface ServiceCard {
+  title: string;
+  description: string;
+  price: string;
+  image: string;
+  icon: React.FC;
+  slug?: string;
 }
 
-const serviceStatsBySlug: Record<string, ServiceStat[]> = {
-  webdesign: [
-    { value: '2-4w', label: 'Gem. oplevering' },
-    { value: '100%', label: 'Responsive' },
-    { value: '5+', label: 'Kernpagina\'s' },
-  ],
-  webshop: [
-    { value: '6+', label: 'Betaalmethodes' },
-    { value: '99.9%', label: 'Uptime doel' },
-    { value: '24/7', label: 'Bestelbaar' },
-  ],
-  'ai-implementatie': [
-    { value: '24/7', label: 'Beschikbaarheid' },
-    { value: '<1s', label: 'Gem. reactietijd' },
-    { value: '70%', label: 'Automatisering' },
-  ],
-  'website-onderhoud': [
-    { value: '24/7', label: 'Monitoring' },
-    { value: 'Dagelijks', label: 'Back-ups' },
-    { value: '<24u', label: 'Supportreactie' },
-  ],
-  seo: [
-    { value: '20+', label: 'Keywords focus' },
-    { value: 'Maandelijks', label: 'Rapportage' },
-    { value: 'Lokaal+', label: 'SEO scope' },
-  ],
-};
+interface ServiceCategory {
+  label: string;
+  title: string;
+  cards: ServiceCard[];
+}
 
-const defaultServiceStats: ServiceStat[] = [
-  { value: 'Maatwerk', label: 'Aanpak' },
-  { value: 'Data', label: 'Optimalisatie' },
-  { value: 'Support', label: 'Begeleiding' },
-];
-
-const shortTitleBySlug: Record<string, string> = {
-  webdesign: 'Webdesign',
-  webshop: 'Webshops',
-  'ai-implementatie': 'AI Implementatie',
-  'website-onderhoud': 'Onderhoud',
-  seo: 'SEO',
-};
-
-const ServiceSectionItem = ({ service }: { service: ServiceItem }) => {
-  const Icon = service.icon;
-  const serviceStats = serviceStatsBySlug[service.slug] ?? defaultServiceStats;
-  const shortTitle = shortTitleBySlug[service.slug] ?? service.title;
-
-  return (
-    <article className="py-8 md:py-10">
-      <div className="-mt-1 md:-mt-2 mb-6 md:mb-8 text-center">
-        <h3 className="font-display text-2xl md:text-4xl font-extrabold text-primary leading-tight tracking-tight drop-shadow-[0_8px_20px_rgba(30,64,175,0.28)]">
-          {shortTitle}
-        </h3>
-      </div>
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        <figure className="relative lg:order-1">
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-[240px] sm:h-[300px] md:h-[360px] object-cover rounded-xl shadow-md"
-          />
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-slate-950/35 via-slate-900/8 to-transparent" />
-          <div className="absolute left-4 top-4 w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-            <Icon className="w-5 h-5 text-white" />
-          </div>
-        </figure>
-
-        <div className="flex flex-col lg:order-2">
-          <p className="text-base md:text-lg text-slate-200 mb-4">{service.subtitle}</p>
-          <div className="grid grid-cols-3 gap-2 md:gap-3 mb-4">
-            {serviceStats.map((stat) => (
-              <div key={`${service.slug}-${stat.label}`} className="rounded-lg border border-slate-700/70 bg-slate-800/60 px-3 py-2 md:px-3.5 md:py-2.5">
-                <p className="text-sm md:text-base font-bold text-white leading-none">{stat.value}</p>
-                <p className="text-[11px] md:text-xs text-slate-300 mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm md:text-base text-slate-300 leading-relaxed mb-4">
-            {service.description}
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="rounded-lg border border-slate-700/70 bg-slate-800/45 p-4">
-              <p className="text-sm font-semibold text-white mb-2">Wat u krijgt</p>
-              <ul className="space-y-2 list-disc pl-5 text-sm text-slate-300">
-                {service.features.slice(0, 4).map((feature) => (
-                  <li key={`${service.slug}-${feature}`}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-lg border border-slate-700/70 bg-slate-800/45 p-4">
-              <p className="text-sm font-semibold text-white mb-2">Aanpak & focus</p>
-              <ul className="space-y-2 list-disc pl-5 text-sm text-slate-300">
-                {service.details.map((detail) => (
-                  <li key={`${service.slug}-${detail}`}>{detail}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-};
-
+/* ─── Main Component ─── */
 const ServicesPage = () => {
+  const { language } = useLanguage();
+
+  const categories: ServiceCategory[] = [
+    {
+      label: language === 'nl' ? 'Maandelijkse Services' : 'Monthly Services',
+      title: language === 'nl' ? 'Terugkerende diensten voor continue groei' : 'Recurring services for continuous growth',
+      cards: [
+        {
+          title: 'Website Onderhoud',
+          description: language === 'nl' ? 'Zorgeloos onderhoud met persoonlijke ondersteuning' : 'Carefree maintenance with personal support',
+          price: language === 'nl' ? 'Vanaf €29/mnd' : 'From €29/mo',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+          icon: WrenchIcon,
+          slug: 'website-onderhoud',
+        },
+        {
+          title: language === 'nl' ? 'Hosting en E-mail' : 'Hosting & Email',
+          description: language === 'nl' ? 'Snelle, betrouwbare hosting met persoonlijke support' : 'Fast, reliable hosting with personal support',
+          price: language === 'nl' ? 'Vanaf €19/mnd' : 'From €19/mo',
+          image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600',
+          icon: MonitorIcon,
+        },
+        {
+          title: language === 'nl' ? 'SEO en Zoekmachine Optimalisatie' : 'SEO & Search Engine Optimization',
+          description: language === 'nl' ? 'Word gevonden door uw ideale klanten' : 'Get found by your ideal customers',
+          price: language === 'nl' ? 'Vanaf €149/mnd' : 'From €149/mo',
+          image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=600',
+          icon: SearchIcon,
+          slug: 'seo',
+        },
+        {
+          title: language === 'nl' ? 'Social Media Beheer' : 'Social Media Management',
+          description: language === 'nl' ? 'Professionele aanwezigheid op alle platforms' : 'Professional presence on all platforms',
+          price: language === 'nl' ? 'Vanaf €199/mnd' : 'From €199/mo',
+          image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600',
+          icon: ShareIcon,
+        },
+        {
+          title: language === 'nl' ? 'Google en Meta Ads Beheer' : 'Google & Meta Ads Management',
+          description: language === 'nl' ? 'Maximaal rendement uit uw advertentiebudget' : 'Maximum return on your ad budget',
+          price: language === 'nl' ? 'Vanaf €249/mnd' : 'From €249/mo',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600',
+          icon: ChartIcon,
+        },
+      ],
+    },
+    {
+      label: language === 'nl' ? 'High-Value Diensten' : 'High-Value Services',
+      title: language === 'nl' ? 'Volledige oplossingen voor maximaal resultaat' : 'Complete solutions for maximum results',
+      cards: [
+        {
+          title: language === 'nl' ? 'Conversie Optimalisatie' : 'Conversion Optimization',
+          description: language === 'nl' ? 'Meer klanten uit uw bestaande bezoekers' : 'More customers from your existing visitors',
+          price: language === 'nl' ? 'Vanaf €499' : 'From €499',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+          icon: TargetIcon,
+        },
+        {
+          title: 'Sales Funnels',
+          description: language === 'nl' ? 'Geautomatiseerde verkoopsystemen die 24/7 werken' : 'Automated sales systems that work 24/7',
+          price: language === 'nl' ? 'Vanaf €799' : 'From €799',
+          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600',
+          icon: TargetIcon,
+        },
+        {
+          title: 'E-mail Marketing',
+          description: language === 'nl' ? 'Direct contact met uw doelgroep' : 'Direct contact with your target audience',
+          price: language === 'nl' ? 'Vanaf €399' : 'From €399',
+          image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=600',
+          icon: MailIcon,
+        },
+        {
+          title: language === 'nl' ? 'Branding Pakket' : 'Branding Package',
+          description: language === 'nl' ? 'Een sterk merk dat blijft hangen' : 'A strong brand that sticks',
+          price: language === 'nl' ? 'Vanaf €599' : 'From €599',
+          image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600',
+          icon: LayersIcon,
+        },
+        {
+          title: 'AI Implementatie',
+          description: language === 'nl' ? 'Onderscheid u met slimme AI oplossingen' : 'Stand out with smart AI solutions',
+          price: language === 'nl' ? 'Vanaf €699' : 'From €699',
+          image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=600',
+          icon: CpuIcon,
+          slug: 'ai-implementatie',
+        },
+      ],
+    },
+    {
+      label: language === 'nl' ? 'Digitale Oplossingen' : 'Digital Solutions',
+      title: language === 'nl' ? 'Geavanceerde systemen en applicaties' : 'Advanced systems and applications',
+      cards: [
+        {
+          title: language === 'nl' ? 'Webdesign en Ontwikkeling' : 'Web Design & Development',
+          description: language === 'nl' ? 'Websites die indruk maken en converteren' : 'Websites that impress and convert',
+          price: language === 'nl' ? 'Vanaf €499' : 'From €499',
+          image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600',
+          icon: GlobeIcon,
+          slug: 'webdesign',
+        },
+        {
+          title: language === 'nl' ? 'E-commerce en Webshops' : 'E-commerce & Webshops',
+          description: language === 'nl' ? 'Online verkopen zonder grenzen' : 'Online sales without limits',
+          price: language === 'nl' ? 'Vanaf €799' : 'From €799',
+          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600',
+          icon: CartIcon,
+          slug: 'webshop',
+        },
+        {
+          title: 'Web Applicaties',
+          description: language === 'nl' ? 'Krachtige apps die in de browser draaien' : 'Powerful apps that run in the browser',
+          price: language === 'nl' ? 'Vanaf €1.499' : 'From €1,499',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+          icon: MonitorIcon,
+        },
+        {
+          title: language === 'nl' ? 'Automatisering' : 'Automation',
+          description: language === 'nl' ? 'Laat technologie het werk doen' : 'Let technology do the work',
+          price: language === 'nl' ? 'Vanaf €499' : 'From €499',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600',
+          icon: BoltIcon,
+        },
+        {
+          title: language === 'nl' ? 'Mobiele Apps (PWA)' : 'Mobile Apps (PWA)',
+          description: language === 'nl' ? 'App-ervaring zonder app store gedoe' : 'App experience without app store hassle',
+          price: language === 'nl' ? 'Vanaf €999' : 'From €999',
+          image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600',
+          icon: PhoneIcon,
+        },
+      ],
+    },
+  ];
+
   return (
-    <div className="services-dark min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-[#f3f4f6]">
       <Header />
-      <main className="pt-16 bg-slate-900">
-        {/* Hero */}
-        <section className="py-12 relative isolate overflow-hidden bg-slate-900">
-          <div className="absolute inset-0">
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="relative w-full h-[50vh] min-h-[350px] flex items-center overflow-hidden px-16 max-md:px-6 max-md:h-[40vh] max-md:min-h-[280px]">
+          <div className="absolute inset-0 z-0 bg-[#0A1120]">
             <img
-              src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1920&q=80"
-              alt="Modern office"
-              className="w-full h-full object-cover object-center grayscale-[4%] brightness-[0.8] saturate-[1.08] contrast-[1.05]"
+              src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1920"
+              alt=""
+              className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-slate-900/20" style={{ backgroundColor: 'rgba(15, 23, 42, 0.2)' }} />
             <div
-              className="absolute inset-0 bg-gradient-to-r from-slate-950/35 via-slate-900/24 to-slate-900/12"
+              className="absolute inset-0"
               style={{
                 background:
-                  'linear-gradient(90deg, rgba(2,6,23,0.65) 0%, rgba(15,23,42,0.55) 55%, rgba(15,23,42,0.40) 100%)',
+                  'linear-gradient(to bottom, rgba(5,10,21,0.3) 0%, rgba(5,10,21,0.6) 50%, rgba(5,10,21,0.9) 100%)',
               }}
             />
           </div>
-          <div className="container mx-auto container-padding relative">
-            <div className="max-w-2xl">
-              <h1 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
-                Onze diensten
-              </h1>
-              <p className="text-slate-200">Webdesign, webshop, AI, onderhoud en SEO.</p>
+          <motion.div
+            className="relative z-10 max-w-[700px]"
+            initial={{ opacity: 0, y: -20, filter: 'blur(5px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="flex items-center gap-2.5 text-white text-[12px] font-semibold tracking-[0.1em] uppercase opacity-80 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#0055FF]" />
+              {language === 'nl' ? 'Ons aanbod' : 'Our offer'}
             </div>
-          </div>
-        </section>
-        <div className="section-divider" />
-
-        {/* Services */}
-		
-        <section className="section-padding bg-slate-900">
-          <motion.div className="container mx-auto container-padding" variants={staggerContainer} initial="hidden" animate="visible">
-            <div>
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.slug}
-                  initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.06 }}
-                >
-                  <ServiceSectionItem service={service} />
-                  {index < services.length - 1 && (
-                    <div className="pt-4 md:pt-6 opacity-95">
-                      <div className="section-divider-strong" />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+            <h1 className="text-[clamp(28px,4.5vw,48px)] font-bold leading-[1.1] tracking-[-0.03em] text-white mb-4">
+              {language === 'nl' ? 'Onze Diensten' : 'Our Services'}
+            </h1>
+            <p className="text-base text-white/65 leading-relaxed max-w-[440px]">
+              {language === 'nl'
+                ? 'Van maandelijkse services tot complete digitale oplossingen. Alles wat u nodig heeft om online te groeien.'
+                : 'From monthly services to complete digital solutions. Everything you need to grow online.'}
+            </p>
           </motion.div>
         </section>
-        <div className="section-divider" />
 
-        {/* Bundles / Pricing */}
-        <section className="section-padding relative overflow-hidden bg-slate-900">
-          <motion.div className="container mx-auto container-padding relative" variants={staggerContainer} initial="hidden" animate="visible">
-            <motion.div className="section-header mb-10" variants={fadeInUp}>
-              <span className="text-primary text-sm font-semibold tracking-[0.14em] uppercase mb-2 block">Groeipakketten</span>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-white">Kies het pakket dat klanten oplevert</h2>
-              <p className="text-slate-200 mt-3 max-w-xl mx-auto">Complete uitvoering voor meer leads en omzet, zonder losse onderdelen.</p>
-            </motion.div>
+        {/* Services Content */}
+        <div className="max-w-[1280px] mx-auto px-10 py-[60px] max-md:px-4 max-md:py-[30px]">
+          {categories.map((category, catIndex) => (
+            <div key={category.label}>
+              {/* Category Header */}
+              <section className="mb-[70px] max-md:mb-10">
+                <p className="text-[12px] font-bold tracking-[0.1em] uppercase text-[#1E4BA1] mb-2">
+                  {category.label}
+                </p>
+                <h2 className="text-[clamp(22px,3vw,30px)] font-bold tracking-[-0.02em] text-[#0F172A] mb-8 max-md:text-[20px] max-md:mb-5">
+                  {category.title}
+                </h2>
 
-            <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-              {bundles.map((bundle, index) => {
-                const isPopular = Boolean(bundle.popular);
-                return (
-                  <motion.div key={index} variants={fadeInUp}>
-                    <Card
-                      className={`h-full min-h-[430px] relative overflow-visible rounded-2xl transition-all duration-500 ${
-                        isPopular
-                          ? 'border-primary/45 ring-1 ring-primary/25 shadow-xl bg-white text-slate-900'
-                          : 'bg-white border-border/70 hover:border-primary/35 hover:shadow-xl text-slate-900'
-                      }`}
-                    >
-                      <div className={`absolute inset-x-0 top-0 h-1 ${isPopular ? 'bg-gradient-to-r from-primary/70 via-primary to-primary/70' : 'bg-gradient-to-r from-primary/45 via-primary/75 to-primary/45'}`} />
-                      {isPopular && (
-                        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
-                          <span className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full flex items-center gap-1">
-                            <Star className="w-3 h-3" /> Populair
-                          </span>
+                {/* Cards Grid */}
+                <div className="grid grid-cols-5 gap-[18px] max-lg:grid-cols-3 max-lg:gap-3.5 max-md:grid-cols-2 max-md:gap-3 max-sm:gap-2.5">
+                  {category.cards.map((card) => {
+                    const Icon = card.icon;
+                    return (
+                      <motion.article
+                        key={card.title}
+                        className="bg-white rounded-[14px] border border-[#e5e7eb] overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_8px_30px_rgba(30,75,161,0.08)] hover:-translate-y-[3px] group"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                      >
+                        {/* Card Image */}
+                        <div className="relative h-[140px] max-md:h-[100px] max-sm:h-[80px] overflow-hidden">
+                          <img
+                            src={card.image}
+                            alt={card.title}
+                            className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-[1.04]"
+                          />
+                          <div className="absolute -bottom-4 left-3.5 max-md:left-2.5 w-9 h-9 max-md:w-[30px] max-md:h-[30px] rounded-[9px] max-md:rounded-[7px] bg-[#1E4BA1] flex items-center justify-center shadow-[0_4px_12px_rgba(30,75,161,0.25)]">
+                            <Icon />
+                          </div>
                         </div>
-                      )}
-                      <CardContent className="p-6 pt-16 relative h-full flex flex-col">
-                        <div className="flex items-center justify-between mb-3">
-                          <h3 className="font-display text-xl font-bold text-slate-900">
-                            {bundle.name}
+
+                        {/* Card Content */}
+                        <div className="p-4 pt-6 max-md:p-3 max-md:pt-5 max-sm:p-2.5 max-sm:pt-[18px] flex flex-col flex-1">
+                          <h3 className="text-sm max-md:text-[12px] font-bold text-[#0F172A] tracking-[-0.01em] mb-1">
+                            {card.title}
                           </h3>
-                          <span className="text-[11px] rounded-full px-2.5 py-1 bg-primary/10 text-primary font-semibold">
-                            {index + 1}.0
+                          <p className="text-[12px] max-md:text-[11px] text-[#475569] leading-[1.45] mb-3 max-md:mb-2 flex-1">
+                            {card.description}
+                          </p>
+                          <span className="inline-block text-[11px] max-md:text-[10px] font-semibold text-[#1E4BA1] bg-[#f0f4ff] border border-[#d6e0f5] rounded-[5px] px-2.5 py-1 max-md:px-2 max-md:py-0.5 mb-3 max-md:mb-2 w-fit">
+                            {card.price}
                           </span>
+                          <Link
+                            to={card.slug ? `/services/${card.slug}` : '/contact'}
+                            className="text-[12px] max-md:text-[11px] font-semibold text-[#1E4BA1] no-underline inline-flex items-center gap-[5px] transition-all duration-200 hover:gap-2"
+                          >
+                            {language === 'nl' ? 'Meer info' : 'More info'} <ArrowIcon />
+                          </Link>
                         </div>
+                      </motion.article>
+                    );
+                  })}
+                </div>
+              </section>
 
-                        <p className="text-sm mb-4 text-slate-600">
-                          {bundle.description}
-                        </p>
-
-                        <div className="h-px mb-4 bg-border" />
-
-                        <div className="space-y-2.5 mb-6">
-                          {bundle.features.slice(0, 5).map((feature, i) => (
-                            <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                              <span className="w-5 h-5 rounded-full inline-flex items-center justify-center bg-primary/12">
-                                <Check className="w-3.5 h-3.5 text-primary" />
-                              </span>
-                              {feature}
-                            </div>
-                          ))}
-                        </div>
-
-                        <Button
-                          asChild
-                          className={`w-full mt-auto h-11 rounded-xl ${
-                            isPopular
-                              ? 'bg-primary hover:bg-primary/90 text-primary-foreground'
-                              : 'bg-primary/90 hover:bg-primary text-primary-foreground'
-                          }`}
-                        >
-                          <Link to="/quote">Vraag Offerte Aan</Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+              {/* Divider between categories */}
+              {catIndex < categories.length - 1 && (
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-[#e5e7eb] to-transparent mb-[70px] max-md:mb-10" />
+              )}
             </div>
-          </motion.div>
-        </section>
-        <CTASection />
+          ))}
+        </div>
       </main>
       <Footer />
     </div>
