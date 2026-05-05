@@ -1,210 +1,248 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Bot, CheckCircle2, Monitor, ShoppingCart } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { useScrollAnimation, fadeInUp, staggerContainer } from '@/hooks/useScrollAnimation';
-
-interface ServiceCardCta {
-  href: string;
-  label: string;
-  variant?: 'primary' | 'outline';
-}
+import { useEffect, useRef } from 'react';
 
 interface ServiceCardData {
   key: string;
-  icon: LucideIcon;
   title: string;
-  subtitle: string;
+  description: string;
   image: string;
-  bullets: string[];
-  ctas: ServiceCardCta[];
+  badge?: { label: string; type: 'popular' | 'new' | 'pro' };
+  icon: React.ReactNode;
+  href: string;
 }
 
 const ServicesSection = () => {
   const { language } = useLanguage();
   const { ref, controls } = useScrollAnimation();
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const cards: ServiceCardData[] =
     language === 'nl'
       ? [
           {
             key: 'webdesign',
-            icon: Monitor,
-            title: 'Webdesign & ontwikkeling',
-            subtitle: 'Websites die indruk maken én daadwerkelijk converteren',
-            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-            bullets: [],
-            ctas: [
-              { href: '/quote', label: 'Vraag offerte', variant: 'primary' },
-            ],
+            title: 'High-End Webdesign',
+            description: 'Op maat gemaakte websites die indruk maken en converteren.',
+            image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800',
+            badge: { label: 'Populair', type: 'popular' },
+            icon: (
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-[#1E4BA1] fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18" />
+                <path d="M9 21V9" />
+              </svg>
+            ),
+            href: '/services/webdesign',
           },
           {
-            key: 'webshop',
-            icon: ShoppingCart,
-            title: 'E-commerce & Webshops',
-            subtitle: 'Online verkopen zonder grenzen',
-            image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
-            bullets: [],
-            ctas: [{ href: '/services/webshop', label: 'Bekijk webshop oplossingen', variant: 'primary' }],
+            key: 'ecommerce',
+            title: 'E-commerce en Webshops',
+            description: 'Krachtige online winkels met soepele checkout en hoge conversie.',
+            image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
+            icon: (
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-[#1E4BA1] fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+              </svg>
+            ),
+            href: '/services/webshop',
           },
           {
-            key: 'ai',
-            icon: Bot,
-            title: 'AI Oplossing',
-            subtitle: 'Onderscheid je met slimme AI-oplossingen',
-            image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
-            bullets: [],
-            ctas: [{ href: '/services/ai-implementatie', label: 'Ontdek AI mogelijkheden', variant: 'primary' }],
+            key: 'seo',
+            title: 'SEO en Vindbaarheid',
+            description: 'Hoger in Google, meer bezoekers, meer omzet. Duurzaam groeiend.',
+            image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800',
+            badge: { label: 'Pro', type: 'pro' },
+            icon: (
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-[#1E4BA1] fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+            ),
+            href: '/services/seo',
           },
         ]
       : [
           {
             key: 'webdesign',
-            icon: Monitor,
-            title: 'Web Design & Development',
-            subtitle: 'Websites that impress and convert',
-            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-            bullets: [
-              'Custom design -> your brand is instantly recognizable',
-              'Responsive layout -> perfect on desktop, tablet, and mobile',
-              'Conversion focused -> CTAs and funnel aligned to audience',
-              'Continuous optimization -> improvements based on real data',
-            ],
-            ctas: [
-              { href: '/services/webdesign', label: 'Learn more', variant: 'outline' },
-              { href: '/quote', label: 'Request quote', variant: 'primary' },
-            ],
+            title: 'High-End Web Design',
+            description: 'Custom-built websites that impress and convert.',
+            image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800',
+            badge: { label: 'Popular', type: 'popular' },
+            icon: (
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-[#1E4BA1] fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18" />
+                <path d="M9 21V9" />
+              </svg>
+            ),
+            href: '/services/webdesign',
           },
           {
-            key: 'webshop',
-            icon: ShoppingCart,
+            key: 'ecommerce',
             title: 'E-commerce & Webshops',
-            subtitle: 'Sell online without limits',
-            image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
-            bullets: [
-              'Custom webshop design -> unique and brand-specific',
-              'Secure payments -> trust for your customers',
-              'Performance & speed -> fast load time and reliable hosting',
-              'Analytics & conversion -> insight and optimization',
-            ],
-            ctas: [{ href: '/services/webshop', label: 'View webshop solutions', variant: 'primary' }],
+            description: 'Powerful online stores with smooth checkout and high conversion.',
+            image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
+            icon: (
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-[#1E4BA1] fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+              </svg>
+            ),
+            href: '/services/webshop',
           },
           {
-            key: 'ai',
-            icon: Bot,
-            title: 'AI Implementation',
-            subtitle: 'Stand out with smart AI solutions',
-            image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
-            bullets: [
-              'AI chatbot on your website -> instant customer answers',
-              'AI customer service -> support automation',
-              'Content generation -> faster and consistent creation',
-              'Smart automation -> workflows tailored to your business',
-            ],
-            ctas: [{ href: '/services/ai-implementatie', label: 'Explore AI options', variant: 'primary' }],
+            key: 'seo',
+            title: 'SEO & Visibility',
+            description: 'Rank higher on Google, attract more visitors, grow revenue.',
+            image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800',
+            badge: { label: 'Pro', type: 'pro' },
+            icon: (
+              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] stroke-[#1E4BA1] fill-none stroke-2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+            ),
+            href: '/services/seo',
           },
         ];
 
-  const renderServiceCard = (card: ServiceCardData, articleClassName?: string) => {
-    const Icon = card.icon;
+  // Duplicate cards for mobile marquee
+  useEffect(() => {
+    const handleResize = () => {
+      if (!gridRef.current) return;
+      const grid = gridRef.current;
+      const cardElements = grid.querySelectorAll('[data-service-card]');
+      if (window.innerWidth <= 768 && cardElements.length <= cards.length) {
+        // Cards are duplicated via render below
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [cards.length]);
 
-    return (
-      <motion.article key={card.key} variants={fadeInUp} className={articleClassName}>
-        <Card className="group overflow-hidden bg-card border-border/60 hover:border-primary/35 transition-all duration-500 hover:shadow-xl h-full flex flex-col">
-          <div className="relative h-20 md:h-44 overflow-hidden">
-            <img
-              src={card.image}
-              alt={card.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/25 to-transparent" />
-            <div className="absolute bottom-1.5 left-1.5 md:bottom-3 md:left-3 w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-lg">
-              <Icon className="w-3.5 h-3.5 md:w-5 md:h-5" />
-            </div>
-          </div>
-
-          <CardContent className="p-2 md:p-5 flex flex-col flex-1">
-            <h3 className="font-display text-[10px] sm:text-xs md:text-xl font-bold text-slate-900 mb-1 md:mb-2 leading-tight line-clamp-2">
-              {card.title}
-            </h3>
-            <p className="text-[9px] sm:text-[10px] md:text-[15px] text-slate-700 mb-2 md:mb-4 leading-tight line-clamp-2">{card.subtitle}</p>
-
-            {card.bullets.length > 0 && (
-              <ul className="space-y-1 md:space-y-2.5 mb-2 md:mb-6">
-                {card.bullets.map((bullet, bulletIndex) => (
-                  <li
-                    key={bullet}
-                    className={`items-start gap-1.5 md:gap-2.5 text-[9px] sm:text-[10px] md:text-sm leading-tight md:leading-relaxed text-slate-800 ${bulletIndex > 0 ? 'hidden md:flex' : 'flex'}`}
-                  >
-                    <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            <div className="mt-auto grid gap-1.5 md:gap-2">
-              {card.ctas.map((cta, ctaIndex) => (
-                <Button
-                  key={`${card.key}-${cta.label}`}
-                  asChild
-                  className={
-                    `${cta.variant === 'outline'
-                      ? 'w-full h-7 md:h-11 border-primary/45 bg-white text-primary hover:bg-primary/8'
-                      : 'w-full h-7 md:h-11 bg-primary hover:bg-primary/90 text-primary-foreground'} text-[9px] sm:text-[10px] md:text-sm px-1 md:px-4 ${ctaIndex > 0 ? 'hidden md:flex' : ''}`
-                  }
-                  variant={cta.variant === 'outline' ? 'outline' : 'default'}
-                >
-                  <Link to={cta.href}>
-                    <span className="truncate">{cta.label}</span>
-                    <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                  </Link>
-                </Button>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </motion.article>
-    );
+  const getBadgeClasses = (type: 'popular' | 'new' | 'pro') => {
+    const base =
+      'absolute top-3 right-3 z-[3] text-[10px] font-bold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full backdrop-blur-sm border border-white/25 text-white';
+    switch (type) {
+      case 'popular':
+        return `${base} bg-[rgba(30,75,161,0.85)]`;
+      case 'new':
+        return `${base} bg-[rgba(16,185,129,0.85)]`;
+      case 'pro':
+        return `${base} bg-[rgba(245,158,11,0.85)]`;
+    }
   };
 
+  const renderCard = (card: ServiceCardData, index: number) => (
+    <article
+      key={`${card.key}-${index}`}
+      data-service-card
+      className="group relative bg-white/[0.92] backdrop-blur-[12px] rounded-[20px] overflow-hidden flex flex-col border border-[rgba(209,213,219,0.7)] shadow-[0_2px_8px_rgba(30,75,161,0.07)] transition-all duration-[350ms] ease-[cubic-bezier(.22,.68,0,1.2)] hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_20px_60px_rgba(30,75,161,0.18)] max-md:min-w-[250px] max-md:max-w-[250px] max-md:flex-shrink-0 max-md:hover:translate-y-0 max-md:hover:scale-100 max-md:hover:shadow-[0_2px_8px_rgba(30,75,161,0.07)]"
+    >
+      {/* Top accent line on hover */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1E4BA1] to-[#3B82F6] opacity-0 group-hover:opacity-100 transition-opacity duration-[350ms] z-[2]" />
+
+      {/* Image */}
+      <div className="h-[190px] max-md:h-[150px] overflow-hidden relative">
+        {card.badge && (
+          <span className={getBadgeClasses(card.badge.type)}>{card.badge.label}</span>
+        )}
+        <img
+          src={card.image}
+          alt={card.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.1)] group-hover:scale-[1.07]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(15,23,42,0.25)]" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(15,23,42,0.25) 100%)' }} />
+      </div>
+
+      {/* Content */}
+      <div className="p-[18px] pb-5 flex flex-col flex-1 gap-2.5">
+        <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[rgba(30,75,161,0.1)] to-[rgba(59,130,246,0.1)] border border-[rgba(30,75,161,0.15)] flex items-center justify-center flex-shrink-0">
+          {card.icon}
+        </div>
+        <h3 className="text-[15px] font-bold text-[#0F172A] tracking-[-0.01em] leading-[1.3]">
+          {card.title}
+        </h3>
+        <p className="text-[12.5px] text-[#475569] leading-relaxed flex-1">
+          {card.description}
+        </p>
+        <Link
+          to={card.href}
+          className="flex items-center justify-center gap-1.5 bg-[#1E4BA1] text-white no-underline py-2.5 rounded-md text-[13px] font-semibold transition-colors duration-250 hover:bg-[#153a80]"
+        >
+          {language === 'nl' ? 'Bekijk details' : 'View details'}
+          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-250 group-hover:translate-x-[3px]" />
+        </Link>
+      </div>
+    </article>
+  );
+
   return (
-    <section className="relative overflow-hidden bg-[#c8d0da] py-10 md:py-12 lg:py-14">
-      <div className="glass-light absolute inset-0 pointer-events-none" />
-      <div className="section-divider absolute top-0 left-0 right-0 z-[1]" />
+    <section className="relative pt-14 max-md:pt-9 bg-[#E5E7EB] overflow-hidden">
+      {/* Decorative blurs */}
+      <div className="absolute w-[420px] h-[420px] rounded-full blur-[80px] opacity-[0.18] pointer-events-none z-0 -top-[60px] -left-[100px] bg-[radial-gradient(circle,#1E4BA1,transparent_70%)]" />
+      <div className="absolute w-[360px] h-[360px] rounded-full blur-[80px] opacity-[0.18] pointer-events-none z-0 top-5 -right-[80px] bg-[radial-gradient(circle,#3B82F6,transparent_70%)]" />
 
       <motion.div
         ref={ref}
-        className="container relative z-[2] mx-auto container-padding"
+        className="max-w-[1200px] mx-auto px-7 relative z-[1]"
         variants={staggerContainer}
         initial="hidden"
         animate={controls}
       >
-        <motion.div className="section-header mb-6 md:mb-8" variants={fadeInUp}>
-          <h2 className="section-title !text-primary !font-extrabold">{language === 'nl' ? 'Diensten' : 'Services'}</h2>
-          <p className="section-subtitle text-slate-600">
-            {language === 'nl' ? 'Online zichtbaarheid en groei' : 'Online visibility and growth'}
-          </p>
-          <p className="mt-2 text-xs md:text-sm text-slate-700 max-w-2xl mx-auto">
-            {language === 'nl'
-              ? 'Wij helpen ook met branding: logo design, een passende naam en een uitstraling die bij uw doelgroep past.'
-              : 'We also help with branding: logo design, a fitting name, and a visual style tailored to your audience.'}
-          </p>
+        {/* Header */}
+        <motion.div className="text-center mb-11 max-md:mb-7" variants={fadeInUp}>
+          <div className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.12em] uppercase text-[#1E4BA1] bg-[rgba(30,75,161,0.08)] border border-[rgba(30,75,161,0.18)] rounded-full px-3.5 py-[5px] mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E4BA1] animate-pulse" />
+            {language === 'nl' ? 'Wat wij bieden' : 'What we offer'}
+          </div>
+          <h2 className="text-[clamp(30px,4.5vw,44px)] max-md:text-[28px] font-extrabold tracking-[-0.035em] leading-[1.15] text-[#0F172A]">
+            {language === 'nl' ? 'Onze Diensten' : 'Our Services'}
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-3 gap-2 md:gap-6">
-          {cards.map((card) => renderServiceCard(card))}
+        {/* Desktop grid (3 columns) */}
+        <motion.div
+          ref={gridRef}
+          className="hidden md:grid grid-cols-3 gap-6 lg:gap-6 pb-16 relative z-[1]"
+          variants={staggerContainer}
+        >
+          {cards.map((card, i) => (
+            <motion.div key={card.key} variants={fadeInUp}>
+              {renderCard(card, i)}
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Mobile marquee */}
+        <div className="md:hidden overflow-hidden pb-12 relative z-[1]">
+          <div className="flex gap-3.5 animate-[marquee-mobile_18s_linear_infinite] w-max hover:[animation-play-state:paused]">
+            {[...cards, ...cards].map((card, i) => renderCard(card, i))}
+          </div>
         </div>
 
-        <motion.div className="mt-5 md:mt-8 text-center" variants={fadeInUp}>
-          <Button asChild className="h-11 md:h-12 px-7 md:px-8 text-sm md:text-base">
-            <Link to="/services">{language === 'nl' ? 'Bekijk alle diensten' : 'View all services'}</Link>
-          </Button>
+        {/* More button */}
+        <motion.div className="text-center pb-12 max-md:pb-8" variants={fadeInUp}>
+          <Link
+            to="/services"
+            className="inline-block text-sm font-semibold text-[#1E4BA1] border-[1.5px] border-[#1E4BA1] px-7 py-[11px] rounded-md transition-colors duration-250 hover:bg-[#1E4BA1] hover:text-white no-underline"
+          >
+            {language === 'nl' ? 'Bekijk alle diensten' : 'View all services'}
+          </Link>
         </motion.div>
       </motion.div>
+
+      {/* Bottom divider */}
+      <div className="h-px w-[60%] max-w-[600px] mx-auto bg-gradient-to-r from-transparent via-[rgba(30,75,161,0.2)] to-transparent rounded-[1px]" />
     </section>
   );
 };
