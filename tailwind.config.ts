@@ -168,6 +168,14 @@ export default {
 				'100%': {
 					transform: 'translateX(-50%)'
 				}
+			},
+			'marquee-projects': {
+				'0%': {
+					transform: 'translateX(0)'
+				},
+				'100%': {
+					transform: 'translateX(calc(-50% - 30px))'
+				}
 			}
   		},
   		animation: {
@@ -180,7 +188,8 @@ export default {
   			'scale-in': 'scale-in 0.4s ease-out forwards',
   			float: 'float 3s ease-in-out infinite',
   			'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-			'marquee-mobile': 'marquee-mobile 18s linear infinite'
+			'marquee-mobile': 'marquee-mobile 18s linear infinite',
+			'marquee-projects': 'marquee-projects 80s linear infinite'
   		},
 		fontFamily: {
 			sans: [

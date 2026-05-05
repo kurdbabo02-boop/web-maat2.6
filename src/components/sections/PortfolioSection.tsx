@@ -1,160 +1,100 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { projects } from '@/data/projects';
 import { motion } from 'framer-motion';
 import { useScrollAnimation, fadeInUp, staggerContainer } from '@/hooks/useScrollAnimation';
-import { useEffect, useRef } from 'react';
+import { projects } from '@/data/projects';
 
 const PortfolioSection = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const { ref, controls } = useScrollAnimation();
-  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const recentProjectIds = ['rijscholenadvies-bureau', 'phone-recovery', 'promotioncars', 'luxe-vastgoed'];
-  const displayProjects = projects.filter(p => recentProjectIds.includes(p.id));
+  // Use projects that have screenshots (case studies)
+  const displayProjects = projects.filter((p) => p.screenshot);
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let animationId: number;
-    const scrollSpeed = 0.55;
-
-    const getLoopPoint = () => scrollContainer.scrollWidth / 2;
-
-    const animate = () => {
-      const loopPoint = getLoopPoint();
-      if (loopPoint <= 0) {
-        animationId = requestAnimationFrame(animate);
-        return;
-      }
-
-      scrollContainer.scrollLeft += scrollSpeed;
-
-      // Seamless infinite loop: once we've crossed one full set, continue from the mirrored point.
-      if (scrollContainer.scrollLeft >= loopPoint) {
-        scrollContainer.scrollLeft -= loopPoint;
-      }
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    const timeoutId = setTimeout(() => {
-      animationId = requestAnimationFrame(animate);
-    }, 1000);
-
-    const handleMouseEnter = () => {
-      cancelAnimationFrame(animationId);
-    };
-
-    const handleMouseLeave = () => {
-      animationId = requestAnimationFrame(animate);
-    };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      clearTimeout(timeoutId);
-      cancelAnimationFrame(animationId);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
+  // Build project items for the slider
+  const projectItems = displayProjects.map((p) => ({
+    id: p.id,
+    title: p.title,
+    screenshot: p.screenshot!,
+  }));
 
   return (
-    <section className="relative overflow-hidden py-10 md:py-12 lg:py-14 bg-[#c8d0da]">
-      <div className="glass-light absolute inset-0 pointer-events-none" />
-      <div className="section-divider absolute top-0 left-0 right-0 z-[1]" />
-
+    <section className="bg-[#E5E7EB] pt-[70px] pb-[50px]">
       <motion.div
         ref={ref}
-        className="container relative z-[2] mx-auto container-padding"
+        className="max-w-[1200px] mx-auto px-7"
         variants={staggerContainer}
         initial="hidden"
         animate={controls}
       >
-        <motion.div className="section-header mb-6 md:mb-8" variants={fadeInUp}>
-          <h2 className="section-title !text-primary !font-bold">
-            {language === 'nl' ? 'Resultaten' : 'Results'}
+        {/* Header */}
+        <motion.div className="text-center mb-[50px]" variants={fadeInUp}>
+          <h2 className="text-[clamp(28px,4vw,40px)] font-bold tracking-[-0.03em] text-[#0F172A]">
+            {language === 'nl' ? 'Onze Projecten' : 'Our Projects'}
           </h2>
-          <p className="section-subtitle text-slate-600">
-            {language === 'nl'
-              ? 'Gerealiseerd door Web-Maat.'
-              : 'Delivered by Web-Maat.'}
+          <p className="mt-2.5 text-[15px] font-normal text-[#475569]">
+            {language === 'nl' ? 'Gerealiseerd door Web-Maat.' : 'Realized by Web-Maat.'}
           </p>
         </motion.div>
-
-        <motion.div
-          ref={scrollRef}
-          className="flex gap-3 md:gap-7 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4"
-          variants={fadeInUp}
-        >
-          {[...displayProjects, ...displayProjects].map((project, index) => (
-            <Link
-              key={`${project.id}-${index}`}
-              to={`/portfolio/${project.id}`}
-              className="group block flex-shrink-0 w-[calc(64vw-1rem)] min-w-[180px] md:w-[420px] lg:w-[500px] xl:w-[560px]"
-            >
-              <Card className="overflow-hidden bg-card border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-xl h-full">
-                <div className="relative overflow-hidden aspect-[16/10]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="flex items-center gap-2 text-white">
-                      <span className="font-medium">{t.portfolio.viewProject}</span>
-                      <ArrowUpRight className="w-5 h-5" />
-                    </div>
-                  </div>
-                </div>
-                <CardContent className="p-4 md:p-6">
-                  <span className="text-primary text-sm font-semibold mb-1 block">
-                    {project.category[language]}
-                  </span>
-                  <h3 className="font-sans font-bold text-base md:text-xl lg:text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <div className="grid grid-cols-3 gap-1.5 md:flex md:flex-wrap md:gap-2">
-                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                      <Badge
-                        key={tagIndex}
-                        variant="secondary"
-                        className={`justify-center bg-primary/10 text-primary hover:bg-primary/20 border-none text-[11px] md:text-xs truncate ${
-                          tagIndex === 2 ? 'max-[360px]:hidden' : ''
-                        }`}
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </motion.div>
-
-        <motion.div className="text-center mt-6" variants={fadeInUp}>
-          <Button
-            asChild
-            size="lg"
-            className="h-11 px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md"
-          >
-            <Link to="/portfolio">
-              {language === 'nl' ? 'Bekijk Alle Projecten' : 'View All Projects'}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </Button>
-        </motion.div>
       </motion.div>
+
+      {/* Slider viewport */}
+      <div
+        className="w-full overflow-hidden py-5 pb-[50px]"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+        }}
+      >
+        <div className="flex gap-[60px] max-md:gap-10 max-sm:gap-[30px] w-max animate-[marquee-projects_80s_linear_infinite] hover:[animation-play-state:paused] items-end">
+          {/* Original + duplicate for seamless loop */}
+          {[...projectItems, ...projectItems].map((project, index) => (
+            <div key={`${project.id}-${index}`} className="flex items-end flex-shrink-0">
+              {/* MacBook mockup */}
+              <div className="relative w-[440px] max-md:w-[320px] max-sm:w-[260px]">
+                <img
+                  src={project.screenshot}
+                  alt={`${project.title} Desktop`}
+                  loading="lazy"
+                  className="absolute top-[5.2%] left-[11.2%] w-[77.6%] h-[76%] object-cover object-top z-[1] rounded-[2px]"
+                />
+                <img
+                  src="https://www.pngplay.com/wp-content/uploads/7/Apple-MacBook-Pro-Transparent-Images.png"
+                  alt=""
+                  className="w-full block relative z-[2] pointer-events-none"
+                />
+              </div>
+              {/* iPhone mockup */}
+              <div className="relative w-[105px] max-md:w-[80px] max-sm:w-[65px] -ml-[35px] max-md:-ml-[25px] max-sm:-ml-5 z-[3]">
+                <img
+                  src={project.screenshot}
+                  alt={`${project.title} Mobiel`}
+                  loading="lazy"
+                  className="absolute top-[3.5%] left-[6.5%] w-[87%] h-[93%] object-cover object-top z-[3] rounded-[28px] max-md:rounded-[22px] max-sm:rounded-[18px]"
+                />
+                <img
+                  src="https://pngimg.com/d/iphone_14_PNG3.png"
+                  alt=""
+                  className="w-full block relative z-[4] pointer-events-none"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA Button */}
+      <div className="text-center mt-2.5">
+        <Link
+          to="/portfolio"
+          className="inline-block bg-[#1E4BA1] text-white no-underline px-[26px] py-3 rounded-lg text-sm font-semibold transition-colors duration-250 hover:bg-[#153a80]"
+        >
+          {language === 'nl' ? 'Bekijk Recente Projecten' : 'View Recent Projects'}
+        </Link>
+      </div>
+
+      {/* Bottom divider */}
+      <div className="h-px w-1/2 max-w-[500px] mx-auto mt-10 bg-gradient-to-r from-transparent via-[rgba(30,75,161,0.15)] to-transparent" />
     </section>
   );
 };
