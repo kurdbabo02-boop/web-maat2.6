@@ -244,22 +244,8 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-[#f3f4f6]">
       <Header />
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="relative w-full h-[50vh] min-h-[350px] flex items-center overflow-hidden px-16 max-md:px-6 max-md:h-[40vh] max-md:min-h-[280px]">
-          <div className="absolute inset-0 z-0 bg-[#0A1120]">
-            <img
-              src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1920"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(to bottom, rgba(5,10,21,0.3) 0%, rgba(5,10,21,0.6) 50%, rgba(5,10,21,0.9) 100%)',
-              }}
-            />
-          </div>
+        {/* Hero Section - Updated: Smaller, no background image, no paragraph */}
+        <section className="relative w-full py-16 flex items-center overflow-hidden px-16 max-md:px-6 max-md:py-10 bg-[#0A1120]">
           <motion.div
             className="relative z-10 max-w-[700px]"
             initial={{ opacity: 0, y: -20, filter: 'blur(5px)' }}
@@ -270,14 +256,9 @@ const ServicesPage = () => {
               <span className="w-2 h-2 rounded-full bg-[#0055FF]" />
               {language === 'nl' ? 'Ons aanbod' : 'Our offer'}
             </div>
-            <h1 className="text-[clamp(28px,4.5vw,48px)] font-bold leading-[1.1] tracking-[-0.03em] text-white mb-4">
+            <h1 className="text-[clamp(28px,4.5vw,48px)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
               {language === 'nl' ? 'Onze Diensten' : 'Our Services'}
             </h1>
-            <p className="text-base text-white/65 leading-relaxed max-w-[440px]">
-              {language === 'nl'
-                ? 'Van maandelijkse services tot complete digitale oplossingen. Alles wat u nodig heeft om online te groeien.'
-                : 'From monthly services to complete digital solutions. Everything you need to grow online.'}
-            </p>
           </motion.div>
         </section>
 
