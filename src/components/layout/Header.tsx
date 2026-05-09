@@ -39,9 +39,9 @@ const Header = () => {
   return (
     <div className="font-['Inter',sans-serif]">
       {/* Fixed Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full h-20 z-[2000] flex items-center justify-between px-6 bg-white/90 backdrop-blur-[12px] border-b border-black/5">
+      <nav className="fixed top-0 left-0 w-full h-20 z-[2000] flex items-center justify-between px-6 bg-slate-900/80 backdrop-blur-[12px] border-b border-white/5">
         {/* Logo */}
-        <Link to="/" className="text-[#0f172a] no-underline text-2xl font-bold tracking-[1px]">
+        <Link to="/" className="text-white no-underline text-2xl font-bold tracking-[1px]">
           WEB-MAAT<span className="text-[#3b82f6]">.</span>
         </Link>
 
@@ -51,7 +51,7 @@ const Header = () => {
             <li key={link.href}>
               <Link
                 to={link.href}
-                className="text-[#475569] no-underline text-sm font-medium transition-colors duration-300 hover:text-[#2563eb]"
+                className="text-slate-300 no-underline text-sm font-medium transition-colors duration-300 hover:text-[#3b82f6]"
               >
                 {link.label}
               </Link>
@@ -66,17 +66,17 @@ const Header = () => {
           aria-label="Menu openen"
         >
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-[#0f172a] transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-white transition-all duration-300 ${
               isDrawerOpen ? 'top-[19px] rotate-45' : 'top-[14px]'
             }`}
           />
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-[#0f172a] transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-white transition-all duration-300 ${
               isDrawerOpen ? 'opacity-0' : 'top-[20px]'
             }`}
           />
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-[#0f172a] transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-white transition-all duration-300 ${
               isDrawerOpen ? 'top-[19px] -rotate-45' : 'top-[26px]'
             }`}
           />

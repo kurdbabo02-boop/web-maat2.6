@@ -9,19 +9,19 @@ const HeroSection = () => {
   const { language } = useLanguage();
 
   const content = {
-    badge: language === 'nl' ? 'Nu beschikbaar' : 'Now available',
-    title: language === 'nl' ? 'Websites die' : 'Websites that',
-    titleAccent: language === 'nl' ? 'Indruk maken.' : 'Make an impact.',
+    badge: language === 'nl' ? 'Web-Maat 2026' : 'Web-Maat 2026',
+    title: language === 'nl' ? 'Digitale groei' : 'Digital growth',
+    titleAccent: language === 'nl' ? 'Zonder gedoe.' : 'Without hassle.',
     subtitle:
       language === 'nl'
-        ? 'High-end digitale ervaringen die uw merk versterken.'
-        : 'High-end digital experiences that strengthen your brand.',
+        ? 'Wij bouwen websites die werken voor uw onderneming.'
+        : 'We build websites that work for your business.',
     ctaPrimary: language === 'nl' ? 'Onze diensten' : 'Our services',
     ctaSecondary: language === 'nl' ? 'Start project' : 'Start project',
   };
 
   return (
-    <section className="relative w-full h-[95vh] min-h-[650px] flex items-center overflow-hidden px-16 md:px-16 px-6 max-md:px-6 max-md:h-[75vh] max-md:min-h-[480px]">
+    <section className="relative w-full h-[70vh] min-h-[500px] flex items-center overflow-hidden px-16 md:px-16 px-6 max-md:px-6 max-md:h-[60vh] max-md:min-h-[400px]">
       {/* Background image */}
       <div className="absolute inset-0 z-0 bg-[#0A1120]">
         <img
@@ -34,7 +34,7 @@ const HeroSection = () => {
           className="absolute inset-0 hidden md:block"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(5,10,21,0.2) 0%, rgba(5,10,21,0.5) 40%, rgba(5,10,21,0.85) 70%, rgba(5,10,21,1) 100%)',
+              'linear-gradient(to bottom, rgba(15,23,42,0.4) 0%, rgba(15,23,42,0.7) 40%, rgba(15,23,42,0.9) 100%)',
           }}
         />
         <div
@@ -76,7 +76,7 @@ const HeroSection = () => {
         <div className="flex gap-5 max-md:flex-row max-md:gap-3">
           <Link
             to="/services"
-            className="bg-[#003366] text-white rounded-md px-[26px] py-[13px] text-sm font-semibold no-underline transition-colors duration-250 hover:bg-[#004488] max-md:px-5 max-md:py-3 max-md:text-[13px]"
+            className="bg-blue-600 text-white rounded-md px-[26px] py-[13px] text-sm font-semibold no-underline transition-colors duration-250 hover:bg-blue-700 max-md:px-5 max-md:py-3 max-md:text-[13px]"
           >
             {content.ctaPrimary}
           </Link>

@@ -10,9 +10,9 @@ import StatsMiniSection from '@/components/sections/StatsMiniSection';
 
 const Index = () => {
   return (
-    <div className="home-dark min-h-screen bg-slate-900">
+    <div className="home-dark min-h-screen bg-[#0F172A]">
       <Header />
-      <main className="bg-slate-900">
+      <main className="bg-[#0F172A]">
         <HeroSection />
         <div className="container mx-auto container-padding">
           <div className="section-divider-strong" />
