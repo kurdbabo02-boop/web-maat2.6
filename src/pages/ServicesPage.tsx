@@ -241,24 +241,49 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f3f4f6]">
+    <div className="min-h-screen bg-[#f8fafc]">
       <Header />
       <main className="pt-20">
-        {/* Hero Section - Updated: Smaller, no background image, no paragraph */}
-        <section className="relative w-full py-16 flex items-center overflow-hidden px-16 max-md:px-6 max-md:py-10 bg-[#0A1120]">
+        {/* Unique Modern Hero Section */}
+        <section className="relative w-full py-24 overflow-hidden px-16 max-md:px-6 max-md:py-16 bg-white">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#f0f4ff] to-transparent opacity-60 z-0" />
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0055FF]/5 rounded-full blur-3xl z-0" />
+          
           <motion.div
-            className="relative z-10 max-w-[700px]"
-            initial={{ opacity: 0, y: -20, filter: 'blur(5px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 max-w-[800px]"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex items-center gap-2.5 text-white text-[12px] font-semibold tracking-[0.1em] uppercase opacity-80 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#0055FF]" />
-              {language === 'nl' ? 'Ons aanbod' : 'Our offer'}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f4ff] border border-[#d6e0f5] mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0055FF] animate-pulse" />
+              <span className="text-[11px] font-bold text-[#1E4BA1] tracking-wider uppercase">
+                {language === 'nl' ? 'Onze Expertise' : 'Our Expertise'}
+              </span>
             </div>
-            <h1 className="text-[clamp(28px,4.5vw,48px)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
-              {language === 'nl' ? 'Onze Diensten' : 'Our Services'}
+            
+            <h1 className="text-[clamp(32px,5vw,56px)] font-extrabold leading-[1.1] tracking-[-0.04em] text-[#0F172A]">
+              {language === 'nl' ? (
+                <>
+                  Ontdek onze <span className="text-[#0055FF]">Digitale</span> <br />
+                  Diensten & Oplossingen
+                </>
+              ) : (
+                <>
+                  Explore our <span className="text-[#0055FF]">Digital</span> <br />
+                  Services & Solutions
+                </>
+              )}
             </h1>
+            
+            {/* Minimalist accent line */}
+            <motion.div 
+              className="h-1.5 w-20 bg-[#0055FF] mt-8 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: 80 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            />
           </motion.div>
         </section>
 
