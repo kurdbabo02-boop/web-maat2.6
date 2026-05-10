@@ -273,7 +273,7 @@ const ServicesPage = () => {
               </span>
             </div>
             
-            <h1 className="text-[clamp(32px,5vw,56px)] font-extrabold leading-[1.1] tracking-[-0.04em] text-[#0F172A]">
+            <h1 className="text-[clamp(28px,4vw,44px)] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#0F172A]">
               {language === 'nl' ? (
                 <>
                   Ontdek onze <span className="text-[#0055FF]">Digitale</span> <br />

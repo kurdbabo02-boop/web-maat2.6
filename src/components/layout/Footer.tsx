@@ -24,7 +24,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0a0c10] text-slate-400 pt-20 pb-10 px-6 border-t border-white/5">
+    <footer className="bg-[#050b1a] text-blue-100/60 pt-20 pb-10 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Brand Column */}
@@ -32,16 +32,16 @@ const Footer = () => {
             <Link to="/" className="inline-block group">
               <img src={logo} alt="Web-Maat" className="h-10 w-auto brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity" />
             </Link>
-            <p className="text-sm leading-relaxed text-slate-500 max-w-xs font-medium">
+            <p className="text-sm leading-relaxed text-blue-100/50 max-w-xs font-medium">
               {language === 'nl' 
                 ? 'Exclusieve digitale ervaringen die uw visie transformeren naar een tastbaar online meesterwerk.' 
                 : 'Exclusive digital experiences that transform your vision into a tangible online masterpiece.'}
             </p>
             <div className="flex gap-5">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 hover:text-white transition-all text-slate-500">
+              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 hover:text-white transition-all text-blue-100/40">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 hover:text-white transition-all text-slate-500">
+              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 hover:text-white transition-all text-blue-100/40">
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
@@ -86,7 +86,7 @@ const Footer = () => {
                 <a href="tel:+31645457394" className="hover:text-white transition-colors">+31 6 45457394</a>
               </li>
               <li className="pt-6">
-                <Link to="/quote" className="inline-flex items-center px-6 py-3 bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-slate-200 transition-all rounded-sm">
+                <Link to="/quote" className="inline-flex items-center px-6 py-3 bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-blue-50 transition-all rounded-sm">
                   {language === 'nl' ? 'Start Project' : 'Start Project'}
                 </Link>
               </li>
@@ -95,7 +95,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] uppercase tracking-[0.15em] text-slate-600 font-medium">
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] uppercase tracking-[0.15em] text-blue-100/30 font-medium">
           <p>© {new Date().getFullYear()} Web-Maat Creations. Crafting Digital Excellence.</p>
           <div className="flex gap-10">
             <button onClick={() => openLegalDialog('privacy')} className="hover:text-white transition-colors">Privacy</button>
@@ -106,12 +106,12 @@ const Footer = () => {
 
       {/* Legal Dialog */}
       <Dialog open={isLegalDialogOpen} onOpenChange={setIsLegalDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[80vh] bg-[#0a0c10] border-white/10 text-slate-300">
+        <DialogContent className="max-w-2xl max-h-[80vh] bg-[#050b1a] border-white/10 text-blue-100/70">
           <DialogHeader>
             <DialogTitle className="text-white">{activeLegalTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}</DialogTitle>
           </DialogHeader>
           <ScrollArea className="h-full pr-4">
-            <div className="py-6 text-sm text-slate-400 leading-relaxed">
+            <div className="py-6 text-sm text-blue-100/60 leading-relaxed">
               {language === 'nl' 
                 ? 'Onze juridische documenten worden momenteel bijgewerkt naar onze nieuwe kwaliteitsstandaard. Neem contact met ons op voor de meest recente versie.' 
                 : 'Our legal documents are currently being updated to our new quality standards. Please contact us for the latest version.'}
