@@ -60,6 +60,15 @@
     --sidebar-border: 220 15% 90%;
     --sidebar-ring: 220 65% 35%;
     --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+    /* Luxury Gold/Champagne Accent */
+    --gold: 43 45% 50%;
+    --gold-light: 43 45% 70%;
+    --gold-dark: 43 45% 30%;
+    
+    /* Deep Professional Backgrounds */
+    --deep-charcoal: 220 25% 5%;
+    --deep-navy: 220 40% 7%;
   }
   .dark {
     --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
@@ -93,7 +102,14 @@
   }
 
   .bg-gradient-luxury {
-    background: linear-gradient(180deg, hsl(var(--slate)) 0%, hsl(var(--background)) 100%);
+    background: linear-gradient(135deg, hsl(var(--deep-navy)) 0%, hsl(var(--deep-charcoal)) 100%);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .bg-gradient-navy {

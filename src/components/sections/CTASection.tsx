@@ -8,80 +8,83 @@ const CTASection = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="py-20 px-6 bg-[#f0f4ff]">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            {language === 'nl' ? 'Kies het pakket dat bij u past' : 'Choose the package that fits you'}
+    <section className="py-32 px-6 bg-white border-t border-slate-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <span className="inline-block text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+            {language === 'nl' ? 'Investering' : 'Investment'}
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0c10] mb-6 tracking-tight">
+            {language === 'nl' ? 'Kies uw groeipad' : 'Choose your growth path'}
           </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto font-medium">
             {language === 'nl' 
-              ? 'Transparante prijzen en complete oplossingen voor elke fase van uw onderneming.' 
-              : 'Transparent pricing and complete solutions for every stage of your business.'}
+              ? 'Transparante prijzen voor buitengewone digitale resultaten.' 
+              : 'Transparent pricing for extraordinary digital results.'}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-12">
           {bundles.map((bundle, index) => (
             <div 
               key={index}
-              className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-300 ${
+              className={`relative flex flex-col p-10 rounded-sm border transition-all duration-500 ${
                 bundle.popular 
-                  ? 'bg-white border-[#d6e0f5] shadow-xl shadow-[#1E4BA1]/10 scale-105 z-10' 
-                  : 'bg-slate-50/50 border-slate-200 hover:border-blue-100'
+                  ? 'bg-[#0a0c10] border-[#0a0c10] text-white shadow-2xl scale-105 z-10' 
+                  : 'bg-white border-slate-100 hover:border-slate-200 text-[#0a0c10]'
               }`}
             >
               {bundle.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#1E4BA1] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                  Meest Gekozen
+                <div className="absolute -top-3 left-10 bg-white text-black text-[9px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                  Popular Choice
                 </div>
               )}
               
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{bundle.name}</h3>
-                <p className="text-slate-500 text-sm mb-6">{bundle.description}</p>
+              <div className="mb-10">
+                <h3 className={`text-xl font-bold mb-2 ${bundle.popular ? 'text-white' : 'text-[#0a0c10]'}`}>{bundle.name}</h3>
+                <p className={`text-sm mb-8 font-medium ${bundle.popular ? 'text-slate-400' : 'text-slate-500'}`}>{bundle.description}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold text-slate-900">{bundle.price}</span>
+                  <span className="text-4xl font-bold tracking-tighter">{bundle.price}</span>
                 </div>
               </div>
 
-              <div className="flex-1 space-y-4 mb-8">
+              <div className="flex-1 space-y-5 mb-12">
                 {bundle.features.map((feature, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#1E4BA1] flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-700 text-sm">{feature}</span>
+                  <div key={i} className="flex items-start gap-4">
+                    <Check className={`w-4 h-4 flex-shrink-0 mt-1 ${bundle.popular ? 'text-white' : 'text-slate-900'}`} />
+                    <span className={`text-sm font-medium ${bundle.popular ? 'text-slate-300' : 'text-slate-600'}`}>{feature}</span>
                   </div>
                 ))}
               </div>
 
               <Button 
                 asChild 
-                className={`w-full h-12 rounded-xl font-bold transition-all ${
+                className={`w-full h-14 rounded-none font-bold text-xs uppercase tracking-widest transition-all ${
                   bundle.popular 
-                    ? 'bg-[#1E4BA1] hover:bg-[#163a7a] text-white' 
-                    : 'bg-slate-900 hover:bg-slate-800 text-white'
+                    ? 'bg-white hover:bg-slate-200 text-black' 
+                    : 'bg-[#0a0c10] hover:bg-slate-800 text-white'
                 }`}
               >
                 <Link to="/quote">
-                  {language === 'nl' ? 'Nu Starten' : 'Start Now'}
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  {language === 'nl' ? 'Project Starten' : 'Start Project'}
+                  <ArrowRight className="ml-3 w-4 h-4" />
                 </Link>
               </Button>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Consultation CTA */}
-      <div className="max-w-5xl mx-auto mt-12 text-center">
-        <p className="text-slate-600 text-sm mb-4">
-          {language === 'nl' 
-            ? 'Niet zeker welk pakket past? ' 
-            : 'Not sure which package fits? '}
-          <Link to="/contact" className="text-[#1E4BA1] font-bold hover:underline">
-            {language === 'nl' ? 'Plan een gratis adviesgesprek' : 'Schedule a free consultation'}
-          </Link>
-        </p>
+        {/* Consultation CTA */}
+        <div className="max-w-5xl mx-auto mt-20 text-center">
+          <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">
+            {language === 'nl' 
+              ? 'Behoefte aan maatwerk? ' 
+              : 'Need something custom? '}
+            <Link to="/contact" className="text-[#0a0c10] hover:underline ml-2">
+              {language === 'nl' ? 'Plan een strategiegesprek' : 'Schedule a strategy session'}
+            </Link>
+          </p>
+        </div>
       </div>
     </section>
   );
