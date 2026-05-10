@@ -86,7 +86,7 @@ const Footer = () => {
                 <a href="tel:+31645457394" className="hover:text-white transition-colors">+31 6 45457394</a>
               </li>
               <li className="pt-6">
-                <Link to="/quote" className="inline-flex items-center px-6 py-3 bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-blue-50 transition-all rounded-sm">
+                <Link to="/quote" className="inline-flex items-center px-6 py-3 bg-[#29458e] text-white font-bold text-xs uppercase tracking-widest hover:bg-[#1e3368] transition-all rounded-sm">
                   {language === 'nl' ? 'Start Project' : 'Start Project'}
                 </Link>
               </li>

@@ -59,8 +59,8 @@ const Header = () => {
       >
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 no-underline h-full">
-          <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto brightness-0" />
-        </Link>
+          <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto" style={{ filter: 'invert(24%) sepia(48%) saturate(1487%) hue-rotate(204deg) brightness(92%) contrast(92%)' }} />
+        </Link>},{all:false,find:
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8">
@@ -79,7 +79,7 @@ const Header = () => {
           
           <Link
             to="/quote"
-            className="bg-[#050b1a] text-white px-6 py-2.5 rounded-full text-sm font-bold no-underline transition-all hover:bg-blue-900 hover:shadow-lg hover:-translate-y-0.5"
+            className="bg-[#29458e] text-white px-6 py-2.5 rounded-full text-sm font-bold no-underline transition-all hover:bg-[#1e3368] hover:shadow-lg hover:-translate-y-0.5"
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
           </Link>
@@ -87,22 +87,22 @@ const Header = () => {
 
         {/* Hamburger Button (mobile) */}
         <button
-          className="lg:hidden w-10 h-10 border-0 bg-transparent cursor-pointer relative"
+          className="lg:hidden w-10 h-10 border-0 bg-transparent cursor-pointer relative z-[3000]"
           onClick={toggleDrawer}
           aria-label="Menu openen"
         >
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-slate-900 transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-[#29458e] transition-all duration-500 ease-in-out ${
               isDrawerOpen ? 'top-[19px] rotate-45' : 'top-[14px]'
             }`}
           />
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-slate-900 transition-all duration-300 ${
-              isDrawerOpen ? 'opacity-0' : 'top-[20px]'
+            className={`absolute left-2 w-6 h-0.5 bg-[#29458e] transition-all duration-500 ease-in-out ${
+              isDrawerOpen ? 'opacity-0 scale-x-0' : 'top-[20px] opacity-100 scale-x-100'
             }`}
           />
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-slate-900 transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-[#29458e] transition-all duration-500 ease-in-out ${
               isDrawerOpen ? 'top-[19px] -rotate-45' : 'top-[26px]'
             }`}
           />
@@ -119,7 +119,7 @@ const Header = () => {
 
       {/* Mobile Drawer */}
       <aside
-        className={`fixed top-0 right-0 w-[340px] h-screen bg-white z-[2500] flex flex-col p-6 border-l border-black/5 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-transform duration-[400ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] ${
+        className={`fixed top-0 right-0 w-full md:w-[340px] h-screen bg-white z-[2500] flex flex-col p-6 border-l border-black/5 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-transform duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] ${
           isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -185,7 +185,7 @@ const Header = () => {
 
           <Link
             to="/quote"
-            className="block w-full bg-[#3b82f6] text-white text-center py-[18px] rounded-xl no-underline font-bold text-sm uppercase transition-all duration-300 shadow-[0_4px_14px_rgba(59,130,246,0.25)] hover:bg-[#2563eb] hover:shadow-[0_6px_20px_rgba(59,130,246,0.35)] hover:-translate-y-px"
+            className="block w-full bg-[#29458e] text-white text-center py-[18px] rounded-xl no-underline font-bold text-sm uppercase transition-all duration-300 shadow-[0_4px_14px_rgba(41,69,142,0.25)] hover:bg-[#1e3368] hover:shadow-[0_6px_20px_rgba(41,69,142,0.35)] hover:-translate-y-px"
             onClick={closeDrawer}
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}

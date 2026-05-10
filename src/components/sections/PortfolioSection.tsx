@@ -87,7 +87,7 @@ const PortfolioSection = () => {
       <div className="text-center mt-2.5">
         <Link
           to="/portfolio"
-          className="inline-block bg-[#1E4BA1] text-white no-underline px-[26px] py-3 rounded-lg text-sm font-semibold transition-colors duration-250 hover:bg-[#153a80]"
+          className="inline-block bg-[#29458e] text-white no-underline px-[26px] py-3 rounded-lg text-sm font-semibold transition-colors duration-250 hover:bg-[#1e3368]"
         >
           {language === 'nl' ? 'Bekijk Recente Projecten' : 'View Recent Projects'}
         </Link>

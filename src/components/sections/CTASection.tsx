@@ -61,7 +61,7 @@ const CTASection = () => {
                 asChild 
                 className={`w-full h-12 rounded-lg font-bold text-xs uppercase tracking-widest transition-all ${
                   bundle.popular 
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                    ? 'bg-[#29458e] hover:bg-[#1e3368] text-white' 
                     : 'bg-slate-900 hover:bg-slate-800 text-white'
                 }`}
               >
