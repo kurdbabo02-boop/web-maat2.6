@@ -34,7 +34,7 @@ const Footer = () => {
                 src={logo} 
                 alt="Web-Maat" 
                 className="h-12 w-auto" 
-                style={{ filter: 'invert(24%) sepia(48%) saturate(1487%) hue-rotate(204deg) brightness(92%) contrast(92%)' }}
+                style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(450%) hue-rotate(200deg) brightness(98%)' }}
               />
             </Link>
             <p className="text-sm leading-relaxed text-slate-500 max-w-xs font-medium">
