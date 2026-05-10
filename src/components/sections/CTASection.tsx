@@ -8,16 +8,16 @@ const CTASection = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="py-32 px-6 bg-[#050b1a]">
+    <section className="py-32 px-6 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <span className="inline-block text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+          <span className="inline-block text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
             {language === 'nl' ? 'Kies het pakket dat bij u past' : 'Choose the package that fits you'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
             {language === 'nl' ? 'Transparante Pakketten' : 'Transparent Packages'}
           </h2>
-          <p className="text-blue-100/60 text-lg max-w-2xl mx-auto font-medium">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">
             {language === 'nl' 
               ? 'Complete oplossingen voor elke fase van uw onderneming.' 
               : 'Complete solutions for every stage of your business.'}
@@ -30,8 +30,8 @@ const CTASection = () => {
               key={index}
               className={`relative flex flex-col p-10 rounded-2xl border transition-all duration-500 ${
                 bundle.popular 
-                  ? 'bg-white/5 border-white/20 text-white shadow-2xl scale-105 z-10' 
-                  : 'bg-transparent border-white/10 hover:border-white/20 text-white'
+                  ? 'bg-slate-900 border-slate-800 text-white shadow-2xl scale-105 z-10' 
+                  : 'bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-900'
               }`}
             >
               {bundle.popular && (
@@ -41,18 +41,18 @@ const CTASection = () => {
               )}
               
               <div className="mb-10">
-                <h3 className="text-xl font-bold mb-2 text-white">{bundle.name}</h3>
-                <p className="text-sm mb-8 font-medium text-blue-100/50">{bundle.description}</p>
+                <h3 className={`text-xl font-bold mb-2 ${bundle.popular ? 'text-white' : 'text-slate-900'}`}>{bundle.name}</h3>
+                <p className={`text-sm mb-8 font-medium ${bundle.popular ? 'text-slate-300' : 'text-slate-600'}`}>{bundle.description}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold tracking-tighter text-white">{bundle.price}</span>
+                  <span className={`text-4xl font-bold tracking-tighter ${bundle.popular ? 'text-white' : 'text-slate-900'}`}>{bundle.price}</span>
                 </div>
               </div>
 
               <div className="flex-1 space-y-5 mb-12">
                 {bundle.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <Check className="w-4 h-4 text-blue-400 flex-shrink-0 mt-1" />
-                    <span className="text-sm font-medium text-blue-100/70">{feature}</span>
+                    <Check className={`w-4 h-4 flex-shrink-0 mt-1 ${bundle.popular ? 'text-blue-400' : 'text-blue-600'}`} />
+                    <span className={`text-sm font-medium ${bundle.popular ? 'text-slate-300' : 'text-slate-700'}`}>{feature}</span>
                   </div>
                 ))}
               </div>
@@ -62,7 +62,7 @@ const CTASection = () => {
                 className={`w-full h-14 rounded-xl font-bold text-xs uppercase tracking-widest transition-all ${
                   bundle.popular 
                     ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                    : 'bg-white/10 hover:bg-white/20 text-white'
+                    : 'bg-slate-900 hover:bg-slate-800 text-white'
                 }`}
               >
                 <Link to="/quote">
@@ -76,11 +76,11 @@ const CTASection = () => {
 
         {/* Consultation CTA */}
         <div className="max-w-5xl mx-auto mt-20 text-center">
-          <p className="text-blue-100/40 text-xs font-bold uppercase tracking-widest">
+          <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
             {language === 'nl' 
               ? 'Niet zeker welk pakket past? ' 
               : 'Not sure which package fits? '}
-            <Link to="/contact" className="text-blue-400 hover:text-blue-300 hover:underline ml-2 transition-colors">
+            <Link to="/contact" className="text-blue-600 hover:text-blue-700 hover:underline ml-2 transition-colors">
               {language === 'nl' ? 'Plan een gratis adviesgesprek' : 'Schedule a free consultation'}
             </Link>
           </p>
