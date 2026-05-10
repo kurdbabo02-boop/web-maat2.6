@@ -59,7 +59,7 @@ const Header = () => {
       >
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 no-underline h-full">
-          <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto" style={{ filter: 'invert(24%) sepia(48%) saturate(1487%) hue-rotate(204deg) brightness(92%) contrast(92%)' }} />
+          <img src={logo} alt="Web-Maat Creations" className="h-20 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(450%) hue-rotate(200deg) brightness(98%)' }} />
         </Link>
 
         {/* Desktop Navigation */}
@@ -79,7 +79,7 @@ const Header = () => {
           
           <Link
             to="/quote"
-            className="bg-[#2563eb] text-white px-6 py-2.5 rounded-md text-sm font-bold no-underline transition-colors hover:bg-[#2563eb]"
+            className="bg-[#29458e] text-white px-6 py-2.5 rounded-md text-sm font-bold no-underline transition-colors hover:bg-[#29458e]"
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
           </Link>
@@ -165,7 +165,7 @@ const Header = () => {
           <div className="mb-6 flex flex-col items-center">
             <a
               href="tel:+31645457394"
-              className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#2563eb]"
+              className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#29458e]"
             >
               <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-[#3b82f6]">
                 <path d="M6.62 10.79c1.44 2.82 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
@@ -174,7 +174,7 @@ const Header = () => {
             </a>
             <a
               href="mailto:info@web-maat.nl"
-              className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#2563eb]"
+              className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#29458e]"
             >
               <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-[#3b82f6]">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
@@ -185,7 +185,7 @@ const Header = () => {
 
           <Link
             to="/quote"
-            className="block w-full bg-[#2563eb] text-white text-center py-[18px] rounded-md no-underline font-bold text-sm uppercase transition-colors duration-300 hover:bg-[#2563eb]"
+            className="block w-full bg-[#29458e] text-white text-center py-[18px] rounded-md no-underline font-bold text-sm uppercase transition-colors duration-300 hover:bg-[#29458e]"
             onClick={closeDrawer}
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
