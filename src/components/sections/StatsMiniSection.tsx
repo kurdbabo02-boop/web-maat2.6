@@ -46,23 +46,23 @@ const StatsMiniSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-6 md:py-8 bg-[#f0f4ff]">
+    <section className="relative overflow-hidden py-2 md:py-3 bg-[#f0f4ff]">
       <div className="absolute inset-0 pointer-events-none" />
 
       <motion.div
         ref={ref}
-        className="container relative z-[2] mx-auto container-padding"
+        className="container relative z-[2] mx-auto container-padding max-w-3xl"
         variants={staggerContainer}
         initial="hidden"
         animate={controls}
       >
-        <motion.div className="grid grid-cols-3 gap-2 md:gap-4" variants={fadeInUp}>
+        <motion.div className="grid grid-cols-3 gap-2 md:gap-6" variants={fadeInUp}>
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-lg md:text-3xl font-display font-bold text-[#1E4BA1] leading-none">
+              <p className="text-base md:text-xl font-display font-bold text-[#1E4BA1] leading-none">
                 <AnimatedStatValue end={stat.end} suffix={stat.suffix} start={isInView} />
               </p>
-              <p className="text-[11px] md:text-sm text-slate-700 mt-1.5 md:mt-2 font-medium uppercase tracking-wider">{stat.label}</p>
+              <p className="text-[9px] md:text-xs text-slate-700 mt-0.5 md:mt-1 font-medium uppercase tracking-wider">{stat.label}</p>
             </div>
           ))}
         </motion.div>

@@ -71,6 +71,18 @@ const CTASection = () => {
           ))}
         </div>
       </div>
+
+      {/* Consultation CTA */}
+      <div className="max-w-5xl mx-auto mt-12 text-center">
+        <p className="text-slate-600 text-sm mb-4">
+          {language === 'nl' 
+            ? 'Niet zeker welk pakket past? ' 
+            : 'Not sure which package fits? '}
+          <Link to="/contact" className="text-[#1E4BA1] font-bold hover:underline">
+            {language === 'nl' ? 'Plan een gratis adviesgesprek' : 'Schedule a free consultation'}
+          </Link>
+        </p>
+      </div>
     </section>
   );
 };
