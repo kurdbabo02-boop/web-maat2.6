@@ -1,46 +1,74 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageSquare } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { bundles } from '@/data/services';
 
 const CTASection = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="py-16 px-6 bg-white border-t border-slate-100">
-      <div className="max-w-5xl mx-auto">
-        <div className="relative overflow-hidden rounded-3xl bg-slate-900 p-8 md:p-12">
-          {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl -mr-32 -mt-32" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl -ml-32 -mb-32" />
-          
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left max-w-xl">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                {language === 'nl' ? 'Klaar voor de volgende stap?' : 'Ready for the next step?'}
-              </h2>
-              <p className="text-slate-400 text-base">
-                {language === 'nl' 
-                  ? 'Ontvang binnen 24 uur een vrijblijvende offerte voor uw project.' 
-                  : 'Receive a no-obligation quote for your project within 24 hours.'}
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 h-14">
+    <section className="py-20 px-6 bg-[#f0f4ff]">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            {language === 'nl' ? 'Kies het pakket dat bij u past' : 'Choose the package that fits you'}
+          </h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            {language === 'nl' 
+              ? 'Transparante prijzen en complete oplossingen voor elke fase van uw onderneming.' 
+              : 'Transparent pricing and complete solutions for every stage of your business.'}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {bundles.map((bundle, index) => (
+            <div 
+              key={index}
+              className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-300 ${
+                bundle.popular 
+                  ? 'bg-white border-blue-200 shadow-xl shadow-blue-500/10 scale-105 z-10' 
+                  : 'bg-slate-50/50 border-slate-200 hover:border-blue-100'
+              }`}
+            >
+              {bundle.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                  Meest Gekozen
+                </div>
+              )}
+              
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{bundle.name}</h3>
+                <p className="text-slate-500 text-sm mb-6">{bundle.description}</p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl font-bold text-slate-900">{bundle.price}</span>
+                </div>
+              </div>
+
+              <div className="flex-1 space-y-4 mb-8">
+                {bundle.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-700 text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button 
+                asChild 
+                className={`w-full h-12 rounded-xl font-bold transition-all ${
+                  bundle.popular 
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                    : 'bg-slate-900 hover:bg-slate-800 text-white'
+                }`}
+              >
                 <Link to="/quote">
-                  {language === 'nl' ? 'Vraag Offerte Aan' : 'Request Quote'}
+                  {language === 'nl' ? 'Nu Starten' : 'Start Now'}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-xl px-8 h-14">
-                <Link to="/contact">
-                  <MessageSquare className="mr-2 w-4 h-4" />
-                  {language === 'nl' ? 'Contact' : 'Contact Us'}
-                </Link>
-              </Button>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

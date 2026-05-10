@@ -309,9 +309,9 @@ export const bundles: BundleItem[] = [
     popular: true,
   },
   {
-    name: 'Dominantie',
-    price: 'Vanaf €2.499',
-    description: 'Het complete klanten-aantrek systeem',
+    name: 'Maatwerk',
+    price: 'Op aanvraag',
+    description: 'Volledig op maat gemaakte oplossingen',
     features: ['Premium website', 'Uitgebreide SEO', 'Google & Meta Ads', 'Sales funnels', 'E-mail automation', 'Maandelijkse optimalisatie', 'Branding pakket', 'Priority support'],
   },
 ];
