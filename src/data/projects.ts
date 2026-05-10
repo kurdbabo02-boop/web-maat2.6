@@ -6,10 +6,11 @@ export interface ProjectKpi {
   };
 }
 
-import Amersmock from '@/assets/Amersmock.png';
-import Promotionmock from '@/assets/Promotionmock.png';
-import Rijscholenmock from '@/assets/Rijscholenmock.png';
-import Signalmock from '@/assets/Signalmock.png';
+import PromotionmockNew from '@/assets/PromotionmockNew.png';
+import RijscholenmockNew from '@/assets/RijscholenmockNew.png';
+import SignalmockNew from '@/assets/SignalmockNew.png';
+import NordAnkermock from '@/assets/NordAnkermock.png';
+import CareNexusmock from '@/assets/CareNexusmock.png';
 
 export interface Project {
   id: string;
@@ -52,7 +53,7 @@ const baseProjects: Project[] = [
       nl: 'Zakelijke Website',
       en: 'Business Website',
     },
-    image: Signalmock,
+    image: SignalmockNew,
     tags: ['Webdesign', 'SEO', 'Responsive'],
     description: {
       nl: 'Een premium zakelijke website voor een innovatief tech consultancy bedrijf.',
@@ -184,7 +185,7 @@ const baseProjects: Project[] = [
       nl: 'Zakelijke Website',
       en: 'Business Website',
     },
-    image: Amersmock,
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
     tags: ['Real Estate', 'Premium', 'Custom CMS'],
     description: {
       nl: 'Een exclusieve website voor een high-end vastgoedmakelaar in Amsterdam.',
@@ -250,7 +251,7 @@ const baseProjects: Project[] = [
       nl: 'Platform',
       en: 'Platform',
     },
-    image: Rijscholenmock,
+    image: RijscholenmockNew,
     tags: ['Platform', 'Matching', 'Reviews'],
     description: {
       nl: 'Een platform dat mensen helpt bij het vinden van de beste rijscholen in hun buurt.',
@@ -316,7 +317,7 @@ const baseProjects: Project[] = [
       nl: 'Verhuurplatform',
       en: 'Rental Platform',
     },
-    image: Promotionmock,
+    image: PromotionmockNew,
     tags: ['Verhuur', 'Luxe Auto\'s', 'Reserveringen'],
     description: {
       nl: 'Een premium verhuurplatform voor luxe auto\'s zoals Mercedes G-Wagon, Seat Cupra en Volvo.',
@@ -383,9 +384,75 @@ export const featuredCaseStudyIds = [
 const buildLiveScreenshot = (url: string) =>
   `https://image.thum.io/get/width/1600/noanimate/${url}`;
 
+  {
+    id: 'nordanker',
+    title: 'NordAnker',
+    category: { nl: 'Reiniging & Onderhoud', en: 'Cleaning & Maintenance' },
+    image: NordAnkermock,
+    tags: ['Website', 'Branding', 'Duits'],
+    description: {
+      nl: 'Professionele schoonmaak- en onderhoudswebsite voor een Duits bedrijf. Strak, vertrouwenwekkend en volledig in het Duits.',
+      en: 'Professional cleaning and maintenance website for a German company. Clean, trustworthy and fully in German.',
+    },
+    challenge: {
+      nl: 'NordAnker had een moderne website nodig die hun professionaliteit uitstraalt en direct vertrouwen wekt bij potentiële klanten.',
+      en: 'NordAnker needed a modern website that radiates their professionalism and immediately builds trust with potential customers.',
+    },
+    solution: {
+      nl: 'Een strakke, minimalistische website met duidelijke diensten, getuigenissen en een krachtige CTA.',
+      en: 'A clean, minimalist website with clear services, testimonials and a strong CTA.',
+    },
+    results: {
+      nl: 'Professionele online aanwezigheid, meer aanvragen via het contactformulier.',
+      en: 'Professional online presence, more inquiries through the contact form.',
+    },
+    gallery: [],
+    liveUrl: '',
+  },
+  {
+    id: 'care-nexus',
+    title: 'Care-Nexus',
+    category: { nl: 'Zorg & Technologie', en: 'Care & Technology' },
+    image: CareNexusmock,
+    tags: ['Website', 'Zorg', 'Platform'],
+    description: {
+      nl: 'Een zorgvol ontworpen website voor een ouderenzorgbedrijf. Warm, toegankelijk en menselijk.',
+      en: 'A carefully designed website for an elderly care company. Warm, accessible and human.',
+    },
+    challenge: {
+      nl: 'Care-Nexus wilde een website die de menselijkheid van hun zorgverlening weerspiegelt en tegelijk professioneel overkomt.',
+      en: 'Care-Nexus wanted a website that reflects the humanity of their care and at the same time comes across as professional.',
+    },
+    solution: {
+      nl: 'Een warme, toegankelijke website met duidelijke informatie over diensten en een persoonlijke uitstraling.',
+      en: 'A warm, accessible website with clear information about services and a personal appearance.',
+    },
+    results: {
+      nl: 'Betere herkenbaarheid, meer aanmeldingen van nieuwe cliënten.',
+      en: 'Better recognition, more registrations from new clients.',
+    },
+    gallery: [],
+    liveUrl: '',
+  },
 const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> = {
+  'nordanker': {
+    screenshot: NordAnkermock,
+    kpis: [
+      { value: '3x', label: { nl: 'Meer aanvragen', en: 'More inquiries' } },
+      { value: '100%', label: { nl: 'Duitstalig', en: 'German language' } },
+      { value: 'Q1', label: { nl: 'Resultaatperiode', en: 'Result period' } },
+    ],
+  },
+  'care-nexus': {
+    screenshot: CareNexusmock,
+    kpis: [
+      { value: '2x', label: { nl: 'Meer aanmeldingen', en: 'More registrations' } },
+      { value: '98%', label: { nl: 'Klanttevredenheid', en: 'Client satisfaction' } },
+      { value: 'Q1', label: { nl: 'Resultaatperiode', en: 'Result period' } },
+    ],
+  },
   'rijscholenadvies-bureau': {
-    screenshot: Rijscholenmock,
+    screenshot: RijscholenmockNew,
     kpis: [
       {
         value: '2.000+',
@@ -419,7 +486,7 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
     ],
   },
   promotioncars: {
-    screenshot: Promotionmock,
+    screenshot: PromotionmockNew,
     kpis: [
       {
         value: '78%',
@@ -436,7 +503,7 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
     ],
   },
   'luxe-vastgoed': {
-    screenshot: Amersmock,
+    screenshot: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
     kpis: [
       {
         value: '15',
