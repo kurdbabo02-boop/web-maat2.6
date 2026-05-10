@@ -60,7 +60,7 @@ const Header = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 no-underline h-full">
           <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto" style={{ filter: 'invert(24%) sepia(48%) saturate(1487%) hue-rotate(204deg) brightness(92%) contrast(92%)' }} />
-        </Link>},{all:false,find:
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8">
