@@ -292,9 +292,7 @@ const allServices: ServiceItem[] = [
 
 const coreServiceOrder = ['webdesign', 'webshop', 'ai-implementatie', 'website-onderhoud', 'seo'] as const;
 
-export const services: ServiceItem[] = coreServiceOrder
-  .map((slug) => allServices.find((service) => service.slug === slug))
-  .filter((service): service is ServiceItem => Boolean(service));
+export const services: ServiceItem[] = allServices;
 
 export const bundles: BundleItem[] = [
   {
@@ -318,5 +316,5 @@ export const bundles: BundleItem[] = [
   },
 ];
 
-export const getServiceBySlug = (slug: string) => services.find(s => s.slug === slug);
+export const getServiceBySlug = (slug: string) => allServices.find(s => s.slug === slug);
 export const getServicesByCategory = (category: ServiceItem['category']) => services.filter(s => s.category === category);

@@ -255,10 +255,10 @@ const ServicesPage = () => {
       <Header />
       <main className="pt-20">
         {/* Unique Modern Hero Section */}
-        <section className="relative w-full py-24 overflow-hidden px-16 max-md:px-6 max-md:py-16 bg-white">
+        <section className="relative w-full py-24 overflow-hidden px-16 max-md:px-6 max-md:py-16 bg-[#f8fafc]">
           {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#f0f4ff] to-transparent opacity-60 z-0" />
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0055FF]/5 rounded-full blur-3xl z-0" />
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#e0e7ff] to-transparent opacity-80 z-0" />
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0055FF]/10 rounded-full blur-3xl z-0" />
           
           <motion.div
             className="relative z-10 max-w-[800px]"
@@ -347,7 +347,7 @@ const ServicesPage = () => {
                             {card.price}
                           </span>
                           <Link
-                            to={card.slug ? `/services/${card.slug}` : '/contact'}
+                            to={`/services/${card.slug}`}
                             className="text-[12px] max-md:text-[11px] font-semibold text-[#1E4BA1] no-underline inline-flex items-center gap-[5px] transition-all duration-200 hover:gap-2"
                           >
                             {language === 'nl' ? 'Meer info' : 'More info'} <ArrowIcon />
