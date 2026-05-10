@@ -128,6 +128,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €19/mnd' : 'From €19/mo',
           image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600',
           icon: MonitorIcon,
+          slug: 'hosting',
         },
         {
           title: language === 'nl' ? 'SEO en Zoekmachine Optimalisatie' : 'SEO & Search Engine Optimization',
@@ -143,6 +144,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €199/mnd' : 'From €199/mo',
           image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600',
           icon: ShareIcon,
+          slug: 'social-media',
         },
         {
           title: language === 'nl' ? 'Google en Meta Ads Beheer' : 'Google & Meta Ads Management',
@@ -150,6 +152,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €249/mnd' : 'From €249/mo',
           image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600',
           icon: ChartIcon,
+          slug: 'ads-beheer',
         },
       ],
     },
@@ -163,6 +166,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €499' : 'From €499',
           image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
           icon: TargetIcon,
+          slug: 'conversie-optimalisatie',
         },
         {
           title: 'Sales Funnels',
@@ -170,6 +174,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €799' : 'From €799',
           image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600',
           icon: TargetIcon,
+          slug: 'sales-funnels',
         },
         {
           title: 'E-mail Marketing',
@@ -177,6 +182,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €399' : 'From €399',
           image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=600',
           icon: MailIcon,
+          slug: 'email-marketing',
         },
         {
           title: language === 'nl' ? 'Branding Pakket' : 'Branding Package',
@@ -184,6 +190,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €599' : 'From €599',
           image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600',
           icon: LayersIcon,
+          slug: 'branding',
         },
         {
           title: 'AI Implementatie',
@@ -216,11 +223,12 @@ const ServicesPage = () => {
           slug: 'webshop',
         },
         {
-          title: 'Web Applicaties',
+          title: language === 'nl' ? 'Web Applicaties' : 'Web Applications',
           description: language === 'nl' ? 'Krachtige apps die in de browser draaien' : 'Powerful apps that run in the browser',
           price: language === 'nl' ? 'Vanaf €1.499' : 'From €1,499',
           image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
           icon: MonitorIcon,
+          slug: 'web-applicaties',
         },
         {
           title: language === 'nl' ? 'Automatisering' : 'Automation',
@@ -228,6 +236,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €499' : 'From €499',
           image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600',
           icon: BoltIcon,
+          slug: 'automatisering',
         },
         {
           title: language === 'nl' ? 'Mobiele Apps (PWA)' : 'Mobile Apps (PWA)',
@@ -235,6 +244,7 @@ const ServicesPage = () => {
           price: language === 'nl' ? 'Vanaf €999' : 'From €999',
           image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600',
           icon: PhoneIcon,
+          slug: 'mobiele-apps',
         },
       ],
     },

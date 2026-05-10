@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logo from '@/assets/logo.png';
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -39,10 +40,10 @@ const Header = () => {
   return (
     <div className="font-['Inter',sans-serif]">
       {/* Fixed Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full h-20 z-[2000] flex items-center justify-between px-6 bg-slate-900/80 backdrop-blur-[12px] border-b border-white/5">
+      <nav className="fixed top-0 left-0 w-full h-20 z-[2000] flex items-center justify-between px-6 bg-slate-900 backdrop-blur-[12px] border-b border-white/10">
         {/* Logo */}
-        <Link to="/" className="text-white no-underline text-2xl font-bold tracking-[1px]">
-          WEB-MAAT<span className="text-[#3b82f6]">.</span>
+        <Link to="/" className="flex items-center gap-2 no-underline h-full">
+          <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
