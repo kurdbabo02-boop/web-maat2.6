@@ -203,16 +203,14 @@ export default {
 				'Noto Color Emoji'
 			],
 			heading: [
-				'Playfair Display',
-				'ui-serif',
-				'Georgia',
-				'serif'
+				'DM Sans',
+				'ui-sans-serif',
+				'sans-serif'
 			],
 			display: [
-				'Playfair Display',
-				'ui-serif',
-				'Georgia',
-				'serif'
+				'DM Sans',
+				'ui-sans-serif',
+				'sans-serif'
 			],
 			serif: [
 				'ui-serif',
