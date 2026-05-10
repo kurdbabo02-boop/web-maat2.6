@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Phone, Mail, MessageCircle, MapPin, Clock, ArrowRight, ExternalLink, Send } from 'lucide-react';
+import { Phone, Mail, MessageCircle, ArrowRight, ExternalLink, Send } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -70,183 +70,188 @@ const ContactPage = () => {
     }
   };
 
-  const whatsappNumber = '31612345678';
-  const phoneNumber = '+31 6 12345678';
-  const emailAddress = 'info@webstudio.nl';
+  const whatsappNumber = '31645457394';
+  const phoneNumber = '+31 6 45457394';
+  const emailAddress = 'info@web-maat.nl';
 
   const contactMethods = [
     {
       icon: Phone,
-      title: t.contact.phone,
+      title: language === 'nl' ? 'Bel ons' : 'Call us',
       value: phoneNumber,
-      action: t.contact.callUs,
+      action: language === 'nl' ? 'Bel nu' : 'Call now',
       href: `tel:${phoneNumber.replace(/\s/g, '')}`,
     },
     {
       icon: MessageCircle,
-      title: t.contact.whatsapp,
+      title: 'WhatsApp',
       value: phoneNumber,
-      action: t.contact.openWhatsapp,
+      action: language === 'nl' ? 'WhatsApp openen' : 'Open WhatsApp',
       href: `https://wa.me/${whatsappNumber}`,
       external: true,
     },
     {
       icon: Mail,
-      title: t.contact.email,
+      title: language === 'nl' ? 'E-mail' : 'Email',
       value: emailAddress,
-      action: t.contact.emailUs,
+      action: language === 'nl' ? 'Mail sturen' : 'Send email',
       href: `mailto:${emailAddress}`,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#f1f5f9]">
       <Header />
-      <main className="pt-16">
-        {/* Hero with Image */}
-        <section className="py-12 relative isolate overflow-hidden bg-slate-900">
-          <div className="absolute inset-0">
-            <img 
-              src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80" 
-              alt="Contact us"
-              className="w-full h-full object-cover object-center grayscale-[4%] brightness-[0.8] saturate-[1.08] contrast-[1.05]"
-            />
-            <div className="absolute inset-0 bg-slate-900/20" style={{ backgroundColor: 'rgba(15, 23, 42, 0.2)' }} />
-            <div
-              className="absolute inset-0 bg-gradient-to-r from-slate-950/35 via-slate-900/24 to-slate-900/12"
-              style={{
-                background:
-                  'linear-gradient(90deg, rgba(2,6,23,0.35) 0%, rgba(15,23,42,0.24) 55%, rgba(15,23,42,0.12) 100%)',
-              }}
-            />
-          </div>
-          <div className="container mx-auto container-padding relative">
-            <div className="max-w-2xl">
-              <h1 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">{t.pages.contact.hero}</h1>
-              <p className="text-slate-200">{t.pages.contact.heroSubtitle}</p>
-            </div>
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="py-16 px-6 md:px-16 bg-gradient-to-r from-[#1E4BA1] to-[#2563eb]">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                {language === 'nl' ? 'Neem contact op' : 'Get in touch'}
+              </h1>
+              <p className="text-lg text-blue-100">
+                {language === 'nl' 
+                  ? 'Wij helpen je graag verder met al je vragen en projecten.'
+                  : 'We\'re happy to help with any questions or projects.'}
+              </p>
+            </motion.div>
           </div>
         </section>
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
+
+        {/* Section Divider */}
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="section-divider" />
         </div>
 
         {/* Contact Content */}
-        <section className="section-padding">
+        <section className="py-16 px-6 md:px-16">
           <motion.div 
-            className="container mx-auto container-padding"
+            className="max-w-6xl mx-auto"
             variants={staggerContainer}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Contact Methods */}
               <motion.div variants={fadeInUp}>
-                <h2 className="section-title text-left mb-6">Neem contact op</h2>
-                <p className="text-muted-foreground mb-8">
-                  Heeft u vragen of wilt u een project bespreken? Wij staan klaar om u te helpen. Kies hieronder uw favoriete contactmethode.
-                </p>
+                <h2 className="text-3xl font-bold text-slate-900 mb-8">
+                  {language === 'nl' ? 'Contacteer ons' : 'Contact us'}
+                </h2>
 
                 <div className="space-y-4">
                   {contactMethods.map((method, index) => (
-                    <Card key={index} className="bg-card border-border/50 hover:border-primary/30 transition-all hover:shadow-lg">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
-                            <method.icon className="w-6 h-6 text-white" />
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Card className="bg-white border border-slate-200 hover:shadow-lg transition-all">
+                        <CardContent className="p-6">
+                          <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 bg-[#1E4BA1] rounded-xl flex items-center justify-center flex-shrink-0">
+                              <method.icon className="w-6 h-6 text-white" />
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="font-bold text-slate-900">{method.title}</h3>
+                              <p className="text-slate-600 text-sm">{method.value}</p>
+                            </div>
+                            <Button asChild className="bg-[#1E4BA1] hover:bg-[#163a7a] text-white">
+                              <a
+                                href={method.href}
+                                target={method.external ? '_blank' : undefined}
+                                rel={method.external ? 'noopener noreferrer' : undefined}
+                              >
+                                {method.action}
+                                {method.external && <ExternalLink className="ml-2 w-3 h-3" />}
+                              </a>
+                            </Button>
                           </div>
-                          <div className="flex-1">
-                            <h3 className="font-display font-semibold text-foreground">{method.title}</h3>
-                            <p className="text-muted-foreground text-sm">{method.value}</p>
-                          </div>
-                          <Button asChild variant="outline" size="sm" className="border-primary/30 hover:bg-primary/5">
-                            <a
-                              href={method.href}
-                              target={method.external ? '_blank' : undefined}
-                              rel={method.external ? 'noopener noreferrer' : undefined}
-                            >
-                              {method.action}
-                              {method.external && <ExternalLink className="ml-2 w-3 h-3" />}
-                            </a>
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
                   ))}
-                </div>
-
-                {/* Additional Info */}
-                <div className="mt-8 p-6 bg-soft rounded-xl">
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin className="w-5 h-5 text-primary" />
-                    <span className="font-medium text-foreground">Amsterdam, Nederland</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-primary" />
-                    <span className="text-muted-foreground">Ma - Vr: 9:00 - 18:00</span>
-                  </div>
                 </div>
               </motion.div>
 
               {/* Contact Form */}
               <motion.div variants={fadeInUp}>
-                <Card className="border-border/50 shadow-lg">
-                  <CardContent className="p-6 md:p-8">
-                    <h2 className="font-display text-xl font-bold text-foreground mb-6">Stuur ons een bericht</h2>
+                <Card className="border border-slate-200 shadow-lg bg-white">
+                  <CardContent className="p-8">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                      {language === 'nl' ? 'Stuur ons een bericht' : 'Send us a message'}
+                    </h2>
                     
                     {isSubmitted ? (
                       <div className="text-center py-8">
-                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <Send className="w-8 h-8 text-primary" />
+                        <div className="w-16 h-16 bg-[#1E4BA1]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Send className="w-8 h-8 text-[#1E4BA1]" />
                         </div>
-                        <h3 className="font-semibold text-foreground mb-2">Bericht verzonden!</h3>
-                        <p className="text-muted-foreground text-sm">
-                          Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.
+                        <h3 className="font-semibold text-slate-900 mb-2">
+                          {language === 'nl' ? 'Bericht verzonden!' : 'Message sent!'}
+                        </h3>
+                        <p className="text-slate-600 text-sm">
+                          {language === 'nl'
+                            ? 'Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.'
+                            : 'Thank you for your message. We\'ll get back to you as soon as possible.'}
                         </p>
                       </div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="space-y-2">
-                          <Label htmlFor="naam">Naam *</Label>
+                          <Label htmlFor="naam" className="text-slate-900 font-semibold">
+                            {language === 'nl' ? 'Naam' : 'Name'} *
+                          </Label>
                           <Input
                             id="naam"
                             required
                             value={formData.naam}
                             onChange={(e) => setFormData(prev => ({ ...prev, naam: e.target.value }))}
-                            placeholder="Uw naam"
-                            className="h-12"
+                            placeholder={language === 'nl' ? 'Uw naam' : 'Your name'}
+                            className="h-12 border-slate-200"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email">E-mailadres *</Label>
+                          <Label htmlFor="email" className="text-slate-900 font-semibold">
+                            {language === 'nl' ? 'E-mailadres' : 'Email address'} *
+                          </Label>
                           <Input
                             id="email"
                             type="email"
                             required
                             value={formData.email}
                             onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                            placeholder="uw@email.nl"
-                            className="h-12"
+                            placeholder={language === 'nl' ? 'uw@email.nl' : 'your@email.com'}
+                            className="h-12 border-slate-200"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="bericht">Bericht *</Label>
+                          <Label htmlFor="bericht" className="text-slate-900 font-semibold">
+                            {language === 'nl' ? 'Bericht' : 'Message'} *
+                          </Label>
                           <Textarea
                             id="bericht"
                             required
                             value={formData.bericht}
                             onChange={(e) => setFormData(prev => ({ ...prev, bericht: e.target.value }))}
-                            placeholder="Uw vraag of bericht..."
+                            placeholder={language === 'nl' ? 'Uw vraag of bericht...' : 'Your question or message...'}
                             rows={5}
-                            className="resize-none"
+                            className="resize-none border-slate-200"
                           />
                         </div>
                         <Button 
                           type="submit" 
-                          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12"
+                          className="w-full bg-[#1E4BA1] hover:bg-[#163a7a] text-white h-12 font-bold"
                           disabled={isSubmitting}
                         >
-                          {isSubmitting ? 'Versturen...' : 'Verstuur bericht'}
+                          {isSubmitting ? (language === 'nl' ? 'Versturen...' : 'Sending...') : (language === 'nl' ? 'Verstuur bericht' : 'Send message')}
                           <Send className="ml-2 w-4 h-4" />
                         </Button>
                       </form>
@@ -254,11 +259,13 @@ const ContactPage = () => {
                   </CardContent>
                 </Card>
 
-                <div className="mt-6 p-4 bg-muted/50 rounded-lg text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Liever direct een offerte aanvragen?{' '}
-                    <Link to="/quote" className="text-primary hover:underline font-medium">
-                      Ga naar het offerteformulier
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg text-center border border-blue-200">
+                  <p className="text-sm text-slate-700">
+                    {language === 'nl' 
+                      ? 'Liever direct een offerte aanvragen? '
+                      : 'Prefer to request a quote directly? '}
+                    <Link to="/quote" className="text-[#1E4BA1] hover:underline font-bold">
+                      {language === 'nl' ? 'Ga naar het offerteformulier' : 'Go to the quote form'}
                     </Link>
                   </p>
                 </div>
@@ -266,29 +273,11 @@ const ContactPage = () => {
             </div>
           </motion.div>
         </section>
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
 
-        {/* Map Section */}
-        <section className="py-12">
-          <div className="container mx-auto container-padding">
-            <div className="relative rounded-2xl overflow-hidden h-80 bg-muted">
-              <img 
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1600&q=80" 
-                alt="Amsterdam city view"
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-card/95 backdrop-blur-sm p-6 rounded-xl shadow-xl text-center">
-                  <MapPin className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <p className="font-display font-bold text-foreground">WebStudio HQ</p>
-                  <p className="text-sm text-muted-foreground">Amsterdam, Nederland</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Section Divider */}
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="section-divider" />
+        </div>
       </main>
       <Footer />
     </div>
