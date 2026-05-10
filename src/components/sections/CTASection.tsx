@@ -30,7 +30,7 @@ const CTASection = () => {
               key={index}
               className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-500 ${
                 bundle.popular 
-                  ? 'bg-slate-900 border-slate-800 text-slate-900 shadow-xl scale-105 z-10' 
+                  ? 'bg-slate-900 border-slate-800 text-white shadow-xl scale-105 z-10' 
                   : 'bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-900'
               }`}
             >
@@ -41,18 +41,18 @@ const CTASection = () => {
               )}
               
               <div className="mb-8">
-                <h3 className="text-lg font-bold mb-2 text-slate-900">{bundle.name}</h3>
-                <p className="text-sm mb-6 font-medium text-slate-600">{bundle.description}</p>
+                <h3 className={`text-lg font-bold mb-2 ${bundle.popular ? 'text-white' : 'text-slate-900'}`}>{bundle.name}</h3>
+                <p className={`text-sm mb-6 font-medium ${bundle.popular ? 'text-slate-300' : 'text-slate-600'}`}>{bundle.description}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold tracking-tighter text-slate-900">{bundle.price}</span>
+                  <span className={`text-3xl font-bold tracking-tighter ${bundle.popular ? 'text-white' : 'text-slate-900'}`}>{bundle.price}</span>
                 </div>
               </div>
 
               <div className="flex-1 space-y-3 mb-8">
                 {bundle.features.slice(0, 4).map((feature, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm font-medium text-slate-700">{feature}</span>
+                    <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${bundle.popular ? 'text-blue-400' : 'text-blue-600'}`} />
+                    <span className={`text-sm font-medium ${bundle.popular ? 'text-slate-200' : 'text-slate-700'}`}>{feature}</span>
                   </div>
                 ))}
               </div>
