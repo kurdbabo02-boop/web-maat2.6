@@ -49,35 +49,19 @@ const PortfolioSection = () => {
         <div className="flex gap-[60px] max-md:gap-10 max-sm:gap-[30px] w-max animate-[marquee-projects_80s_linear_infinite] hover:[animation-play-state:paused] items-end">
           {/* Original + duplicate for seamless loop */}
           {[...projectItems, ...projectItems].map((project, index) => (
-            <div key={`${project.id}-${index}`} className="flex items-end flex-shrink-0">
-              {/* MacBook mockup */}
-              <div className="relative w-[440px] max-md:w-[320px] max-sm:w-[260px]">
+            <div key={`${project.id}-${index}`} className="flex-shrink-0">
+              <div
+                className="w-[400px] max-md:w-[300px] max-sm:w-[240px] rounded-2xl overflow-hidden flex items-center justify-center p-4"
+                style={{ background: '#EBEBEB' }}
+              >
                 <img
                   src={project.screenshot}
-                  alt={`${project.title} Desktop`}
+                  alt={project.title}
                   loading="lazy"
-                  className="absolute top-[5.2%] left-[11.2%] w-[77.6%] h-[76%] object-cover object-top z-[1] rounded-[2px]"
-                />
-                <img
-                  src="https://www.pngplay.com/wp-content/uploads/7/Apple-MacBook-Pro-Transparent-Images.png"
-                  alt=""
-                  className="w-full block relative z-[2] pointer-events-none"
+                  className="w-full h-auto object-contain max-h-[280px] max-md:max-h-[210px] max-sm:max-h-[170px]"
                 />
               </div>
-              {/* iPhone mockup */}
-              <div className="relative w-[105px] max-md:w-[80px] max-sm:w-[65px] -ml-[35px] max-md:-ml-[25px] max-sm:-ml-5 z-[3]">
-                <img
-                  src={project.screenshot}
-                  alt={`${project.title} Mobiel`}
-                  loading="lazy"
-                  className="absolute top-[3.5%] left-[6.5%] w-[87%] h-[93%] object-cover object-top z-[3] rounded-[28px] max-md:rounded-[22px] max-sm:rounded-[18px]"
-                />
-                <img
-                  src="https://pngimg.com/d/iphone_14_PNG3.png"
-                  alt=""
-                  className="w-full block relative z-[4] pointer-events-none"
-                />
-              </div>
+              <p className="mt-3 text-center text-[13px] font-semibold text-[#1a2235] tracking-tight">{project.title}</p>
             </div>
           ))}
         </div>
