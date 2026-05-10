@@ -5,6 +5,7 @@ import logo from '@/assets/logo.png';
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { language, t } = useLanguage();
   const location = useLocation();
 
@@ -24,6 +25,15 @@ const Header = () => {
     setIsDrawerOpen(false);
   };
 
+  // Handle scroll for navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Lock body scroll when drawer is open
   useEffect(() => {
     document.body.style.overflow = isDrawerOpen ? 'hidden' : '';
@@ -39,11 +49,17 @@ const Header = () => {
 
   return (
     <div className="font-['Inter',sans-serif]">
-      {/* Fixed Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full h-20 z-[2000] flex items-center justify-between px-6 bg-slate-900 backdrop-blur-[12px] border-b border-white/10">
+      {/* Fixed Navigation Bar - Updated to White Glassy Look */}
+      <nav 
+        className={`fixed top-0 left-0 w-full h-20 z-[2000] flex items-center justify-between px-6 transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm' 
+            : 'bg-white/40 backdrop-blur-sm border-b border-white/10'
+        }`}
+      >
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 no-underline h-full">
-          <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto" />
+          <img src={logo} alt="Web-Maat Creations" className="h-16 w-auto brightness-0" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -52,7 +68,7 @@ const Header = () => {
             <li key={link.href}>
               <Link
                 to={link.href}
-                className="text-slate-300 no-underline text-sm font-medium transition-colors duration-300 hover:text-[#3b82f6]"
+                className="text-slate-700 no-underline text-sm font-semibold transition-colors duration-300 hover:text-blue-600"
               >
                 {link.label}
               </Link>
@@ -67,17 +83,17 @@ const Header = () => {
           aria-label="Menu openen"
         >
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-white transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-slate-900 transition-all duration-300 ${
               isDrawerOpen ? 'top-[19px] rotate-45' : 'top-[14px]'
             }`}
           />
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-white transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-slate-900 transition-all duration-300 ${
               isDrawerOpen ? 'opacity-0' : 'top-[20px]'
             }`}
           />
           <span
-            className={`absolute left-2 w-6 h-0.5 bg-white transition-all duration-300 ${
+            className={`absolute left-2 w-6 h-0.5 bg-slate-900 transition-all duration-300 ${
               isDrawerOpen ? 'top-[19px] -rotate-45' : 'top-[26px]'
             }`}
           />
