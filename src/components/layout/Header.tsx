@@ -63,18 +63,27 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden lg:flex items-center gap-7 list-none">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                to={link.href}
-                className="text-slate-700 no-underline text-sm font-semibold transition-colors duration-300 hover:text-blue-600"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden lg:flex items-center gap-8">
+          <ul className="flex items-center gap-7 list-none">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  to={link.href}
+                  className="text-slate-700 no-underline text-sm font-semibold transition-colors duration-300 hover:text-blue-600"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          
+          <Link
+            to="/quote"
+            className="bg-[#050b1a] text-white px-6 py-2.5 rounded-full text-sm font-bold no-underline transition-all hover:bg-blue-900 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
+          </Link>
+        </div>
 
         {/* Hamburger Button (mobile) */}
         <button
