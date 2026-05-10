@@ -79,7 +79,7 @@ const Header = () => {
           
           <Link
             to="/quote"
-            className="bg-[#29458e] text-white px-6 py-2.5 rounded-lg text-sm font-bold no-underline transition-all hover:bg-[#29458e] hover:shadow-lg hover:-translate-y-0.5"
+            className="bg-[#2563eb] text-white px-6 py-2.5 rounded-md text-sm font-bold no-underline transition-colors hover:bg-[#2563eb]"
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
           </Link>
@@ -185,7 +185,7 @@ const Header = () => {
 
           <Link
             to="/quote"
-            className="block w-full bg-[#29458e] text-white text-center py-[18px] rounded-lg no-underline font-bold text-sm uppercase transition-all duration-300 shadow-[0_4px_14px_rgba(41,69,142,0.25)] hover:bg-[#29458e] hover:shadow-[0_6px_20px_rgba(41,69,142,0.35)] hover:-translate-y-px"
+            className="block w-full bg-[#2563eb] text-white text-center py-[18px] rounded-md no-underline font-bold text-sm uppercase transition-colors duration-300 hover:bg-[#2563eb]"
             onClick={closeDrawer}
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
