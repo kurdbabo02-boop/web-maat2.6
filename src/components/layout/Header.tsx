@@ -131,14 +131,14 @@ const Header = () => {
         {/* Divider */}
         <div className="h-px bg-black/5 w-full my-2.5" />
 
-        {/* Mobile Navigation Links */}
-        <div className="flex-1 flex flex-col justify-center items-center">
-          <ul className="list-none text-center">
+        {/* Mobile Navigation Links - Two columns for better layout */}
+        <div className="flex-1 py-8">
+          <ul className="grid grid-cols-2 gap-4 list-none">
             {navLinks.map((link) => (
-              <li key={link.href} className="mb-[30px] last:mb-0">
+              <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="text-[#0f172a] no-underline text-xl font-bold uppercase tracking-[0.05em] transition-colors duration-300 hover:text-[#2563eb]"
+                  className="flex items-center justify-center h-16 bg-slate-50 rounded-xl text-[#0f172a] no-underline text-sm font-bold uppercase tracking-wider transition-all hover:bg-blue-50 hover:text-[#1E4BA1] border border-slate-100"
                   onClick={closeDrawer}
                 >
                   {link.label}
@@ -155,13 +155,13 @@ const Header = () => {
         <div className="pb-2.5">
           <div className="mb-6 flex flex-col items-center">
             <a
-              href="tel:+31600000000"
+              href="tel:+31645457394"
               className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#2563eb]"
             >
               <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-[#3b82f6]">
                 <path d="M6.62 10.79c1.44 2.82 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
               </svg>
-              +31 6 00000000
+              +31 6 45457394
             </a>
             <a
               href="mailto:info@web-maat.nl"

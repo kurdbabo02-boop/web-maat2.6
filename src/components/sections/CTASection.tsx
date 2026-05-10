@@ -27,12 +27,12 @@ const CTASection = () => {
               key={index}
               className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-300 ${
                 bundle.popular 
-                  ? 'bg-white border-blue-200 shadow-xl shadow-blue-500/10 scale-105 z-10' 
+                  ? 'bg-white border-[#d6e0f5] shadow-xl shadow-[#1E4BA1]/10 scale-105 z-10' 
                   : 'bg-slate-50/50 border-slate-200 hover:border-blue-100'
               }`}
             >
               {bundle.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#1E4BA1] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                   Meest Gekozen
                 </div>
               )}
@@ -48,7 +48,7 @@ const CTASection = () => {
               <div className="flex-1 space-y-4 mb-8">
                 {bundle.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-[#1E4BA1] flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700 text-sm">{feature}</span>
                   </div>
                 ))}
@@ -58,7 +58,7 @@ const CTASection = () => {
                 asChild 
                 className={`w-full h-12 rounded-xl font-bold transition-all ${
                   bundle.popular 
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                    ? 'bg-[#1E4BA1] hover:bg-[#163a7a] text-white' 
                     : 'bg-slate-900 hover:bg-slate-800 text-white'
                 }`}
               >

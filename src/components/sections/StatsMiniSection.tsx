@@ -59,7 +59,7 @@ const StatsMiniSection = () => {
         <motion.div className="grid grid-cols-3 gap-2 md:gap-4" variants={fadeInUp}>
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-lg md:text-3xl font-display font-bold text-blue-600 leading-none">
+              <p className="text-lg md:text-3xl font-display font-bold text-[#1E4BA1] leading-none">
                 <AnimatedStatValue end={stat.end} suffix={stat.suffix} start={isInView} />
               </p>
               <p className="text-[11px] md:text-sm text-slate-700 mt-1.5 md:mt-2 font-medium uppercase tracking-wider">{stat.label}</p>
