@@ -6,6 +6,11 @@ export interface ProjectKpi {
   };
 }
 
+import Amersmock from '@/assets/Amersmock.png';
+import Promotionmock from '@/assets/Promotionmock.png';
+import Rijscholenmock from '@/assets/Rijscholenmock.png';
+import Signalmock from '@/assets/Signalmock.png';
+
 export interface Project {
   id: string;
   title: string;
@@ -47,7 +52,7 @@ const baseProjects: Project[] = [
       nl: 'Zakelijke Website',
       en: 'Business Website',
     },
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    image: Signalmock,
     tags: ['Webdesign', 'SEO', 'Responsive'],
     description: {
       nl: 'Een premium zakelijke website voor een innovatief tech consultancy bedrijf.',
@@ -179,7 +184,7 @@ const baseProjects: Project[] = [
       nl: 'Zakelijke Website',
       en: 'Business Website',
     },
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    image: Amersmock,
     tags: ['Real Estate', 'Premium', 'Custom CMS'],
     description: {
       nl: 'Een exclusieve website voor een high-end vastgoedmakelaar in Amsterdam.',
@@ -245,7 +250,7 @@ const baseProjects: Project[] = [
       nl: 'Platform',
       en: 'Platform',
     },
-    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80',
+    image: Rijscholenmock,
     tags: ['Platform', 'Matching', 'Reviews'],
     description: {
       nl: 'Een platform dat mensen helpt bij het vinden van de beste rijscholen in hun buurt.',
@@ -311,7 +316,7 @@ const baseProjects: Project[] = [
       nl: 'Verhuurplatform',
       en: 'Rental Platform',
     },
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+    image: Promotionmock,
     tags: ['Verhuur', 'Luxe Auto\'s', 'Reserveringen'],
     description: {
       nl: 'Een premium verhuurplatform voor luxe auto\'s zoals Mercedes G-Wagon, Seat Cupra en Volvo.',
@@ -380,7 +385,7 @@ const buildLiveScreenshot = (url: string) =>
 
 const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> = {
   'rijscholenadvies-bureau': {
-    screenshot: buildLiveScreenshot('https://rijscholenadviesbureau.nl'),
+    screenshot: Rijscholenmock,
     kpis: [
       {
         value: '2.000+',
@@ -414,7 +419,7 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
     ],
   },
   promotioncars: {
-    screenshot: buildLiveScreenshot('https://promotioncars.nl'),
+    screenshot: Promotionmock,
     kpis: [
       {
         value: '78%',
@@ -431,7 +436,7 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
     ],
   },
   'luxe-vastgoed': {
-    screenshot: buildLiveScreenshot('https://luxevastgoedamsterdam.nl'),
+    screenshot: Amersmock,
     kpis: [
       {
         value: '15',
