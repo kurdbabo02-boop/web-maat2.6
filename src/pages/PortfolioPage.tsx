@@ -165,7 +165,7 @@ const PortfolioPage = () => {
         </section>
 
         {/* Stats */}
-        <section className="py-10 px-6 md:px-16 border-t border-black/[0.06]" style={{ background: '#EBEBEB' }}>
+        <section className="py-12 px-6 md:px-16" style={{ background: '#1a2235' }}>
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -175,7 +175,7 @@ const PortfolioPage = () => {
                 { num: '24u', label: language === 'nl' ? 'Response' : 'Response' },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-2xl md:text-3xl font-bold text-[#1a2235]">{stat.num}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-white">{stat.num}</div>
                   <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-[0.18em] mt-1">
                     {stat.label}
                   </p>
