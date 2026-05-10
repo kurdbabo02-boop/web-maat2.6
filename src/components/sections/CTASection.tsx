@@ -39,7 +39,6 @@ const CTASection = () => {
               {/* Popular Badge */}
               {bundle.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-[#29458e] text-white text-[11px] font-bold uppercase tracking-widest px-4 py-2 rounded-full">
-                  <span>⭐</span>
                   {language === 'nl' ? 'Meest gekozen' : 'Most popular'}
                 </div>
               )}
