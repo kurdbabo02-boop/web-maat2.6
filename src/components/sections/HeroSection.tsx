@@ -55,7 +55,7 @@ const HeroSection = () => {
       >
         {/* Badge */}
         <div className="flex items-center gap-2.5 text-white text-[13px] font-semibold tracking-[0.1em] uppercase opacity-80 mb-6 max-md:text-[12px] max-md:mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#0055FF]" />
+          <span className="w-2 h-2 rounded-full bg-[#29458e]" />
           {content.badge}
         </div>
 
@@ -76,7 +76,7 @@ const HeroSection = () => {
         <div className="flex gap-5 max-md:flex-row max-md:gap-3">
           <Link
             to="/services"
-            className="bg-blue-600 text-white rounded-md px-[26px] py-[13px] text-sm font-semibold no-underline transition-colors duration-250 hover:bg-blue-700 max-md:px-5 max-md:py-3 max-md:text-[13px]"
+            className="bg-[#29458e] text-white rounded-md px-[26px] py-[13px] text-sm font-semibold no-underline transition-colors duration-250 hover:bg-[#29458e] max-md:px-5 max-md:py-3 max-md:text-[13px]"
           >
             {content.ctaPrimary}
           </Link>

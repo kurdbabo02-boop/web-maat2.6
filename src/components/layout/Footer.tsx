@@ -24,69 +24,73 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#050b1a] text-blue-100/60 pt-20 pb-10 px-6 border-t border-white/5">
+    <footer className="bg-slate-50 text-slate-600 pt-20 pb-10 px-6 border-t border-slate-200">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
           {/* Brand Column */}
           <div className="space-y-8">
             <Link to="/" className="inline-block group">
-              <img src={logo} alt="Web-Maat" className="h-10 w-auto brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity" />
+              <img 
+                src={logo} 
+                alt="Web-Maat" 
+                className="h-12 w-auto" 
+                style={{ filter: 'invert(24%) sepia(48%) saturate(1487%) hue-rotate(204deg) brightness(92%) contrast(92%)' }}
+              />
             </Link>
-            <p className="text-sm leading-relaxed text-blue-100/50 max-w-xs font-medium">
+            <p className="text-sm leading-relaxed text-slate-500 max-w-xs font-medium">
               {language === 'nl' 
                 ? 'Exclusieve digitale ervaringen die uw visie transformeren naar een tastbaar online meesterwerk.' 
                 : 'Exclusive digital experiences that transform your vision into a tangible online masterpiece.'}
             </p>
-            <div className="flex gap-5">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 hover:text-white transition-all text-blue-100/40">
+            <div className="flex gap-4">
+              <a href="#" className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center hover:border-[#29458e] hover:text-[#29458e] transition-all text-slate-400 shadow-sm">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 hover:text-white transition-all text-blue-100/40">
+              <a href="#" className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center hover:border-[#29458e] hover:text-[#29458e] transition-all text-slate-400 shadow-sm">
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Links Column */}
-          <div>
-            <h4 className="text-white font-semibold mb-8 uppercase tracking-[0.2em] text-[10px]">{language === 'nl' ? 'Ontdekken' : 'Explore'}</h4>
-            <ul className="space-y-5 text-sm">
-              <li><Link to="/" className="hover:text-white transition-colors flex items-center gap-2 group">{t.nav.home} <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors flex items-center gap-2 group">{t.nav.services} <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
-              <li><Link to="/portfolio" className="hover:text-white transition-colors flex items-center gap-2 group">{t.nav.portfolio} <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors flex items-center gap-2 group">{t.nav.about} <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
-            </ul>
-          </div>
+          {/* Links and Services Columns - Grid within Grid for Mobile Side-by-Side */}
+          <div className="grid grid-cols-2 lg:col-span-2 gap-8 lg:gap-16">
+            {/* Links Column */}
+            <div>
+              <h4 className="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">{language === 'nl' ? 'Ontdekken' : 'Explore'}</h4>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link to="/" className="hover:text-[#29458e] transition-colors flex items-center gap-2 group">{t.nav.home}</Link></li>
+                <li><Link to="/services" className="hover:text-[#29458e] transition-colors flex items-center gap-2 group">{t.nav.services}</Link></li>
+                <li><Link to="/portfolio" className="hover:text-[#29458e] transition-colors flex items-center gap-2 group">{t.nav.portfolio}</Link></li>
+                <li><Link to="/about" className="hover:text-[#29458e] transition-colors flex items-center gap-2 group">{t.nav.about}</Link></li>
+              </ul>
+            </div>
 
-          {/* Services Column */}
-          <div>
-            <h4 className="text-white font-semibold mb-8 uppercase tracking-[0.2em] text-[10px]">{language === 'nl' ? 'Expertise' : 'Expertise'}</h4>
-            <ul className="space-y-5 text-sm">
-              <li><Link to="/services/webdesign" className="hover:text-white transition-colors">Premium Webdesign</Link></li>
-              <li><Link to="/services/webshop" className="hover:text-white transition-colors">E-commerce Excellence</Link></li>
-              <li><Link to="/services/seo" className="hover:text-white transition-colors">Digital Authority (SEO)</Link></li>
-              <li><Link to="/services/ai-implementatie" className="hover:text-white transition-colors">AI Innovation</Link></li>
-            </ul>
+            {/* Services Column */}
+            <div>
+              <h4 className="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">{language === 'nl' ? 'Expertise' : 'Expertise'}</h4>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link to="/services/webdesign" className="hover:text-[#29458e] transition-colors">Premium Webdesign</Link></li>
+                <li><Link to="/services/webshop" className="hover:text-[#29458e] transition-colors">E-commerce</Link></li>
+                <li><Link to="/services/seo" className="hover:text-[#29458e] transition-colors">Digital SEO</Link></li>
+                <li><Link to="/services/ai-implementatie" className="hover:text-[#29458e] transition-colors">AI Innovation</Link></li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Column */}
           <div>
-            <h4 className="text-white font-semibold mb-8 uppercase tracking-[0.2em] text-[10px]">Connect</h4>
-            <ul className="space-y-6 text-sm">
-              <li className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                  <Mail className="w-3.5 h-3.5 text-white/60" />
-                </div>
-                <a href="mailto:info@web-maat.nl" className="hover:text-white transition-colors">info@web-maat.nl</a>
+            <h4 className="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">Connect</h4>
+            <ul className="space-y-4 text-sm font-medium">
+              <li className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#29458e]" />
+                <a href="mailto:info@web-maat.nl" className="hover:text-[#29458e] transition-colors">info@web-maat.nl</a>
               </li>
-              <li className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-                  <Phone className="w-3.5 h-3.5 text-white/60" />
-                </div>
-                <a href="tel:+31645457394" className="hover:text-white transition-colors">+31 6 45457394</a>
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#29458e]" />
+                <a href="tel:+31645457394" className="hover:text-[#29458e] transition-colors">+31 6 45457394</a>
               </li>
-              <li className="pt-6">
-                <Link to="/quote" className="inline-flex items-center px-6 py-3 bg-[#29458e] text-white font-bold text-xs uppercase tracking-widest hover:bg-[#1e3368] transition-all rounded-sm">
+              <li className="pt-4">
+                <Link to="/quote" className="inline-flex items-center px-6 py-3 bg-[#29458e] text-white font-bold text-xs uppercase tracking-widest hover:shadow-lg transition-all rounded-lg">
                   {language === 'nl' ? 'Start Project' : 'Start Project'}
                 </Link>
               </li>
@@ -95,23 +99,23 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] uppercase tracking-[0.15em] text-blue-100/30 font-medium">
+        <div className="pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-[0.15em] text-slate-400 font-bold">
           <p>© {new Date().getFullYear()} Web-Maat Creations. Crafting Digital Excellence.</p>
-          <div className="flex gap-10">
-            <button onClick={() => openLegalDialog('privacy')} className="hover:text-white transition-colors">Privacy</button>
-            <button onClick={() => openLegalDialog('terms')} className="hover:text-white transition-colors">Terms</button>
+          <div className="flex gap-8">
+            <button onClick={() => openLegalDialog('privacy')} className="hover:text-[#29458e] transition-colors">Privacy</button>
+            <button onClick={() => openLegalDialog('terms')} className="hover:text-[#29458e] transition-colors">Terms</button>
           </div>
         </div>
       </div>
 
       {/* Legal Dialog */}
       <Dialog open={isLegalDialogOpen} onOpenChange={setIsLegalDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[80vh] bg-[#050b1a] border-white/10 text-blue-100/70">
+        <DialogContent className="max-w-2xl max-h-[80vh] bg-white border-slate-200 text-slate-600">
           <DialogHeader>
-            <DialogTitle className="text-white">{activeLegalTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}</DialogTitle>
+            <DialogTitle className="text-slate-900">{activeLegalTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}</DialogTitle>
           </DialogHeader>
           <ScrollArea className="h-full pr-4">
-            <div className="py-6 text-sm text-blue-100/60 leading-relaxed">
+            <div className="py-6 text-sm text-slate-500 leading-relaxed">
               {language === 'nl' 
                 ? 'Onze juridische documenten worden momenteel bijgewerkt naar onze nieuwe kwaliteitsstandaard. Neem contact met ons op voor de meest recente versie.' 
                 : 'Our legal documents are currently being updated to our new quality standards. Please contact us for the latest version.'}

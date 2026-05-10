@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { bundles } from '@/data/services';
@@ -8,79 +8,89 @@ const CTASection = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="py-20 px-6 bg-white border-t border-slate-100">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="inline-block text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-3">
-            {language === 'nl' ? 'Kies het pakket dat bij u past' : 'Choose the package that fits you'}
+    <section className="py-16 md:py-24 px-6 md:px-16 bg-white">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <span className="inline-block text-[#29458e] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">
+            {language === 'nl' ? 'Groepakketten' : 'Group Packages'}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-            {language === 'nl' ? 'Transparante Pakketten' : 'Transparent Packages'}
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3 tracking-tight">
+            {language === 'nl' ? 'Kies het pakket dat past bij uw bedrijf' : 'Choose the package that fits your business'}
           </h2>
           <p className="text-slate-600 text-base max-w-2xl mx-auto font-medium">
             {language === 'nl' 
-              ? 'Complete oplossingen voor elke fase van uw onderneming.' 
-              : 'Complete solutions for every stage of your business.'}
+              ? 'Van snel online tot volledig maatwerk.' 
+              : 'From quick online to complete custom work.'}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Packages Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {bundles.map((bundle, index) => (
             <div 
               key={index}
-              className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-500 ${
+              className={`relative flex flex-col p-6 md:p-8 rounded-2xl border-2 transition-all duration-300 ${
                 bundle.popular 
-                  ? 'bg-slate-900 border-slate-800 text-slate-900 shadow-xl scale-105 z-10' 
-                  : 'bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-900'
+                  ? 'border-[#29458e] bg-blue-50 md:scale-105 md:z-10' 
+                  : 'border-slate-200 bg-white hover:border-slate-300'
               }`}
             >
+              {/* Popular Badge */}
               {bundle.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
-                  Meest Gekozen
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-[#29458e] text-white text-[11px] font-bold uppercase tracking-widest px-4 py-2 rounded-full">
+                  <span>⭐</span>
+                  {language === 'nl' ? 'Meest gekozen' : 'Most popular'}
                 </div>
               )}
               
-              <div className="mb-8">
-                <h3 className="text-lg font-bold mb-2 text-slate-900">{bundle.name}</h3>
-                <p className="text-sm mb-6 font-medium text-slate-600">{bundle.description}</p>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold tracking-tighter text-slate-900">{bundle.price}</span>
-                </div>
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">{bundle.name}</h3>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">{bundle.description}</p>
               </div>
 
+              {/* Features List */}
               <div className="flex-1 space-y-3 mb-8">
-                {bundle.features.slice(0, 4).map((feature, i) => (
+                {bundle.features.slice(0, 8).map((feature, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm font-medium text-slate-700">{feature}</span>
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full border-2 border-[#29458e] flex items-center justify-center mt-0.5">
+                      <Check className="w-3 h-3 text-[#29458e]" />
+                    </div>
+                    <span className="text-sm text-slate-700 font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <Button 
-                asChild 
-                className={`w-full h-12 rounded-lg font-bold text-xs uppercase tracking-widest transition-all ${
-                  bundle.popular 
-                    ? 'bg-[#29458e] hover:bg-[#1e3368] text-white' 
-                    : 'bg-slate-900 hover:bg-slate-800 text-white'
-                }`}
-              >
-                <Link to="/quote">
-                  {language === 'nl' ? 'Nu Starten' : 'Start Now'}
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </Button>
+              {/* Buttons */}
+              <div className="space-y-3">
+                <Button 
+                  asChild 
+                  className="w-full h-11 rounded-lg font-bold text-sm uppercase tracking-widest transition-all bg-white border-2 border-slate-200 text-slate-900 hover:border-slate-300 hover:bg-slate-50"
+                >
+                  <Link to="/contact">
+                    {language === 'nl' ? 'Meer informatie' : 'More information'}
+                  </Link>
+                </Button>
+                <Button 
+                  asChild 
+                  className="w-full h-11 rounded-lg font-bold text-sm uppercase tracking-widest transition-all bg-[#29458e] text-white hover:bg-[#29458e] hover:shadow-lg"
+                >
+                  <Link to="/quote">
+                    {language === 'nl' ? 'Offerte aanvragen' : 'Request quote'}
+                  </Link>
+                </Button>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Consultation CTA */}
-        <div className="max-w-5xl mx-auto mt-12 text-center">
-          <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <p className="text-slate-600 text-sm font-medium">
             {language === 'nl' 
               ? 'Niet zeker welk pakket past? ' 
               : 'Not sure which package fits? '}
-            <Link to="/contact" className="text-blue-600 hover:text-blue-700 hover:underline ml-2 transition-colors">
+            <Link to="/contact" className="text-[#29458e] font-bold hover:underline transition-colors">
               {language === 'nl' ? 'Plan een gratis adviesgesprek' : 'Schedule a free consultation'}
             </Link>
           </p>
