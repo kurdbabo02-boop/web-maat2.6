@@ -41,14 +41,13 @@ const StatsMiniSection = () => {
 
   const stats = [
     { end: 150, suffix: '+', label: language === 'nl' ? 'Projecten' : 'Projects' },
-    { end: 98, suffix: '%', label: language === 'nl' ? 'Tevreden' : 'Satisfied' },
-    { end: 5, suffix: '+', label: language === 'nl' ? 'Jaar' : 'Years' },
+    { end: 98, suffix: '%', label: language === 'nl' ? 'Tevredenheid' : 'Satisfaction' },
     { end: 24, suffix: 'u', label: language === 'nl' ? 'Response' : 'Response' },
   ];
 
   return (
-    <section className="relative overflow-hidden py-6 md:py-8 bg-[#c8d0da]">
-      <div className="glass-light absolute inset-0 pointer-events-none" />
+    <section className="relative overflow-hidden py-6 md:py-8 bg-[#f0f4ff]">
+      <div className="absolute inset-0 pointer-events-none" />
 
       <motion.div
         ref={ref}
@@ -57,13 +56,13 @@ const StatsMiniSection = () => {
         initial="hidden"
         animate={controls}
       >
-        <motion.div className="grid grid-cols-4 gap-2 md:gap-4" variants={fadeInUp}>
+        <motion.div className="grid grid-cols-3 gap-2 md:gap-4" variants={fadeInUp}>
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-lg md:text-3xl font-display font-bold text-primary leading-none">
+              <p className="text-lg md:text-3xl font-display font-bold text-blue-600 leading-none">
                 <AnimatedStatValue end={stat.end} suffix={stat.suffix} start={isInView} />
               </p>
-              <p className="text-[11px] md:text-sm text-slate-700 mt-1.5 md:mt-2">{stat.label}</p>
+              <p className="text-[11px] md:text-sm text-slate-700 mt-1.5 md:mt-2 font-medium uppercase tracking-wider">{stat.label}</p>
             </div>
           ))}
         </motion.div>

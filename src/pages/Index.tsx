@@ -14,29 +14,17 @@ const Index = () => {
       <Header />
       <main className="bg-[#0F172A]">
         <HeroSection />
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
+        <div className="section-divider" />
         <StatsMiniSection />
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
+        <div className="section-divider" />
         <ServicesSection />
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
+        <div className="section-divider" />
         <HeroBenefitsStrip />
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
+        <div className="section-divider" />
         <PremiumPositioningSection />
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
+        <div className="section-divider" />
         <PortfolioSection />
-        <div className="container mx-auto container-padding">
-          <div className="section-divider-strong" />
-        </div>
+        <div className="section-divider" />
         <CTASection />
       </main>
       <Footer />

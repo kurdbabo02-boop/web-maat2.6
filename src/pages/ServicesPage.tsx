@@ -361,7 +361,7 @@ const ServicesPage = () => {
 
               {/* Divider between categories */}
               {catIndex < categories.length - 1 && (
-                <div className="h-px w-full bg-gradient-to-r from-transparent via-[#e5e7eb] to-transparent mb-[70px] max-md:mb-10" />
+                <div className="section-divider mb-[70px] max-md:mb-10" />
               )}
             </div>
           ))}

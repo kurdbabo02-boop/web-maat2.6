@@ -54,31 +54,6 @@ const PortfolioPage = () => {
       label: language === 'nl' ? 'Projecten opgeleverd' : 'Projects delivered',
     },
     {
-      value: 120,
-      suffix: '+',
-      label: language === 'nl' ? 'Websites live' : 'Websites live',
-    },
-    {
-      value: 45,
-      suffix: '+',
-      label: language === 'nl' ? 'Webshops gebouwd' : 'Webshops built',
-    },
-    {
-      value: 64,
-      suffix: '+',
-      label: language === 'nl' ? 'Onderhoudspakketten' : 'Maintenance plans',
-    },
-    {
-      value: 70,
-      suffix: '+',
-      label: language === 'nl' ? 'SEO-trajecten' : 'SEO trajectories',
-    },
-    {
-      value: 25,
-      suffix: '+',
-      label: language === 'nl' ? 'AI-implementaties' : 'AI implementations',
-    },
-    {
       value: 98,
       suffix: '%',
       label: language === 'nl' ? 'Klanttevredenheid' : 'Client satisfaction',
@@ -207,7 +182,7 @@ const PortfolioPage = () => {
                 </p>
               </motion.div>
 
-              <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" variants={fadeInUp}>
+              <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" variants={fadeInUp}>
                 {companyStats.map((stat) => (
                   <div
                     key={stat.label}
