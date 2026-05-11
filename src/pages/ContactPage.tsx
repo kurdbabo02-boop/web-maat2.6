@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Phone, Mail, MessageCircle, ArrowRight, ExternalLink, Send } from 'lucide-react';
+import { Phone, Mail, MessageCircle, ExternalLink, Send } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -100,36 +100,10 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f1f5f9]">
+    <div className="min-h-screen bg-[#f8fafc]">
       <Header />
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-16 px-6 md:px-16 bg-gradient-to-r from-[#1E4BA1] to-[#2563eb]">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                {language === 'nl' ? 'Neem contact op' : 'Get in touch'}
-              </h1>
-              <p className="text-lg text-blue-100">
-                {language === 'nl' 
-                  ? 'Wij helpen je graag verder met al je vragen en projecten.'
-                  : 'We\'re happy to help with any questions or projects.'}
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="max-w-7xl mx-auto px-6 md:px-16">
-          <div className="section-divider" />
-        </div>
-
-        {/* Contact Content */}
-        <section className="py-16 px-6 md:px-16">
+        <section className="px-6 py-8 md:px-10 md:py-10">
           <motion.div 
             className="max-w-6xl mx-auto"
             variants={staggerContainer}
@@ -138,13 +112,21 @@ const ContactPage = () => {
             viewport={{ once: true }}
           >
             <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Contact Methods */}
               <motion.div variants={fadeInUp}>
-                <h2 className="text-3xl font-bold text-slate-900 mb-8">
-                  {language === 'nl' ? 'Contacteer ons' : 'Contact us'}
-                </h2>
+                <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_18px_40px_rgba(15,23,42,0.05)] md:p-7">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#5d7fc8]">
+                    {language === 'nl' ? 'Direct contact' : 'Direct contact'}
+                  </p>
+                  <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+                    {language === 'nl' ? 'Neem contact met ons op' : 'Get in touch with us'}
+                  </h1>
+                  <p className="mt-2 text-sm text-slate-500">
+                    {language === 'nl'
+                      ? 'Kies de snelste route of stuur direct een bericht. We reageren doorgaans binnen 24 uur.'
+                      : 'Choose the fastest route or send a direct message. We usually respond within 24 hours.'}
+                  </p>
 
-                <div className="space-y-4">
+                  <div className="mt-6 space-y-4">
                   {contactMethods.map((method, index) => (
                     <motion.div
                       key={index}
@@ -153,17 +135,17 @@ const ContactPage = () => {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <Card className="bg-white border border-slate-200 hover:shadow-lg transition-all">
+                      <Card className="border border-slate-200 bg-[#fbfcff] transition-all hover:shadow-lg">
                         <CardContent className="p-6">
                           <div className="flex items-center gap-4">
-                            <div className="w-14 h-14 bg-[#1E4BA1] rounded-xl flex items-center justify-center flex-shrink-0">
+                            <div className="w-14 h-14 bg-[#29458e] rounded-xl flex items-center justify-center flex-shrink-0">
                               <method.icon className="w-6 h-6 text-white" />
                             </div>
                             <div className="flex-1">
                               <h3 className="font-bold text-slate-900">{method.title}</h3>
                               <p className="text-slate-600 text-sm">{method.value}</p>
                             </div>
-                            <Button asChild className="bg-[#1E4BA1] hover:bg-[#163a7a] text-white">
+                            <Button asChild className="bg-[#29458e] hover:bg-[#243d80] text-white">
                               <a
                                 href={method.href}
                                 target={method.external ? '_blank' : undefined}
@@ -178,21 +160,29 @@ const ContactPage = () => {
                       </Card>
                     </motion.div>
                   ))}
+                  </div>
                 </div>
               </motion.div>
 
-              {/* Contact Form */}
               <motion.div variants={fadeInUp}>
-                <Card className="border border-slate-200 shadow-lg bg-white">
-                  <CardContent className="p-8">
-                    <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                <Card className="border border-slate-200 bg-white shadow-[0_18px_40px_rgba(15,23,42,0.05)] rounded-[28px]">
+                  <CardContent className="p-5 md:p-7">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#5d7fc8]">
+                      {language === 'nl' ? 'Contactformulier' : 'Contact form'}
+                    </p>
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
                       {language === 'nl' ? 'Stuur ons een bericht' : 'Send us a message'}
                     </h2>
+                    <p className="mt-2 text-sm text-slate-500">
+                      {language === 'nl'
+                        ? 'Vertel kort waar u hulp bij nodig heeft. We nemen snel contact met u op.'
+                        : 'Briefly tell us what you need help with. We will contact you quickly.'}
+                    </p>
                     
                     {isSubmitted ? (
                       <div className="text-center py-8">
-                        <div className="w-16 h-16 bg-[#1E4BA1]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <Send className="w-8 h-8 text-[#1E4BA1]" />
+                        <div className="w-16 h-16 bg-[#29458e]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Send className="w-8 h-8 text-[#29458e]" />
                         </div>
                         <h3 className="font-semibold text-slate-900 mb-2">
                           {language === 'nl' ? 'Bericht verzonden!' : 'Message sent!'}
@@ -204,7 +194,7 @@ const ContactPage = () => {
                         </p>
                       </div>
                     ) : (
-                      <form onSubmit={handleSubmit} className="space-y-4">
+                      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                         <div className="space-y-2">
                           <Label htmlFor="naam" className="text-slate-900 font-semibold">
                             {language === 'nl' ? 'Naam' : 'Name'} *
@@ -248,7 +238,7 @@ const ContactPage = () => {
                         </div>
                         <Button 
                           type="submit" 
-                          className="w-full bg-[#1E4BA1] hover:bg-[#163a7a] text-white h-12 font-bold"
+                          className="w-full bg-[#29458e] hover:bg-[#243d80] text-white h-12 font-bold"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (language === 'nl' ? 'Versturen...' : 'Sending...') : (language === 'nl' ? 'Verstuur bericht' : 'Send message')}
@@ -264,7 +254,7 @@ const ContactPage = () => {
                     {language === 'nl' 
                       ? 'Liever direct een offerte aanvragen? '
                       : 'Prefer to request a quote directly? '}
-                    <Link to="/quote" className="text-[#1E4BA1] hover:underline font-bold">
+                    <Link to="/quote" className="text-[#29458e] hover:underline font-bold">
                       {language === 'nl' ? 'Ga naar het offerteformulier' : 'Go to the quote form'}
                     </Link>
                   </p>

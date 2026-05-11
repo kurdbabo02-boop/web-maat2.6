@@ -10,25 +10,29 @@ import StatsMiniSection from '@/components/sections/StatsMiniSection';
 
 const Index = () => {
   return (
-    <div className="home-dark min-h-screen bg-[#0F172A]">
-      <Header />
-      <main className="bg-[#0F172A]">
-        <HeroSection />
-        <div className="section-divider" />
-        <StatsMiniSection />
-        <div className="section-divider" />
-        <ServicesSection />
-        <div className="section-divider" />
-        <HeroBenefitsStrip />
-        <div className="section-divider" />
-        <PremiumPositioningSection />
-        <div className="section-divider" />
-        <PortfolioSection />
-        <div className="section-divider" />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <div className="home-dark min-h-screen bg-[#0F172A]">
+        <Header />
+        <main className="bg-[#0F172A]">
+          <HeroSection />
+          <div className="section-divider" />
+          <StatsMiniSection />
+          <div className="section-divider" />
+          <ServicesSection />
+          <div className="section-divider" />
+          <HeroBenefitsStrip />
+          <div className="section-divider" />
+          <PremiumPositioningSection />
+          <div className="section-divider" />
+          <PortfolioSection />
+          <div className="section-divider" />
+          <CTASection />
+        </main>
+      </div>
+      <div className="w-full bg-slate-50">
+        <Footer />
+      </div>
+    </>
   );
 };
 

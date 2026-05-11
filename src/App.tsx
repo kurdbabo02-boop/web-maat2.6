@@ -8,6 +8,7 @@ import type { ReactNode } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import ChatWidget from "@/components/ChatWidget";
+import DevErrorBoundary from "@/components/DevErrorBoundary";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
@@ -60,9 +61,11 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <ScrollToTop />
-          <AnimatedRoutes />
-          <ChatWidget />
+          <DevErrorBoundary>
+            <ScrollToTop />
+            <AnimatedRoutes />
+            <ChatWidget />
+          </DevErrorBoundary>
         </BrowserRouter>
       </LanguageProvider>
     </TooltipProvider>

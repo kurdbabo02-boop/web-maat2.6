@@ -14,11 +14,11 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
-import { submitQuoteSubmission } from '@/lib/form-submissions';
 
 const QuotePage = () => {
   const { language } = useLanguage();
   const { toast } = useToast();
+  const whatsappNumber = '31645457394';
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -179,40 +179,34 @@ const QuotePage = () => {
     
     setIsSubmitting(true);
     try {
-      await submitQuoteSubmission({
-        name: formData.naam,
-        email: formData.email,
-        phone: formData.telefoon,
-        city: formData.plaats,
-        projectType: formData.typeAanvraag,
-        requestFor: formData.aanvraagVoor,
-        websiteType: formData.websiteOfWebshop,
-        services: formData.webdesignerVoor,
-        websiteFeatures: formData.websiteFuncties,
-        webshopFeatures: formData.webshopFuncties,
-        contentSupport: formData.hulpMetInhoud,
-        domainAndHosting: formData.domeinnaamEnHosting,
-        maintenanceAfterDelivery: formData.onderhoudNaOplevering,
-        pageCount: formData.aantalPaginas,
-        desiredUrl: formData.gewensteUrl,
-        deadline: formData.opleverdatum,
-        projectDescription: formData.projectOmschrijving,
-        uploadedFiles: files.map((file) => ({
-          name: file.name,
-          size: file.size,
-          type: file.type || 'application/octet-stream',
-        })),
-        language,
-      });
+      const whatsappMessage = [
+        language === 'nl' ? 'Nieuwe offerteaanvraag via webformulier' : 'New quote request via web form',
+        '',
+        `Naam: ${formData.naam}`,
+        `E-mail: ${formData.email}`,
+        `Telefoon: ${formData.telefoon}`,
+        `Plaats: ${formData.plaats || 'Niet ingevuld'}`,
+        `Type aanvraag: ${formData.typeAanvraag || 'Niet ingevuld'}`,
+        `Aanvraag voor: ${formData.aanvraagVoor || 'Niet ingevuld'}`,
+        `Type website: ${formData.websiteOfWebshop || 'Niet ingevuld'}`,
+        `Diensten: ${formData.webdesignerVoor.length ? formData.webdesignerVoor.join(', ') : 'Geen selectie'}`,
+        `Website functies: ${formData.websiteFuncties.length ? formData.websiteFuncties.join(', ') : 'Geen selectie'}`,
+        `Webshop functies: ${formData.webshopFuncties.length ? formData.webshopFuncties.join(', ') : 'Geen selectie'}`,
+        `Hulp met inhoud: ${formData.hulpMetInhoud || 'Niet ingevuld'}`,
+        `Domeinnaam en hosting: ${formData.domeinnaamEnHosting || 'Niet ingevuld'}`,
+        `Onderhoud na oplevering: ${formData.onderhoudNaOplevering || 'Niet ingevuld'}`,
+        `Aantal pagina's: ${formData.aantalPaginas || 'Niet ingevuld'}`,
+        `Gewenste URL: ${formData.gewensteUrl || 'Niet ingevuld'}`,
+        `Opleverdatum: ${formData.opleverdatum || 'Niet ingevuld'}`,
+        `Projectomschrijving: ${formData.projectOmschrijving || 'Geen extra omschrijving'}`,
+        `Bestanden: ${files.length ? files.map((file) => file.name).join(', ') : 'Geen bestanden toegevoegd'}`,
+      ].join('\n');
 
-      setIsSubmitted(true);
-      toast({
-        title: language === 'nl' ? 'Aanvraag verzonden' : 'Request submitted',
-        description:
-          language === 'nl'
-            ? 'Uw offerteaanvraag is succesvol opgeslagen.'
-            : 'Your quote request was stored successfully.',
-      });
+      window.open(
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -847,7 +841,7 @@ const QuotePage = () => {
                           <Button
                             type="button"
                             onClick={nextStep}
-                            className="bg-primary hover:bg-primary/90 gap-2 h-11 px-6 text-base"
+                            className="gap-2 h-11 bg-[#29458e] px-6 text-base text-white hover:bg-[#243d80]"
                           >
                             Volgende
                             <ArrowRight className="w-4 h-4" />
@@ -856,7 +850,7 @@ const QuotePage = () => {
                           <Button
                             type="submit"
                             disabled={isSubmitting || !formData.opleverdatum}
-                            className="bg-primary hover:bg-primary/90 gap-2 h-11 px-6 text-base"
+                            className="gap-2 h-11 bg-[#29458e] px-6 text-base text-white hover:bg-[#243d80]"
                           >
                             {isSubmitting ? (
                               <>Versturen...</>

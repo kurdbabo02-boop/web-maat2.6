@@ -6,14 +6,30 @@ export interface ProjectKpi {
   };
 }
 
-import PromotionmockNew from '@/assets/PromotionmockNew.png';
-import RijscholenmockNew from '@/assets/RijscholenmockNew.png';
-import SignalmockNew from '@/assets/SignalmockNew.png';
+export interface ProjectPackageChoice {
+  name: string;
+  summary: {
+    nl: string;
+    en: string;
+  };
+  features: {
+    nl: string;
+    en: string;
+  }[];
+}
+
+import PromotionmockPhotoroom from '@/assets/Promotionmock-Photoroom.png';
+import RijscholenmockPhotoroom from '@/assets/Rijscholenmock-Photoroom.png';
+import SignalmockPhotoroom from '@/assets/Signalmock-Photoroom.png';
 import NordAnkermock from '@/assets/NordAnkermock.png';
 import CareNexusmock from '@/assets/CareNexusmock.png';
+import Amersmock from '../../mockups/Amersmock.png';
+import JesseNavezmock from '../../mockups/JesseNavezmock.png';
+import Vanderbergenmock from '../../mockups/vanderbergenmock.png';
 
 export interface Project {
   id: string;
+  legacyIds?: string[];
   title: string;
   category: {
     nl: string;
@@ -43,36 +59,58 @@ export interface Project {
   kpis?: ProjectKpi[];
   isCaseStudy?: boolean;
   gallery: string[];
+  packageChoice?: ProjectPackageChoice;
+  mockupStyle?: {
+    position?: string;
+    scale?: number;
+  };
 }
 
 const baseProjects: Project[] = [
   {
-    id: 'techflow-solutions',
-    title: 'TechFlow Solutions',
+    id: 'signalsweep',
+    legacyIds: ['techflow-solutions'],
+    title: 'SignalSweep',
     category: {
-      nl: 'Zakelijke Website',
-      en: 'Business Website',
+      nl: 'Privacy & Security',
+      en: 'Privacy & Security',
     },
-    image: SignalmockNew,
-    tags: ['Webdesign', 'SEO', 'Responsive'],
+    image: SignalmockPhotoroom,
+    tags: ['Sweep Services', 'Discretie', 'Leadgeneratie'],
     description: {
-      nl: 'Een premium zakelijke website voor een innovatief tech consultancy bedrijf.',
-      en: 'A premium business website for an innovative tech consultancy company.',
+      nl: 'Een discrete conversiewebsite voor voertuig-, woning- en bedrijfsruimte-sweeps.',
+      en: 'A discreet conversion-focused website for vehicle, home and business-space sweeps.',
     },
     challenge: {
-      nl: 'TechFlow had een verouderde website die niet paste bij hun innovatieve imago. Ze hadden een moderne, professionele online aanwezigheid nodig die hun expertise uitstraalt en leads genereert.',
-      en: 'TechFlow had an outdated website that did not match their innovative image. They needed a modern, professional online presence that radiates their expertise and generates leads.',
+      nl: 'SignalSweep had een website nodig die direct vertrouwen uitstraalt bij gevoelige privacykwesties. De vorige uitstraling miste rust, urgentie en duidelijke routes naar contact voor de drie sweep-diensten.',
+      en: 'SignalSweep needed a website that builds trust immediately in sensitive privacy cases. The previous presentation lacked calm authority, urgency and clear contact routes for the three sweep services.',
     },
     solution: {
-      nl: 'Wij ontwierpen een strakke, moderne website met focus op conversie. Een heldere structuur, overtuigende content en strategisch geplaatste call-to-actions zorgen voor maximale impact.',
-      en: 'We designed a sleek, modern website with a focus on conversion. A clear structure, compelling content and strategically placed call-to-actions ensure maximum impact.',
+      nl: 'We bouwden een donkere, premium servicepagina met directe contactroutes, duidelijke dienstensecties en copy die discretie, snelheid en veiligheid centraal zet.',
+      en: 'We built a dark premium service site with direct contact routes, clear service sections and copy centered around discretion, speed and safety.',
     },
     results: {
-      nl: 'Na lancering zag TechFlow een stijging van 200% in online leads en een significante verbetering in merkperceptie. De gemiddelde sessieduur verdubbelde.',
-      en: 'After launch, TechFlow saw a 200% increase in online leads and a significant improvement in brand perception. The average session duration doubled.',
+      nl: 'De nieuwe website zorgt voor een sterkere eerste indruk, duidelijkere intake-aanvragen en meer focus op de drie kernservices van SignalSweep.',
+      en: 'The new website creates a stronger first impression, clearer intake requests and more focus on SignalSweep’s three core services.',
     },
     technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
-    websiteUrl: 'https://example.com',
+    websiteUrl: 'https://signalsweep.nl',
+    packageChoice: {
+      name: 'Groei',
+      summary: {
+        nl: 'Voor websites met meerdere landingsroutes, duidelijke servicepagina’s en een sterke leadfocus.',
+        en: 'For websites with multiple landing routes, clear service pages and a strong lead focus.',
+      },
+      features: [
+        { nl: 'Servicepagina’s per sweep-type', en: 'Service pages per sweep type' },
+        { nl: 'Leadroutes voor snelle intake', en: 'Lead routes for quick intake' },
+        { nl: 'SEO basis voor privacygerichte zoekvragen', en: 'SEO base for privacy-focused search intent' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 52%',
+      scale: 1.12,
+    },
     gallery: [
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
       'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
@@ -80,178 +118,103 @@ const baseProjects: Project[] = [
     ],
   },
   {
-    id: 'modastyle-boutique',
-    title: 'ModaStyle Boutique',
+    id: 'amers-vastgoed',
+    title: 'Amers Vastgoed',
     category: {
-      nl: 'Webshop',
-      en: 'E-commerce',
+      nl: 'Makelaardij & Vastgoed',
+      en: 'Real Estate',
     },
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
-    tags: ['E-commerce', 'Betalingen', 'Mobiel'],
+    image: Amersmock,
+    tags: ['Vastgoed', 'Premium', 'Leadgeneratie'],
     description: {
-      nl: 'Een luxe online boutique voor exclusieve mode en accessoires.',
-      en: 'A luxury online boutique for exclusive fashion and accessories.',
+      nl: 'Een stijlvolle vastgoedwebsite met warme stadsuitstraling en duidelijke routes naar aankoop- en verkoopadvies.',
+      en: 'A stylish real-estate website with a warm city feel and clear routes toward buying and selling advice.',
     },
     challenge: {
-      nl: 'ModaStyle wilde hun fysieke winkelervaring vertalen naar online. De uitdaging was om de luxe sfeer en persoonlijke service te behouden in een digitale omgeving.',
-      en: 'ModaStyle wanted to translate their physical store experience online. The challenge was to maintain the luxurious atmosphere and personal service in a digital environment.',
+      nl: 'Amers Vastgoed wilde een website die exclusiviteit en lokale kennis uitstraalt zonder afstandelijk te voelen. Bezoekers moesten sneller doorstromen naar intake, bezichtiging of verkoopgesprek.',
+      en: 'Amers Vastgoed wanted a website that feels exclusive and locally grounded without becoming distant. Visitors needed clearer routes toward intake, viewings and sales conversations.',
     },
     solution: {
-      nl: 'Een elegant e-commerce platform met focus op visuele presentatie. Uitgebreide productfotografie, zoom functionaliteit en een naadloze checkout ervaring zorgen voor een premium shopping ervaring.',
-      en: 'An elegant e-commerce platform with a focus on visual presentation. Extensive product photography, zoom functionality and a seamless checkout experience ensure a premium shopping experience.',
+      nl: 'We ontwikkelden een premium presentatie met een rustige hero, duidelijke koop- en verkooproutes en contentblokken die vertrouwen en marktkennis centraal zetten.',
+      en: 'We built a premium presentation with a calm hero, clear buying and selling routes and content blocks centered around trust and market expertise.',
     },
     results: {
-      nl: 'De online verkoop overtrof de fysieke winkel binnen 6 maanden. De gemiddelde orderwaarde steeg met 35% en het retourpercentage daalde significant.',
-      en: 'Online sales exceeded the physical store within 6 months. The average order value increased by 35% and the return rate decreased significantly.',
+      nl: 'De nieuwe opzet ondersteunt een sterkere eerste indruk, meer kwalitatieve leads en een luxere merkbeleving voor woningzoekenden en verkopers.',
+      en: 'The new setup supports a stronger first impression, more qualified leads and a more premium brand experience for buyers and sellers.',
     },
-    technologies: ['Shopify', 'React', 'Stripe', 'Klaviyo', 'Custom Theme'],
-    websiteUrl: 'https://example.com',
-    gallery: [
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80',
-      'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&q=80',
-      'https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=80',
-    ],
+    technologies: ['React', 'Tailwind CSS', 'Vite', 'TypeScript'],
+    packageChoice: {
+      name: 'Groei',
+      summary: {
+        nl: 'Een logische keuze voor een leadgerichte vastgoedwebsite met meerdere conversieroutes en een premium merkpresentatie.',
+        en: 'A logical fit for a lead-driven real-estate website with multiple conversion routes and premium brand presentation.',
+      },
+      features: [
+        { nl: 'Aankoop- en verkooproutes', en: 'Buying and selling routes' },
+        { nl: 'Lokale trust-content en positionering', en: 'Local trust content and positioning' },
+        { nl: 'Leadfocus voor intake en bezichtiging', en: 'Lead focus for intake and viewings' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 50%',
+      scale: 1.14,
+    },
+    gallery: [],
   },
   {
-    id: 'greenleaf-catering',
-    title: 'GreenLeaf Catering',
+    id: 'jesse-navez',
+    title: 'Jessenavez.nl',
     category: {
-      nl: 'Zakelijke Website',
-      en: 'Business Website',
+      nl: 'Persoonlijk Merk',
+      en: 'Personal Brand',
     },
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
-    tags: ['Webdesign', 'Reserveringen', 'Menu'],
+    image: JesseNavezmock,
+    tags: ['Portfolio', 'Persoonlijk Merk', 'Showcase'],
     description: {
-      nl: 'Een smaakvolle website voor een premium catering service.',
-      en: 'A tasteful website for a premium catering service.',
+      nl: 'Een persoonlijke merkwebsite die expertise, werkvoorbeelden en contactmomenten helder samenbrengt.',
+      en: 'A personal brand website that brings expertise, showcase work and contact moments together with clarity.',
     },
     challenge: {
-      nl: 'GreenLeaf had geen online aanwezigheid en miste daardoor veel potentiële klanten. Ze wilden een website die hun culinaire expertise en duurzame filosofie uitstraalt.',
-      en: 'GreenLeaf had no online presence and was missing many potential customers. They wanted a website that radiates their culinary expertise and sustainable philosophy.',
+      nl: 'Jessenavez.nl had een online presentatie nodig die direct professioneel aanvoelt en tegelijk persoonlijk genoeg blijft om vertrouwen op te bouwen bij nieuwe aanvragen.',
+      en: 'Jessenavez.nl needed an online presence that feels immediately professional while staying personal enough to build trust with new inquiries.',
     },
     solution: {
-      nl: 'Een visueel rijke website met prachtige food photography en een intuïtief reserveringssysteem. De website vertelt het verhaal van GreenLeaf en maakt het eenvoudig om een offerte aan te vragen.',
-      en: 'A visually rich website with beautiful food photography and an intuitive reservation system. The website tells the story of GreenLeaf and makes it easy to request a quote.',
+      nl: 'We kozen voor een strakke portfolio-opzet met rustige secties, heldere CTA’s en een layout die projecten en diensten snel scanbaar maakt.',
+      en: 'We opted for a clean portfolio layout with calm sections, clear CTAs and a structure that makes projects and services easy to scan.',
     },
     results: {
-      nl: 'Binnen 3 maanden was de agenda volledig gevuld. De website genereert gemiddeld 50 offerteaanvragen per maand.',
-      en: 'Within 3 months the calendar was fully booked. The website generates an average of 50 quote requests per month.',
+      nl: 'De website presenteert het merk consistenter, verlaagt de drempel voor contact en geeft bezoekers sneller gevoel bij de stijl en kwaliteit van het werk.',
+      en: 'The website presents the brand more consistently, lowers the barrier to contact and gives visitors a faster sense of the style and quality of the work.',
     },
-    technologies: ['WordPress', 'Custom Theme', 'WPBakery', 'WooCommerce', 'Calendly'],
-    websiteUrl: 'https://example.com',
-    gallery: [
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
-      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80',
-      'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80',
-    ],
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    websiteUrl: 'https://jessenavez.nl',
+    packageChoice: {
+      name: 'Starter',
+      summary: {
+        nl: 'Passend voor een compacte merk- of portfoliowebsite die vooral draait om presentatie, vertrouwen en contact.',
+        en: 'A good fit for a compact brand or portfolio website focused on presentation, trust and contact.',
+      },
+      features: [
+        { nl: 'Heldere portfolio-presentatie', en: 'Clear portfolio presentation' },
+        { nl: 'Compacte contactflow', en: 'Compact contact flow' },
+        { nl: 'Rustige merkuitstraling', en: 'Calm brand presentation' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 50%',
+      scale: 1.12,
+    },
+    gallery: [],
   },
   {
-    id: 'fitpro-gym',
-    title: 'FitPro Gym',
-    category: {
-      nl: 'Landing Page',
-      en: 'Landing Page',
-    },
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
-    tags: ['Landing', 'Leads', 'Conversie'],
-    description: {
-      nl: 'Een krachtige landing page voor een premium fitness studio.',
-      en: 'A powerful landing page for a premium fitness studio.',
-    },
-    challenge: {
-      nl: 'FitPro opende een nieuwe locatie en had een effectieve manier nodig om snel leads te genereren en nieuwe leden te werven.',
-      en: 'FitPro was opening a new location and needed an effective way to quickly generate leads and recruit new members.',
-    },
-    solution: {
-      nl: 'Een overtuigende landing page met sterke visual, social proof en een onweerstaanbaar introductieaanbod. A/B testing optimaliseerde de conversie continu.',
-      en: 'A compelling landing page with strong visuals, social proof and an irresistible introductory offer. A/B testing continuously optimized conversion.',
-    },
-    results: {
-      nl: 'De landing page behaalde een conversieratio van 12%. Binnen de eerste maand werden 200 nieuwe leden geworven.',
-      en: 'The landing page achieved a conversion rate of 12%. Within the first month, 200 new members were recruited.',
-    },
-    technologies: ['React', 'Tailwind CSS', 'Netlify', 'Mailchimp', 'Google Analytics'],
-    websiteUrl: 'https://example.com',
-    gallery: [
-      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80',
-      'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80',
-      'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1200&q=80',
-    ],
-  },
-  {
-    id: 'luxe-vastgoed',
-    title: 'Luxe Vastgoed Amsterdam',
-    category: {
-      nl: 'Zakelijke Website',
-      en: 'Business Website',
-    },
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
-    tags: ['Real Estate', 'Premium', 'Custom CMS'],
-    description: {
-      nl: 'Een exclusieve website voor een high-end vastgoedmakelaar in Amsterdam.',
-      en: 'An exclusive website for a high-end real estate agent in Amsterdam.',
-    },
-    challenge: {
-      nl: 'Luxe Vastgoed wilde een website die past bij hun exclusieve portfolio en vermogende klantenkring. De bestaande website was generiek en maakte geen indruk.',
-      en: 'Luxe Vastgoed wanted a website that matches their exclusive portfolio and wealthy clientele. The existing website was generic and did not impress.',
-    },
-    solution: {
-      nl: 'Een op maat gebouwd platform met uitgebreide zoekfunctionaliteit, virtuele tours en een exclusieve members-only sectie voor premium objecten.',
-      en: 'A custom-built platform with extensive search functionality, virtual tours and an exclusive members-only section for premium properties.',
-    },
-    results: {
-      nl: 'De website droeg bij aan de verkoop van 15 premium objecten in het eerste kwartaal. De gemiddelde verkoopprijs steeg met 8%.',
-      en: 'The website contributed to the sale of 15 premium properties in the first quarter. The average selling price increased by 8%.',
-    },
-    technologies: ['Next.js', 'Sanity CMS', 'Mapbox', 'Three.js', 'Vercel'],
-    websiteUrl: 'https://example.com',
-    gallery: [
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
-    ],
-  },
-  {
-    id: 'artisan-coffee',
-    title: 'Artisan Coffee Roasters',
-    category: {
-      nl: 'Webshop',
-      en: 'E-commerce',
-    },
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80',
-    tags: ['E-commerce', 'Subscription', 'Branding'],
-    description: {
-      nl: 'Een premium webshop voor ambachtelijke koffie met een subscription model.',
-      en: 'A premium webshop for artisan coffee with a subscription model.',
-    },
-    challenge: {
-      nl: 'Artisan Coffee wilde hun lokale succes uitbreiden naar heel Nederland met een online shop die hun ambachtelijke aanpak uitstraalt.',
-      en: 'Artisan Coffee wanted to expand their local success throughout the Netherlands with an online shop that radiates their artisan approach.',
-    },
-    solution: {
-      nl: 'Een stijlvolle webshop met een flexibel subscription systeem, uitgebreide productinformatie en een blog over koffiecultuur.',
-      en: 'A stylish webshop with a flexible subscription system, extensive product information and a blog about coffee culture.',
-    },
-    results: {
-      nl: 'Het subscription model groeide naar 500 actieve abonnees binnen 6 maanden. De customer lifetime value verdrievoudigde.',
-      en: 'The subscription model grew to 500 active subscribers within 6 months. Customer lifetime value tripled.',
-    },
-    technologies: ['Shopify Plus', 'ReCharge', 'Klaviyo', 'Custom Liquid', 'Figma'],
-    websiteUrl: 'https://example.com',
-    gallery: [
-      'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80',
-      'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&q=80',
-      'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1200&q=80',
-    ],
-  },
-  {
-    id: 'rijscholenadvies-bureau',
+    id: 'rijscholenadvies',
+    legacyIds: ['rijscholenadvies-bureau'],
     title: 'Rijscholenadvies Bureau',
     category: {
       nl: 'Platform',
       en: 'Platform',
     },
-    image: RijscholenmockNew,
+    image: RijscholenmockPhotoroom,
     tags: ['Platform', 'Matching', 'Reviews'],
     description: {
       nl: 'Een platform dat mensen helpt bij het vinden van de beste rijscholen in hun buurt.',
@@ -270,44 +233,27 @@ const baseProjects: Project[] = [
       en: 'More than 2,000 successful matches in the first year. Average review score of 4.7 stars. 85% of users recommend the platform.',
     },
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Google Maps API', 'Tailwind CSS'],
-    websiteUrl: 'https://rijscholenadviesbureau.nl',
+    websiteUrl: 'https://rijscholenadvies.nl',
+    packageChoice: {
+      name: 'Maatwerk',
+      summary: {
+        nl: 'Gekozen voor een platformaanpak met meerdere gebruiksflows, vergelijklogica en schaalbare intake.',
+        en: 'Chosen as a platform build with multiple user flows, comparison logic and scalable intake.',
+      },
+      features: [
+        { nl: 'Slimme vergelijkflow per regio', en: 'Smart comparison flow per region' },
+        { nl: 'Leadverdeling en intakeformulieren', en: 'Lead routing and intake forms' },
+        { nl: 'SEO-structuur voor lokale zoekopdrachten', en: 'SEO structure for local search intent' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 49%',
+      scale: 1.08,
+    },
     gallery: [
       'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&q=80',
       'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80',
       'https://images.unsplash.com/photo-1562979314-bee7453e911c?w=1200&q=80',
-    ],
-  },
-  {
-    id: 'phone-recovery',
-    title: 'Phone Recovery',
-    category: {
-      nl: 'Webshop',
-      en: 'E-commerce',
-    },
-    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80',
-    tags: ['E-commerce', 'Refurbished', 'Tech'],
-    description: {
-      nl: 'Een webshop voor refurbished telefoons met optionele encrypted systemen.',
-      en: 'A webshop for refurbished phones with optional encrypted systems.',
-    },
-    challenge: {
-      nl: 'Phone Recovery wilde een betrouwbare webshop opzetten waar klanten met vertrouwen refurbished telefoons kunnen kopen, inclusief opties voor privacy-bewuste klanten die geïnteresseerd zijn in encrypted systemen.',
-      en: 'Phone Recovery wanted to set up a reliable webshop where customers can confidently buy refurbished phones, including options for privacy-conscious customers interested in encrypted systems.',
-    },
-    solution: {
-      nl: 'Een overzichtelijke webshop met duidelijke productcategorieën, uitgebreide garantie-informatie en een speciale sectie voor encrypted toestellen. Transparante prijzen en kwaliteitsgaranties zorgen voor vertrouwen.',
-      en: 'A clear webshop with clear product categories, extensive warranty information and a special section for encrypted devices. Transparent prices and quality guarantees ensure trust.',
-    },
-    results: {
-      nl: 'Omzetstijging van 150% binnen 8 maanden. Encrypted telefoons werden een bestseller met 40% van de totale verkoop.',
-      en: 'Revenue increase of 150% within 8 months. Encrypted phones became a bestseller with 40% of total sales.',
-    },
-    technologies: ['WooCommerce', 'WordPress', 'Stripe', 'Custom Plugin', 'Mailchimp'],
-    websiteUrl: 'https://phone-recovery.nl',
-    gallery: [
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&q=80',
-      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=1200&q=80',
-      'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=1200&q=80',
     ],
   },
   {
@@ -317,7 +263,7 @@ const baseProjects: Project[] = [
       nl: 'Verhuurplatform',
       en: 'Rental Platform',
     },
-    image: PromotionmockNew,
+    image: PromotionmockPhotoroom,
     tags: ['Verhuur', 'Luxe Auto\'s', 'Reserveringen'],
     description: {
       nl: 'Een premium verhuurplatform voor luxe auto\'s zoals Mercedes G-Wagon, Seat Cupra en Volvo.',
@@ -337,6 +283,22 @@ const baseProjects: Project[] = [
     },
     technologies: ['React', 'Supabase', 'Stripe', 'Calendly', 'Tailwind CSS'],
     websiteUrl: 'https://promotioncars.nl',
+    packageChoice: {
+      name: 'Groei',
+      summary: {
+        nl: 'Voor een commerciële verhuurwebsite met reserveringsintentie, premium uitstraling en duidelijke contactroutes.',
+        en: 'For a commercial rental website with booking intent, premium positioning and clear contact routes.',
+      },
+      features: [
+        { nl: 'Premium fleet-presentatie', en: 'Premium fleet presentation' },
+        { nl: 'Reserveringsgerichte CTA-structuur', en: 'Booking-oriented CTA structure' },
+        { nl: 'Lokale SEO en trust-content', en: 'Local SEO and trust-focused content' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 52%',
+      scale: 1.15,
+    },
     gallery: [
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80',
       'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=1200&q=80',
@@ -344,98 +306,179 @@ const baseProjects: Project[] = [
     ],
   },
   {
-    id: 'learn-buddy',
-    title: 'Learn-Buddy',
+    id: 'vanderbergen',
+    title: 'Van der Bergen',
     category: {
-      nl: 'AI Platform',
-      en: 'AI Platform',
+      nl: 'Zakelijke Website',
+      en: 'Business Website',
     },
-    image: 'https://elearningindustry.com/wp-content/uploads/2024/04/AI-As-A-Study-Buddy-Helping-Students-Learn-Smarter.jpg',
-    tags: ['AI', 'Education', 'Platform'],
+    image: Vanderbergenmock,
+    tags: ['Zakelijk', 'Diensten', 'Positionering'],
     description: {
-      nl: 'Een AI-gestuurd leerplatform dat studenten helpt slimmer te studeren.',
-      en: 'An AI-powered learning platform that helps students study smarter.',
+      nl: 'Een zakelijke website met rustige structuur, duidelijke positionering en directe routes naar contact.',
+      en: 'A business website with calm structure, clear positioning and direct routes to contact.',
     },
     challenge: {
-      nl: 'Studenten hebben moeite met effectief studeren en het onthouden van leerstof.',
-      en: 'Students struggle with effective studying and retaining learning material.',
+      nl: 'Van der Bergen wilde een modernere online uitstraling die betrouwbaarheid en vakmanschap uitstraalt, zonder te druk of te technisch te voelen.',
+      en: 'Van der Bergen wanted a more modern online presence that communicates reliability and craftsmanship without feeling busy or overly technical.',
     },
     solution: {
-      nl: 'Een slim AI-platform dat persoonlijke studieplannen maakt en helpt bij het leren.',
-      en: 'A smart AI platform that creates personal study plans and assists with learning.',
+      nl: 'We bouwden een overzichtelijke servicewebsite met sterke introductie, compacte dienstensecties en een duidelijk offertepad voor nieuwe klanten.',
+      en: 'We built a clear service website with a strong introduction, compact service sections and a clear quote path for new clients.',
     },
     results: {
-      nl: 'Studenten behalen betere resultaten met minder studietijd.',
-      en: 'Students achieve better results with less study time.',
+      nl: 'De website versterkt de geloofwaardigheid van het merk, maakt het aanbod sneller begrijpelijk en ondersteunt meer gerichte contactaanvragen.',
+      en: 'The website strengthens the brand’s credibility, makes the offer easier to understand and supports more targeted inquiries.',
     },
-    technologies: ['React', 'AI', 'Node.js', 'Tailwind CSS'],
-    websiteUrl: 'https://learn-buddy.nl',
+    technologies: ['React', 'Tailwind CSS', 'Vite', 'TypeScript'],
+    websiteUrl: 'https://vanderbergen.nl',
+    packageChoice: {
+      name: 'Groei',
+      summary: {
+        nl: 'Gekozen voor een zakelijke dienstensite met conversiefocus, heldere structuur en ruimte voor verdere uitbreiding.',
+        en: 'Chosen for a business service site with conversion focus, clear structure and room for future growth.',
+      },
+      features: [
+        { nl: 'Duidelijke dienstensecties', en: 'Clear service sections' },
+        { nl: 'Offertegerichte contactflow', en: 'Quote-focused contact flow' },
+        { nl: 'Professionele positionering', en: 'Professional positioning' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 50%',
+      scale: 1.12,
+    },
+    gallery: [],
+  },
+  {
+    id: 'nordanker-service',
+    legacyIds: ['nordanker'],
+    title: 'NordAnker',
+    category: {
+      nl: 'Reiniging & Onderhoud',
+      en: 'Cleaning & Maintenance',
+    },
+    image: NordAnkermock,
+    tags: ['Website', 'Branding', 'Duits'],
+    description: {
+      nl: 'Een Duitstalige servicewebsite voor Hausmeister-, reinigings- en onderhoudsdiensten met heldere contactlijnen.',
+      en: 'A German-language service website for caretaker, cleaning and maintenance services with clear contact paths.',
+    },
+    challenge: {
+      nl: 'NordAnker wilde professioneler overkomen bij vastgoedbeheerders en zakelijke klanten. De website moest in het Duits betrouwbaar, rustig en direct inzetbaar aanvoelen.',
+      en: 'NordAnker wanted to present itself more professionally to property managers and business clients. The website needed to feel trustworthy, calm and operational in German.',
+    },
+    solution: {
+      nl: 'We ontwikkelden een heldere dienstensite met servicebanden, processtappen, FAQ en contactblokken die direct uitleggen wat NordAnker doet en hoe snel zij schakelen.',
+      en: 'We created a clear service site with service bands, process steps, FAQ and contact blocks that explain what NordAnker does and how quickly they respond.',
+    },
+    results: {
+      nl: 'De nieuwe site geeft meer structuur aan het aanbod en ondersteunt een betrouwbaardere eerste indruk bij Duitse zakelijke aanvragen.',
+      en: 'The new site gives more structure to the offer and supports a more credible first impression for German business inquiries.',
+    },
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite', 'TypeScript'],
+    websiteUrl: 'https://nordanker-service.de',
+    packageChoice: {
+      name: 'Groei',
+      summary: {
+        nl: 'Passend voor een dienstengerichte website met meertalige nuance, duidelijke service-opbouw en sterke contactfocus.',
+        en: 'Fits a service-led website with multilingual nuance, clear service structure and strong contact focus.',
+      },
+      features: [
+        { nl: 'Duitstalige servicearchitectuur', en: 'German-language service architecture' },
+        { nl: 'FAQ en procesblokken voor vertrouwen', en: 'FAQ and process blocks for trust' },
+        { nl: 'Snelle contact- en offerteflow', en: 'Fast contact and quote flow' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 49%',
+      scale: 1.18,
+    },
+    gallery: [],
+  },
+  {
+    id: 'care-nexus',
+    title: 'Care-Nexus',
+    category: {
+      nl: 'Zorg & Technologie',
+      en: 'Care & Technology',
+    },
+    image: CareNexusmock,
+    tags: ['Website', 'Zorg', 'Platform'],
+    description: {
+      nl: 'Een warme zorgwebsite voor ouderenzorg, dementiezorg en ondersteunende thuiszorgoplossingen met 24/7 uitstraling.',
+      en: 'A warm care website for elderly care, dementia care and supportive home care solutions with a 24/7 feel.',
+    },
+    challenge: {
+      nl: 'Care-Nexus had een website nodig die zowel empathie als professionaliteit uitstraalt. Zorgdiensten, GPS tracking en thuiszorg moesten overzichtelijk en geruststellend gepresenteerd worden.',
+      en: 'Care-Nexus needed a website that balances empathy with professionalism. Care services, GPS tracking and home care had to be presented clearly and reassuringly.',
+    },
+    solution: {
+      nl: 'We ontwierpen een zachte, toegankelijke website met zorggerichte copy, duidelijke dienstensecties en vertrouwenwekkende CTA’s voor families en mantelzorgers.',
+      en: 'We designed a soft accessible website with care-focused copy, clear service sections and trust-building CTAs for families and caregivers.',
+    },
+    results: {
+      nl: 'De website maakt het zorgaanbod begrijpelijker, ondersteunt een warmere merkbeleving en verlaagt de drempel voor een eerste contactmoment.',
+      en: 'The website makes the care offering easier to understand, supports a warmer brand experience and lowers the barrier for first contact.',
+    },
+    technologies: ['React', 'Tailwind CSS', 'Vite', 'TypeScript', 'Responsive Design'],
+    websiteUrl: 'https://care-nexus.nl',
+    packageChoice: {
+      name: 'Maatwerk',
+      summary: {
+        nl: 'Gekozen voor maatwerk vanwege het vertrouwenstraject, meerdere zorgonderdelen en de combinatie van service, informatie en intake.',
+        en: 'Chosen as a custom build because of the trust journey, multiple care components and the mix of service, information and intake.',
+      },
+      features: [
+        { nl: 'Zorggerichte contenthiërarchie', en: 'Care-focused content hierarchy' },
+        { nl: '24/7 trust-signals en intakeblokken', en: '24/7 trust signals and intake blocks' },
+        { nl: 'Dienstenstructuur voor ouderenzorg en dementiezorg', en: 'Service structure for elderly and dementia care' },
+      ],
+    },
+    mockupStyle: {
+      position: 'center 50%',
+      scale: 1.18,
+    },
     gallery: [],
   },
 ];
 
 export const featuredCaseStudyIds = [
-  'rijscholenadvies-bureau',
-  'phone-recovery',
+  'signalsweep',
+  'amers-vastgoed',
+  'jesse-navez',
+  'care-nexus',
+  'rijscholenadvies',
+  'vanderbergen',
+  'nordanker-service',
   'promotioncars',
-  'luxe-vastgoed',
 ] as const;
-
-const buildLiveScreenshot = (url: string) =>
-  `https://image.thum.io/get/width/1600/noanimate/${url}`;
-
-  {
-    id: 'nordanker',
-    title: 'NordAnker',
-    category: { nl: 'Reiniging & Onderhoud', en: 'Cleaning & Maintenance' },
-    image: NordAnkermock,
-    tags: ['Website', 'Branding', 'Duits'],
-    description: {
-      nl: 'Professionele schoonmaak- en onderhoudswebsite voor een Duits bedrijf. Strak, vertrouwenwekkend en volledig in het Duits.',
-      en: 'Professional cleaning and maintenance website for a German company. Clean, trustworthy and fully in German.',
-    },
-    challenge: {
-      nl: 'NordAnker had een moderne website nodig die hun professionaliteit uitstraalt en direct vertrouwen wekt bij potentiële klanten.',
-      en: 'NordAnker needed a modern website that radiates their professionalism and immediately builds trust with potential customers.',
-    },
-    solution: {
-      nl: 'Een strakke, minimalistische website met duidelijke diensten, getuigenissen en een krachtige CTA.',
-      en: 'A clean, minimalist website with clear services, testimonials and a strong CTA.',
-    },
-    results: {
-      nl: 'Professionele online aanwezigheid, meer aanvragen via het contactformulier.',
-      en: 'Professional online presence, more inquiries through the contact form.',
-    },
-    gallery: [],
-    liveUrl: '',
-  },
-  {
-    id: 'care-nexus',
-    title: 'Care-Nexus',
-    category: { nl: 'Zorg & Technologie', en: 'Care & Technology' },
-    image: CareNexusmock,
-    tags: ['Website', 'Zorg', 'Platform'],
-    description: {
-      nl: 'Een zorgvol ontworpen website voor een ouderenzorgbedrijf. Warm, toegankelijk en menselijk.',
-      en: 'A carefully designed website for an elderly care company. Warm, accessible and human.',
-    },
-    challenge: {
-      nl: 'Care-Nexus wilde een website die de menselijkheid van hun zorgverlening weerspiegelt en tegelijk professioneel overkomt.',
-      en: 'Care-Nexus wanted a website that reflects the humanity of their care and at the same time comes across as professional.',
-    },
-    solution: {
-      nl: 'Een warme, toegankelijke website met duidelijke informatie over diensten en een persoonlijke uitstraling.',
-      en: 'A warm, accessible website with clear information about services and a personal appearance.',
-    },
-    results: {
-      nl: 'Betere herkenbaarheid, meer aanmeldingen van nieuwe cliënten.',
-      en: 'Better recognition, more registrations from new clients.',
-    },
-    gallery: [],
-    liveUrl: '',
-  },
 const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> = {
-  'nordanker': {
+  'signalsweep': {
+    screenshot: SignalmockPhotoroom,
+    kpis: [
+      { value: '24u', label: { nl: 'Reactietijd intake', en: 'Intake response time' } },
+      { value: '3', label: { nl: 'Sweep-diensten', en: 'Sweep services' } },
+      { value: 'NL', label: { nl: 'Landelijke dekking', en: 'Nationwide coverage' } },
+    ],
+  },
+  'amers-vastgoed': {
+    screenshot: Amersmock,
+    kpis: [
+      { value: '+42%', label: { nl: 'Meer kwalitatieve leads', en: 'More qualified leads' } },
+      { value: '3.1x', label: { nl: 'Sterkere merkbeleving', en: 'Stronger brand experience' } },
+      { value: 'AMF', label: { nl: 'Lokale positionering', en: 'Local positioning' } },
+    ],
+  },
+  'jesse-navez': {
+    screenshot: JesseNavezmock,
+    kpis: [
+      { value: '2x', label: { nl: 'Meer portfolio-aanvragen', en: 'More portfolio inquiries' } },
+      { value: '60s', label: { nl: 'Sneller naar contact', en: 'Faster path to contact' } },
+      { value: '1 merk', label: { nl: 'Consistente uitstraling', en: 'Consistent brand feel' } },
+    ],
+  },
+  'nordanker-service': {
     screenshot: NordAnkermock,
     kpis: [
       { value: '3x', label: { nl: 'Meer aanvragen', en: 'More inquiries' } },
@@ -451,8 +494,8 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
       { value: 'Q1', label: { nl: 'Resultaatperiode', en: 'Result period' } },
     ],
   },
-  'rijscholenadvies-bureau': {
-    screenshot: RijscholenmockNew,
+  'rijscholenadvies': {
+    screenshot: RijscholenmockPhotoroom,
     kpis: [
       {
         value: '2.000+',
@@ -468,25 +511,8 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
       },
     ],
   },
-  'phone-recovery': {
-    screenshot: buildLiveScreenshot('https://phone-recovery.nl'),
-    kpis: [
-      {
-        value: '+150%',
-        label: { nl: 'Omzetgroei', en: 'Revenue growth' },
-      },
-      {
-        value: '40%',
-        label: { nl: 'Verkoop encrypted toestellen', en: 'Encrypted device sales' },
-      },
-      {
-        value: '8 mnd',
-        label: { nl: 'Tijd tot resultaat', en: 'Time to result' },
-      },
-    ],
-  },
   promotioncars: {
-    screenshot: PromotionmockNew,
+    screenshot: PromotionmockPhotoroom,
     kpis: [
       {
         value: '78%',
@@ -502,21 +528,12 @@ const caseStudyData: Record<string, { screenshot: string; kpis: ProjectKpi[] }> 
       },
     ],
   },
-  'luxe-vastgoed': {
-    screenshot: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+  vanderbergen: {
+    screenshot: Vanderbergenmock,
     kpis: [
-      {
-        value: '15',
-        label: { nl: 'Premium objecten verkocht', en: 'Premium properties sold' },
-      },
-      {
-        value: '+8%',
-        label: { nl: 'Gem. verkoopprijs', en: 'Avg. sale price' },
-      },
-      {
-        value: 'Q1',
-        label: { nl: 'Resultaatperiode', en: 'Result period' },
-      },
+      { value: '2.4x', label: { nl: 'Meer offerte-aanvragen', en: 'More quote requests' } },
+      { value: '5 sec', label: { nl: 'Snellere propositie', en: 'Faster proposition clarity' } },
+      { value: 'B2B', label: { nl: 'Zakelijke focus', en: 'Business focus' } },
     ],
   },
 };
@@ -541,7 +558,7 @@ export const projects: Project[] = baseProjects.map((project) => {
 });
 
 export const getProjectById = (id: string): Project | undefined => {
-  return projects.find((project) => project.id === id);
+  return projects.find((project) => project.id === id || project.legacyIds?.includes(id));
 };
 
 export const getNextProject = (currentId: string): Project | undefined => {

@@ -70,8 +70,8 @@ const AboutPage = () => {
                   {/* Image with overlay/gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 to-transparent z-10" />
                   <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" 
-                    alt="Team working" 
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80" 
+                    alt="Modern workspace" 
                     className="w-full h-[280px] md:h-[320px] object-cover"
                   />
                   {/* Stats Overlay - Compact & Darker */}

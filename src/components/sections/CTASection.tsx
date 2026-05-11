@@ -85,11 +85,11 @@ const CTASection = () => {
 
         {/* Bottom CTA */}
         <div className="text-center">
-          <p className="text-slate-600 text-sm font-medium">
+          <p className="flex flex-wrap items-center justify-center gap-x-1 text-slate-600 text-sm font-medium sm:block">
             {language === 'nl' 
               ? 'Niet zeker welk pakket past? ' 
               : 'Not sure which package fits? '}
-            <Link to="/contact" className="text-[#29458e] font-bold hover:underline transition-colors">
+            <Link to="/contact" className="whitespace-nowrap text-[#29458e] font-bold hover:underline transition-colors">
               {language === 'nl' ? 'Plan een gratis adviesgesprek' : 'Schedule a free consultation'}
             </Link>
           </p>

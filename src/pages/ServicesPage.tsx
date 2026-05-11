@@ -93,7 +93,6 @@ const ArrowIcon = () => (
 interface ServiceCard {
   title: string;
   description: string;
-  price: string;
   image: string;
   icon: React.FC;
   slug?: string;
@@ -117,7 +116,6 @@ const ServicesPage = () => {
         {
           title: 'Website Onderhoud',
           description: language === 'nl' ? 'Zorgeloos onderhoud met persoonlijke ondersteuning' : 'Carefree maintenance with personal support',
-          price: language === 'nl' ? 'Vanaf €29/mnd' : 'From €29/mo',
           image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
           icon: WrenchIcon,
           slug: 'website-onderhoud',
@@ -125,7 +123,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Hosting en E-mail' : 'Hosting & Email',
           description: language === 'nl' ? 'Snelle, betrouwbare hosting met persoonlijke support' : 'Fast, reliable hosting with personal support',
-          price: language === 'nl' ? 'Vanaf €19/mnd' : 'From €19/mo',
           image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600',
           icon: MonitorIcon,
           slug: 'hosting',
@@ -133,7 +130,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'SEO en Zoekmachine Optimalisatie' : 'SEO & Search Engine Optimization',
           description: language === 'nl' ? 'Word gevonden door uw ideale klanten' : 'Get found by your ideal customers',
-          price: language === 'nl' ? 'Vanaf €149/mnd' : 'From €149/mo',
           image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=600',
           icon: SearchIcon,
           slug: 'seo',
@@ -141,7 +137,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Social Media Beheer' : 'Social Media Management',
           description: language === 'nl' ? 'Professionele aanwezigheid op alle platforms' : 'Professional presence on all platforms',
-          price: language === 'nl' ? 'Vanaf €199/mnd' : 'From €199/mo',
           image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600',
           icon: ShareIcon,
           slug: 'social-media',
@@ -149,7 +144,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Google en Meta Ads Beheer' : 'Google & Meta Ads Management',
           description: language === 'nl' ? 'Maximaal rendement uit uw advertentiebudget' : 'Maximum return on your ad budget',
-          price: language === 'nl' ? 'Vanaf €249/mnd' : 'From €249/mo',
           image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600',
           icon: ChartIcon,
           slug: 'ads-beheer',
@@ -163,7 +157,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Conversie Optimalisatie' : 'Conversion Optimization',
           description: language === 'nl' ? 'Meer klanten uit uw bestaande bezoekers' : 'More customers from your existing visitors',
-          price: language === 'nl' ? 'Vanaf €499' : 'From €499',
           image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
           icon: TargetIcon,
           slug: 'conversie-optimalisatie',
@@ -171,7 +164,6 @@ const ServicesPage = () => {
         {
           title: 'Sales Funnels',
           description: language === 'nl' ? 'Geautomatiseerde verkoopsystemen die 24/7 werken' : 'Automated sales systems that work 24/7',
-          price: language === 'nl' ? 'Vanaf €799' : 'From €799',
           image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600',
           icon: TargetIcon,
           slug: 'sales-funnels',
@@ -179,7 +171,6 @@ const ServicesPage = () => {
         {
           title: 'E-mail Marketing',
           description: language === 'nl' ? 'Direct contact met uw doelgroep' : 'Direct contact with your target audience',
-          price: language === 'nl' ? 'Vanaf €399' : 'From €399',
           image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=600',
           icon: MailIcon,
           slug: 'email-marketing',
@@ -187,7 +178,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Branding Pakket' : 'Branding Package',
           description: language === 'nl' ? 'Een sterk merk dat blijft hangen' : 'A strong brand that sticks',
-          price: language === 'nl' ? 'Vanaf €599' : 'From €599',
           image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600',
           icon: LayersIcon,
           slug: 'branding',
@@ -195,7 +185,6 @@ const ServicesPage = () => {
         {
           title: 'AI Implementatie',
           description: language === 'nl' ? 'Onderscheid u met slimme AI oplossingen' : 'Stand out with smart AI solutions',
-          price: language === 'nl' ? 'Vanaf €699' : 'From €699',
           image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=600',
           icon: CpuIcon,
           slug: 'ai-implementatie',
@@ -209,7 +198,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Webdesign en Ontwikkeling' : 'Web Design & Development',
           description: language === 'nl' ? 'Websites die indruk maken en converteren' : 'Websites that impress and convert',
-          price: language === 'nl' ? 'Vanaf €499' : 'From €499',
           image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600',
           icon: GlobeIcon,
           slug: 'webdesign',
@@ -217,7 +205,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'E-commerce en Webshops' : 'E-commerce & Webshops',
           description: language === 'nl' ? 'Online verkopen zonder grenzen' : 'Online sales without limits',
-          price: language === 'nl' ? 'Vanaf €799' : 'From €799',
           image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600',
           icon: CartIcon,
           slug: 'webshop',
@@ -225,7 +212,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Web Applicaties' : 'Web Applications',
           description: language === 'nl' ? 'Krachtige apps die in de browser draaien' : 'Powerful apps that run in the browser',
-          price: language === 'nl' ? 'Vanaf €1.499' : 'From €1,499',
           image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
           icon: MonitorIcon,
           slug: 'web-applicaties',
@@ -233,7 +219,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Automatisering' : 'Automation',
           description: language === 'nl' ? 'Laat technologie het werk doen' : 'Let technology do the work',
-          price: language === 'nl' ? 'Vanaf €499' : 'From €499',
           image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600',
           icon: BoltIcon,
           slug: 'automatisering',
@@ -241,7 +226,6 @@ const ServicesPage = () => {
         {
           title: language === 'nl' ? 'Mobiele Apps (PWA)' : 'Mobile Apps (PWA)',
           description: language === 'nl' ? 'App-ervaring zonder app store gedoe' : 'App experience without app store hassle',
-          price: language === 'nl' ? 'Vanaf €999' : 'From €999',
           image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600',
           icon: PhoneIcon,
           slug: 'mobiele-apps',
@@ -255,7 +239,7 @@ const ServicesPage = () => {
       <Header />
       <main className="pt-20">
         {/* Unique Modern Hero Section */}
-        <section className="relative w-full py-24 overflow-hidden px-16 max-md:px-6 max-md:py-16 bg-[#f8fafc]">
+        <section className="relative w-full overflow-hidden bg-[#f8fafc] px-16 py-16 max-md:px-6 max-md:py-10">
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#e0e7ff] to-transparent opacity-80 z-0" />
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0055FF]/10 rounded-full blur-3xl z-0" />
@@ -266,22 +250,22 @@ const ServicesPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f4ff] border border-[#d6e0f5] mb-6">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d6e0f5] bg-[#f0f4ff] px-3 py-1">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0055FF] animate-pulse" />
-              <span className="text-[11px] font-bold text-[#1E4BA1] tracking-wider uppercase">
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#1E4BA1]">
                 {language === 'nl' ? 'Onze Expertise' : 'Our Expertise'}
               </span>
             </div>
             
-            <h1 className="text-[clamp(28px,4vw,44px)] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#0F172A]">
+            <h1 className="text-[clamp(20px,3vw,32px)] font-bold leading-[1.12] tracking-[-0.02em] text-[#0F172A]">
               {language === 'nl' ? (
                 <>
-                  Ontdek onze <span className="text-[#0055FF]">Digitale</span> <br />
+                  Ontdek onze <span className="text-[#0055FF]">Digitale</span>{' '}
                   Diensten & Oplossingen
                 </>
               ) : (
                 <>
-                  Explore our <span className="text-[#0055FF]">Digital</span> <br />
+                  Explore our <span className="text-[#0055FF]">Digital</span>{' '}
                   Services & Solutions
                 </>
               )}
@@ -289,9 +273,9 @@ const ServicesPage = () => {
             
             {/* Minimalist accent line */}
             <motion.div 
-              className="h-1.5 w-20 bg-[#0055FF] mt-8 rounded-full"
+              className="mt-5 h-1 w-14 rounded-full bg-[#0055FF]"
               initial={{ width: 0 }}
-              animate={{ width: 80 }}
+              animate={{ width: 56 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             />
           </motion.div>
@@ -343,9 +327,6 @@ const ServicesPage = () => {
                           <p className="text-[12px] max-md:text-[11px] text-[#475569] leading-[1.45] mb-3 max-md:mb-2 flex-1">
                             {card.description}
                           </p>
-                          <span className="inline-block text-[11px] max-md:text-[10px] font-semibold text-[#1E4BA1] bg-[#f0f4ff] border border-[#d6e0f5] rounded-[5px] px-2.5 py-1 max-md:px-2 max-md:py-0.5 mb-3 max-md:mb-2 w-fit">
-                            {card.price}
-                          </span>
                           <Link
                             to={`/services/${card.slug}`}
                             className="text-[12px] max-md:text-[11px] font-semibold text-[#1E4BA1] no-underline inline-flex items-center gap-[5px] transition-all duration-200 hover:gap-2"

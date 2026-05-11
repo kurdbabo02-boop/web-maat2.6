@@ -37,7 +37,7 @@ const AnimatedStatValue = ({ end, suffix, start }: { end: number; suffix: string
 
 const StatsMiniSection = () => {
   const { language } = useLanguage();
-  const { ref, controls, isInView } = useScrollAnimation(0.35);
+  const { ref, controls, isInView } = useScrollAnimation(0.15);
 
   const stats = [
     { end: 150, suffix: '+', label: language === 'nl' ? 'Projecten' : 'Projects' },
@@ -46,8 +46,8 @@ const StatsMiniSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-2 md:py-3 bg-[#f0f4ff]">
-      <div className="absolute inset-0 pointer-events-none" />
+    <section className="relative overflow-hidden border-y border-slate-200/80 bg-[#eef3fb] py-4 md:py-5">
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(180deg,rgba(255,255,255,0.48)_0%,rgba(238,243,251,0)_100%)]" />
 
       <motion.div
         ref={ref}
@@ -58,11 +58,13 @@ const StatsMiniSection = () => {
       >
         <motion.div className="grid grid-cols-3 gap-2 md:gap-6" variants={fadeInUp}>
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-base md:text-xl font-display font-bold text-[#1E4BA1] leading-none">
+            <div key={stat.label} className="rounded-xl bg-white/45 px-2 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-[2px] md:px-4 md:py-4">
+              <p className="text-lg md:text-xl font-display font-bold text-[#1E4BA1] leading-none tabular-nums">
                 <AnimatedStatValue end={stat.end} suffix={stat.suffix} start={isInView} />
               </p>
-              <p className="text-[9px] md:text-xs text-slate-700 mt-0.5 md:mt-1 font-medium uppercase tracking-wider">{stat.label}</p>
+              <p className="mt-1 text-[9px] md:mt-1.5 md:text-xs text-slate-700 font-medium uppercase tracking-[0.16em]">
+                {stat.label}
+              </p>
             </div>
           ))}
         </motion.div>

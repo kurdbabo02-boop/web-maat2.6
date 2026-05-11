@@ -59,7 +59,7 @@ const Header = () => {
       >
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 no-underline h-full">
-          <img src={logo} alt="Web-Maat Creations" className="h-20 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(450%) hue-rotate(200deg) brightness(98%)' }} />
+          <img src={logo} alt="Web-Maat Creations" className="h-20 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -111,7 +111,7 @@ const Header = () => {
 
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/40 transition-all duration-300 z-[2498] ${
+        className={`fixed inset-0 bg-black/28 transition-all duration-500 z-[2498] ${
           isDrawerOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
         onClick={closeDrawer}
@@ -119,17 +119,17 @@ const Header = () => {
 
       {/* Mobile Drawer */}
       <aside
-        className={`fixed top-0 right-0 w-full md:w-[340px] h-screen bg-white z-[2500] flex flex-col p-6 border-l border-black/5 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-transform duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] ${
+        className={`fixed top-0 right-0 h-screen w-[50vw] min-w-[280px] max-w-[420px] bg-white z-[2500] flex flex-col px-6 py-5 border-l border-slate-200 shadow-[-16px_0_40px_rgba(15,23,42,0.08)] transition-transform duration-500 ease-out ${
           isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between pb-5">
-          <Link to="/" className="text-[#0f172a] no-underline text-2xl font-bold tracking-[1px]" onClick={closeDrawer}>
-            WEB-MAAT<span className="text-[#3b82f6]">.</span>
+          <Link to="/" className="flex items-center" onClick={closeDrawer}>
+            <img src={logo} alt="Web-Maat Creations" className="h-14 w-auto" />
           </Link>
           <button
-            className="w-11 h-11 bg-black/[0.04] border-0 rounded-xl text-[#0f172a] text-[28px] cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-[rgba(59,130,246,0.1)] hover:text-[#3b82f6]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border-0 bg-slate-100 text-[24px] text-[#0f172a] transition-colors duration-300 hover:bg-slate-200"
             onClick={closeDrawer}
             aria-label="Menu sluiten"
           >
@@ -138,16 +138,16 @@ const Header = () => {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-black/5 w-full my-2.5" />
+        <div className="my-2.5 h-px w-full bg-slate-200" />
 
-        {/* Mobile Navigation Links - Two columns for better layout */}
-        <div className="flex-1 py-8">
-          <ul className="grid grid-cols-2 gap-4 list-none">
+        {/* Mobile Navigation Links */}
+        <div className="py-8">
+          <ul className="flex list-none flex-col items-center gap-6 text-center">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="flex items-center justify-center h-16 bg-slate-50 rounded-xl text-[#0f172a] no-underline text-sm font-bold uppercase tracking-wider transition-all hover:bg-blue-50 hover:text-[#1E4BA1] border border-slate-100"
+                  className="block text-[#0f172a] no-underline text-[18px] font-semibold transition-colors duration-300 hover:text-[#29458e]"
                   onClick={closeDrawer}
                 >
                   {link.label}
@@ -158,14 +158,14 @@ const Header = () => {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-black/5 w-full my-2.5" />
+        <div className="my-2.5 h-px w-full bg-slate-200" />
 
         {/* Drawer Footer */}
-        <div className="pb-2.5">
-          <div className="mb-6 flex flex-col items-center">
+        <div className="mt-auto pb-3">
+          <div className="mb-4 flex flex-col items-start">
             <a
               href="tel:+31645457394"
-              className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#29458e]"
+              className="mb-3 flex items-center gap-3 text-[13px] text-[#475569] no-underline transition-colors duration-300 hover:text-[#29458e]"
             >
               <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-[#3b82f6]">
                 <path d="M6.62 10.79c1.44 2.82 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
@@ -174,7 +174,7 @@ const Header = () => {
             </a>
             <a
               href="mailto:info@web-maat.nl"
-              className="flex items-center gap-3 text-[#475569] no-underline text-sm mb-3.5 transition-colors duration-300 hover:text-[#29458e]"
+              className="mb-3 flex items-center gap-3 text-[13px] text-[#475569] no-underline transition-colors duration-300 hover:text-[#29458e]"
             >
               <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-[#3b82f6]">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
@@ -185,7 +185,7 @@ const Header = () => {
 
           <Link
             to="/quote"
-            className="block w-full bg-[#29458e] text-white text-center py-[18px] rounded-md no-underline font-bold text-sm uppercase transition-colors duration-300 hover:bg-[#29458e]"
+            className="block w-full rounded-md bg-[#29458e] py-4 text-center text-sm font-bold text-white no-underline uppercase transition-colors duration-300 hover:bg-[#29458e]"
             onClick={closeDrawer}
           >
             {language === 'nl' ? 'Offerte aanvragen' : 'Request a quote'}
